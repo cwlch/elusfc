@@ -1,0 +1,63 @@
+{
+	"dest" : "m/loanAssistant"
+	,"src" : "./src"
+	,"libs" : []
+	,"config" : {
+		"port": 3311,
+		"denyAccess": ["./httpserver.js", "./server/requirecache.js"],
+		"localIPs": ["127.0.0.1"],
+		"srcpath": "/server"
+	}
+	,"common" : [
+		"./js/common/base.js",
+		"./js/common/util.js"
+	]
+	,"ui" : []
+	,"providePlugin" : {}
+	,"serverPath" : [{
+		"dev" : "http://10.100.140.106:8081/"
+		,"test" : "http://10.100.140.106:8081/"
+		,"repro" : "http://10.100.146.57:8081/"
+		,"pro" : "http://lea.fuqianla.net/"
+	}]
+	,"staticPath" : {
+		"dev" : "//10.100.140.84/",
+		"test" : "//10.100.140.84/",
+		"repro" : "//credit.yixin.com/",
+		"pro" : "//resource.yixin.com/"
+	}
+	,"entry" : {
+		"index" : "js/index.js",
+		"creditProcess" : "js/creditProcess.js",
+		"result" : "js/result.js",
+		"query" : "js/query.js",
+		"detail" : "js/detail.js"
+	}
+	,"htmlwebpack" : [
+		{
+			"filename" : "index.html",
+			"chunks" : ["index"]
+			,"common" : true
+		},
+		{
+			"filename" : "creditProcess.html",
+			"chunks" : ["creditProcess"]
+			,"common" : true
+		},
+		{
+			"filename" : "result.html",
+			"chunks" : ["result"]
+			,"common" : true
+		},
+		{
+			"filename" : "query.html",
+			"chunks" : ["query"]
+			,"common" : true
+		},
+		{
+			"filename" : "detail.html",
+			"chunks" : ["detail"]
+			,"common" : true
+		}
+	]
+}
