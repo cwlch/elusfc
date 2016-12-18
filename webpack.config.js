@@ -10,9 +10,9 @@ var webpack = require("webpack")
 	,argv = minimist(process.argv);
 //第三方库
 if(build.libs){
-	build.libs.forEach(function(i){
-		ALIAS[i.name] = path.resolve(PATH_SRC , i.src);
-	});
+	for(var i in build.libs){
+		ALIAS[i] =  path.resolve(PATH_SRC , build.libs[i])
+	}
 }
 
 //公共文件打包 提取

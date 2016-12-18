@@ -37,7 +37,8 @@ gulp.task('watch', function() {
 gulp.task("clean",function () {
 	return gulp.src(build.dest).pipe(clean());
 });
-gulp.task('constants', function () {
+//生成后端服务地址
+gulp.task('serverPath', function () {
 	//取出对应的配置信息
 	var envConfig, conConfig = '',serverPath = build.serverPath;
 	for(var i = 0; i < serverPath.length; i++){
@@ -58,29 +59,30 @@ gulp.task('constants', function () {
 
 	//base_url.js文件
 	return stringSrc('serverPath.js', conConfig)
-		.pipe(gulp.dest(path.resolve(__dirname ,build.src + '/js/common/') ));
+		.pipe(gulp.dest(path.resolve(__dirname ,build.src + '/js/') ));
 });
-gulp.task('staticPath',function () {
-
-	//取出对应的配置信息
-	var envConfig, conConfig,staticPath = build.staticPath;
-
-	if (argv.test) {
-		envConfig = staticPath.test;
-	} else if (argv.repro) {
-		envConfig = staticPath.repro;
-	} else if (argv.pro) {
-		envConfig = staticPath.pro;
-	} else {
-		envConfig = staticPath.dev;
-	}
-
-	conConfig = 'window.staticPath = ' + JSON.stringify(envConfig) +';';
-
-	//base_url.js文件
-	return stringSrc('staticPath.js', conConfig)
-		.pipe(gulp.dest(path.resolve(__dirname ,build.src + '/js/common/') ));
-});
+//生成静态资源库地址
+// gulp.task('staticPath',function () {
+//
+// 	//取出对应的配置信息
+// 	var envConfig, conConfig,staticPath = build.staticPath;
+//
+// 	if (argv.test) {
+// 		envConfig = staticPath.test;
+// 	} else if (argv.repro) {
+// 		envConfig = staticPath.repro;
+// 	} else if (argv.pro) {
+// 		envConfig = staticPath.pro;
+// 	} else {
+// 		envConfig = staticPath.dev;
+// 	}
+//
+// 	conConfig = 'window.staticPath = ' + JSON.stringify(envConfig) +';';
+//
+// 	//base_url.js文件
+// 	return stringSrc('staticPath.js', conConfig)
+// 		.pipe(gulp.dest(path.resolve(__dirname ,build.src + '/js/common/') ));
+// });
 
 
 //webpack打包任务
@@ -109,13 +111,13 @@ gulp.task("m-img",function () {
 });
 
 // 运行任务
-gulp.task('default',['constants','clean'], function() {
+gulp.task('default',['serverPath','clean'], function() {
 	if(!argv.dev){
-		gulp.start(['m-img','webpack','staticPath'],function () {
+		gulp.start(['m-img','webpack'],function () {
 			console.log("打包完毕")
 		});
 	}else{
-		gulp.start(['m-img','watch','webpack','staticPath'],function () {
+		gulp.start(['m-img','watch','webpack'],function () {
 			console.log("打包完毕")
 		});
 		server();
