@@ -9,6 +9,15 @@ export default (route) => {
                 require.ensure(["../module/driver/index.vue"], (require) => {
                     require( ["../module/driver/index.vue"],resolve );
                 },'module/driver/index');
+            },
+            subRoutes : {
+                '/list': {
+                    component (resolve) {
+                        require.ensure(["../module/driver/list.vue"], (require) => {
+                            require(["../module/driver/list.vue"], resolve);
+                        }, 'module/driver/list');
+                    }
+                }
             }
         },
         '/passenger' : {

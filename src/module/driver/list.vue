@@ -1,8 +1,6 @@
 <template>
-    <br><br><br><br>我是乘客
+    <div>this is template List</div>
 </template>
-<style>
-</style>
 <script>
     export default{
         data(){

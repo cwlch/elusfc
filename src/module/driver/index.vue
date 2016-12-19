@@ -1,8 +1,10 @@
 <template>
-    <div>this is template body</div>
+    <div>
+        <br><br><br><br>我是司机
+        <a v-link="{path:'/driver/list'}">下级</a>
+    </div>
+    <router-view></router-view>
 </template>
-<style>
-</style>
 <script>
     export default{
         data(){
