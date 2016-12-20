@@ -1,10 +1,89 @@
 @import "base";
 
 
-h1{
-	font-size: torem(32);
+/*Passenger我是乘客*/
+
+$white:#fff;
+$silde_l:left;
+$silde_r:right;
+$Percen:100%;
+$gray:#333;
+$green:#4baa2c;
+
+input::-webkit-input-placeholder {
+	color: #333 !important;
 }
-.top{
-	height:torem(750);
-	font-size: torem(28);
+.Passenger_box{
+	width:torem(706);margin:0 auto;
 }
+.Passenger_seach{
+	width:torem(706);background:$white;border-radius:torem(18);margin-top:torem(21);height:torem(362);
+}
+.Passenger_seach dl{
+	width:$Percen;height:torem(229);
+}
+.Passenger_seach dl dt{
+	width:torem(120);height:$Percen;float:$silde_l;
+}
+.Passenger_seach dl dt img{
+	width:torem(60);height:torem(68);margin:torem(88) 0 0 torem(30);
+}
+.Passenger_seach dl dd{
+	width:torem(565);height:$Percen;float:$silde_l;
+}
+.Passenger_seach dl dd input{
+	width:$Percen;height:torem(45);margin-top:torem(34);font-size:torem(32);color:$gray;
+}
+.Passenger_seach dd p{
+	width:$Percen;height:torem(114);position:relative;
+}
+.edge{
+	border-bottom:torem(1) solid #ccc;
+}
+.icon{
+	width:torem(18);height:torem(34);position:absolute;right:torem(0);top:torem(40);
+}
+.line{
+	width:torem(706);height:torem(26);
+}
+.Pass_date{
+	width:torem(566);height:torem(60);float:$silde_r;margin-right:torem(22);margin-top:torem(10);
+	position: relative;
+}
+.Pass_date input{
+	width:torem(400);height:$Percen;line-height:torem(60);font-size:torem(30);color:$gray;
+}
+.Pass_date img{
+	width:torem(40);height:torem(44);position:absolute;right:0;top:torem(10);
+}
+.Pass_btn{
+	width:torem(706);height:torem(100);margin-top:torem(20);
+}
+.Pass_btn input{
+	width:$Percen;height:$Percen;background:$green;border-radius:torem(20);color:$white;font-size:torem(32);
+}
+
+
+
+
+
+/*日历样式*/
+.my_calendar{ display:none; position:absolute; width:210px; border:1px solid black; top:0; left:0;  overflow:hidden; background:#fff;}
+
+.my_calendar span{display:block; width:100%; height:20px; line-height:20px; text-align:center;font-weight:bold;}
+.my_calendar ol li{float:left; width:30px; height:30px; line-height:30px; text-align:center; }
+.my_calendar ol li.week_end{color:#F63;}
+.my_calendar ul li{width:30px; height:30px; line-height:30px; text-align:center; float:left;}
+.my_calendar ul li.past{color:#ccc;}
+.my_calendar ul li.today{color:#F63; font-size:12px;}
+.my_calendar .prev,.my_calendar .next{position:absolute; top:4px; text-decoration:none; color:#000;}
+.my_calendar .prev{left:4px;}
+.my_calendar .next{right:4px;}
+
+
+
+
+
+
+
+
