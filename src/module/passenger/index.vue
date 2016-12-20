@@ -30,10 +30,3 @@
 </template>
 <style>
 </style>
-<script type="text/javascript" src=""></script>
-<script>
-window.onload=function(){
-	var oTxt1 = document.getElementById('txt1');
-	makeUpCalendar(oTxt1);
-};
-</script>
