@@ -10,6 +10,14 @@ $Percen:100%;
 $gray:#333;
 $green:#4baa2c;
 
+
+.left{
+	float:$silde_l;
+}
+.right{
+	float:$silde_r;
+}
+
 input::-webkit-input-placeholder {
 	color: #333 !important;
 }
@@ -19,22 +27,22 @@ input::-webkit-input-placeholder {
 .Passenger_seach{
 	width:torem(706);background:$white;border-radius:torem(18);margin-top:torem(21);height:torem(362);
 }
-.Passenger_seach dl{
+.check{
 	width:$Percen;height:torem(229);
 }
-.Passenger_seach dl dt{
+.check dt{
 	width:torem(120);height:$Percen;float:$silde_l;
 }
-.Passenger_seach dl dt img{
+.check dt img{
 	width:torem(60);height:torem(68);margin:torem(88) 0 0 torem(30);
 }
-.Passenger_seach dl dd{
+.check dd{
 	width:torem(565);height:$Percen;float:$silde_l;
 }
-.Passenger_seach dl dd input{
+.check dd input{
 	width:$Percen;height:torem(45);margin-top:torem(34);font-size:torem(32);color:$gray;
 }
-.Passenger_seach dd p{
+.check dd p{
 	width:$Percen;height:torem(114);position:relative;
 }
 .edge{
@@ -64,9 +72,6 @@ input::-webkit-input-placeholder {
 }
 
 
-
-
-
 /*日历样式*/
 .my_calendar{ display:none; position:absolute; width:210px; border:1px solid black; top:0; left:0;  overflow:hidden; background:#fff;}
 
@@ -81,6 +86,161 @@ input::-webkit-input-placeholder {
 .my_calendar .next{right:4px;}
 
 
+/*Passenger乘客发布信息*/
+
+.FindCar_box{
+	width:torem(706);margin:0 auto;
+}
+.FindCar_seach{
+	width:torem(706);background:$white;border-radius:torem(18);margin-top:torem(21);height:torem(644);
+}
+.FindCar_Choice{
+	width:torem(706);height:torem(80);margin:torem(20) 0;
+}
+.Choice{
+	width:torem(292);height:torem(76);border:torem(2) solid #d5d5d5;border-radius:torem(8);
+	padding:0 torem(10);
+}
+.FindCar_Choice li{
+	width:torem(300);margin:0 torem(22);
+}
+.FindCar_Choice input::-webkit-input-placeholder {
+	color: #d5d5d5 !important;
+}
+.FindCar_te{
+	width:torem(638);height:torem(180);border:torem(2) solid #d5d5d5;border-radius:torem(10);
+	margin:torem(22) 0 0 torem(22);padding:torem(10);font-size:torem(28);
+}
+
+
+
+
+/*乘客搜索结果页面*/
+.Results{
+	width:torem(750);
+}
+.Results_title{
+	width:$Percen;height:torem(90);background:#4baa2c;
+}
+.Results_title li{
+	width:torem(167);height:$Percen;float:$silde_l;text-align:center;line-height:torem(90);color:#333;
+	font-size:torem(28)
+}
+.Results_title li.current{
+	color:$white;
+}
+.Results_title img{
+	float:right;width:torem(40);height:torem(44);float:right;margin:torem(22) torem(22) 0 0;
+}
+.Results_main{
+	width:torem(706);margin:0 auto;
+}
+.vehicles_list{
+	width:torem(706);height:torem(200);background:$white;border-radius:torem(20);border:torem(2) solid #d5d5d5;
+	margin-top:torem(20);position:relative;
+}
+.list_img_a{
+	width:torem(14);height:torem(197);position:absolute;left:0;right:0;
+}
+.list_img_b{
+	width:torem(28);height:torem(27);margin-top:torem(-5);
+}
+.vehicles_left{
+	width:torem(163);height:torem(146);float:$silde_l;margin:torem(40) 0 0 torem(25);text-align:center;
+}
+.vehicles_left p.seat{
+	font-size:torem(30);color:#4baa2c;
+}
+.vehicles_left p span{
+	margin-left:torem(11);
+}
+.vehicles_left p b{
+	background:#eeeff3;font-weight:normal;
+}
+.vehicles_left p.price{
+	font-size:torem(22);color:#ff0000;margin-top:torem(12);
+}
+.vehicles_left p.date{
+	font-size:torem(16);color:#999;margin-top:torem(12);
+}
+.ve_line{
+	width:torem(22);height:torem(200);position:absolute;top:0;left:torem(188);
+}
+.vehicles_center{
+	width:torem(316);height:torem(146);float:$silde_l;margin:torem(40) torem(27) 0 torem(27);text-align:center;
+	font-size:torem(30);color:#333;
+}
+.vehicles_center img{
+	width:torem(29);height:torem(25);
+}
+.vehicles_center p.center{
+	margin:torem(6) 0;
+}
+.vehicles_right{
+	width:torem(139);height:torem(146);float:$silde_l; text-align: center;line-height:torem(126);
+	color:#4baa2c;font-size:torem(36);margin-top:torem(40);
+}
+.Results_more{
+	width:$Percen;height:torem(50);line-height:torem(50);font-size:torem(36);color:#b8b8b8;text-align:center;
+	margin-top:torem(20);
+}
+
+
+
+/*司机详情页面*/
+.Driver_details{
+	width:torem(706);margin:torem(41) auto 0 auto;
+}
+.details_port{
+	width:$Percen;height:torem(124);
+}
+.details_port span{
+	width:torem(124);height:torem(124);border-radius:50%;border:torem(3) solid #fff;float:left;overflow:hidden;
+	float:$silde_l;
+}
+.details_port span img{
+	width:$Percen;height:$Percen;
+}
+.details_port dl{
+	width:torem(395);height:torem(124);float:$silde_l;margin-left:torem(15);
+}
+.details_port dt{
+	width:$Percen;height:torem(60);line-height:torem(60);font-size:torem(32);color:#4baa2c;
+}
+.details_port dd{
+	line-height:torem(50);color:#666;
+}
+.details_port dd b{
+	font-weight:normal;
+}
+.details_port dd b.mar{
+	margin-left:torem(20);
+}
+.details_port a.ck{
+	width:torem(160);height:torem(50);float:$silde_r;border:torem(2) solid #4baa2c;border-radius:torem(35);
+	text-align: center;line-height:torem(50);margin-top:torem(33);color:#4baa2c;
+}
+
+
+
+
+
+
+
+/*图片定位*/
+.Location_to{
+	position:relative;
+}
+.Location{
+	position:absolute;right:torem(25);top:torem(17);
+}
+/*图片定大小*/
+.img_a{
+	width:torem(27);height:torem(42);
+}
+.img_b{
+	width:torem(40);height:torem(44);
+}
 
 
 

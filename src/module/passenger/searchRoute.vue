@@ -2,7 +2,7 @@
 
     <div class="Passenger_box">
         <div class="Passenger_seach">
-            <dl>
+            <dl class="check">
                 <dt>
                     <img src="../../img/icon_1.png"/>
                 </dt>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="Pass_btn">
-            <input type="button" value="寻找车辆"/>
+            <input  v-link="{path:'/passenger/PassengerResults/'}" type="button" value="寻找车辆"/>
         </div>
     </div>
 </template>

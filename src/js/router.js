@@ -17,6 +17,13 @@ export default (route) => {
                             require(["../module/driver/list.vue"], resolve);
                         }, 'module/driver/list');
                     }
+                },
+                '/DriverDetails': {
+                    component (resolve) {
+                        require.ensure(["../module/driver/DriverDetails.vue"], (require) => {
+                            require(["../module/driver/DriverDetails.vue"], resolve);
+                    }, 'module/driver/DriverDetails');
+                    }
                 }
             }
         },
@@ -39,6 +46,13 @@ export default (route) => {
                         require.ensure(["../module/passenger/findCar.vue"], (require) => {
                             require(["../module/passenger/findCar.vue"], resolve);
                     }, 'module/passenger/findCar');
+                    }
+                },
+                '/PassengerResults': {
+                    component (resolve) {
+                        require.ensure(["../module/passenger/PassengerResults.vue"], (require) => {
+                            require(["../module/passenger/PassengerResults.vue"], resolve);
+                    }, 'module/passenger/PassengerResults');
                     }
                 }
             }
