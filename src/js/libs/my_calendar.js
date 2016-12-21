@@ -23,7 +23,7 @@
         oTxt.onfocus=function(){
             oDiv.style.display='block';
             oDiv.style.left=oTxt.offsetLeft+"px";
-            oDiv.style.top=oTxt.offsetTop+oTxt.offsetHeight+"px";
+            oDiv.style.top=212+"px";
         };
         var oUl = oDiv.getElementsByTagName('ul')[0];
         var oS = oDiv.getElementsByTagName('span')[0];
@@ -107,11 +107,6 @@
         if(added)return;
         added=true;
 
-        var oLink = document.createElement('link');
-        oLink.rel='stylesheet';
-        oLink.href="my_calendar.css";
-        var oHead = document.getElementsByTagName('head')[0];
-        oHead.appendChild(oLink);
     }
 
 })();

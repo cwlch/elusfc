@@ -25,7 +25,17 @@ export default (route) => {
                 require.ensure(["../module/passenger/index.vue"], (require) => {
                     require( ["../module/passenger/index.vue"],resolve );
                 },'module/passenger/index');
+            },
+            subRoutes : {
+                '/findCar': {
+                    component (resolve) {
+                        require.ensure(["../module/passenger/findCar.vue"], (require) => {
+                            require(["../module/passenger/findCar.vue"], resolve);
+                    }, 'module/passenger/findCar');
+                    }
+                }
             }
+
         },
         '/account' : {
             component (resolve) {

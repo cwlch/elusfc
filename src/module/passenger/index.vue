@@ -19,7 +19,7 @@
         <img class="line" src="../../img/icon_3.gif"/>
         <div class="Pass_date">
             <input type="text" id="txt1" placeholder="12月10日(今天)"/>
-            <img src="../../img/icon_3.png"/>
+            <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
         </div>
     </div>
     <div class="Pass_btn">
@@ -28,5 +28,16 @@
 </div>
 
 </template>
-<style>
-</style>
+<script>
+    export default{
+        data(){
+            return{
+                msg:'hello vue'
+            }
+        },
+        ready(){
+            let $Calendar = document.getElementById("txt1");
+            makeUpCalendar($Calendar);
+        }
+    }
+</script>
