@@ -1,7 +1,6 @@
 /**
  * Created by Ch on 16/12/18.
  */
-alert(111)
 let docEl = document.documentElement,
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
 //开发文档页面 ios safari下bug
