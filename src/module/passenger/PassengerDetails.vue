@@ -4,7 +4,7 @@
             <span><img src="../../img/pro.jpg"/></span>
             <dl>
                 <dt>Chen Hui Hui</dt>
-                <dd><b>车型：豪华私家车</b><b class="mar">车牌：湘E12345</b></dd>
+                <dd><b class="pink">信誉度70%</b><b class="mar">乘坐次数:70次</b></dd>
             </dl>
             <a class="ck" v-link="">查看详情</a>
         </div>
@@ -26,11 +26,10 @@
                     <p>深圳-龙岗-平湖区</p>
                 </li>
                 <li class="moeny">
-                    <span><img src="../../img/icon_7.png"/>还剩4个空位</span>
-                    <b>参考价:￥120</b>
+                    <b>可坐人数：6位</b>
                 </li>
                 <li class="Explain">
-                    师傅说：如果有会开车有驾照的朋友，一起乘车，价
+                    乘客说：如果有会开车有驾照的朋友，一起乘车，价
                     格可以优惠一半哦！赶紧联系我把。
                 </li>
             </ul>

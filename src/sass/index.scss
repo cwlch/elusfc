@@ -92,10 +92,15 @@ input::-webkit-input-placeholder {
 	width:torem(706);margin:0 auto;
 }
 .FindCar_seach{
-	width:torem(706);background:$white;border-radius:torem(18);margin-top:torem(21);height:torem(644);
+	width:torem(706);background:$white;border-radius:torem(18);margin-top:torem(21);overflow:hidden;
+	padding-bottom:torem(30);
 }
 .FindCar_Choice{
-	width:torem(706);height:torem(80);margin:torem(20) 0;
+	width:torem(706);margin:torem(20) 0; overflow: hidden;
+}
+
+.FindCar_Choice input.newDate{
+	width:torem(652);height:torem(80);border:torem(2) solid #d5d5d5;border-radius:torem(10);padding:0 torem(10);
 }
 .Choice{
 	width:torem(292);height:torem(76);border:torem(2) solid #d5d5d5;border-radius:torem(8);
@@ -104,11 +109,14 @@ input::-webkit-input-placeholder {
 .FindCar_Choice li{
 	width:torem(300);margin:0 torem(22);
 }
+.FindCar_Choice li.enter{
+	width:torem(660);height:torem(80);float:$silde_l;margin-top:torem(30);
+}
 .FindCar_Choice input::-webkit-input-placeholder {
 	color: #d5d5d5 !important;
 }
 .FindCar_te{
-	width:torem(638);height:torem(180);border:torem(2) solid #d5d5d5;border-radius:torem(10);
+	width:torem(652);height:torem(180);border:torem(2) solid #d5d5d5;border-radius:torem(10);
 	margin:torem(22) 0 0 torem(22);padding:torem(10);font-size:torem(28);
 }
 
@@ -148,6 +156,9 @@ input::-webkit-input-placeholder {
 .vehicles_left{
 	width:torem(163);height:torem(146);float:$silde_l;margin:torem(40) 0 0 torem(25);text-align:center;
 }
+.marginTop{
+	margin-top:torem(50)
+}
 .vehicles_left p.seat{
 	font-size:torem(30);color:#4baa2c;
 }
@@ -169,6 +180,9 @@ input::-webkit-input-placeholder {
 .vehicles_center{
 	width:torem(316);height:torem(146);float:$silde_l;margin:torem(40) torem(27) 0 torem(27);text-align:center;
 	font-size:torem(30);color:#333;
+}
+.v_top{
+	margin-top:torem(30);
 }
 .vehicles_center img{
 	width:torem(29);height:torem(25);
@@ -216,6 +230,9 @@ input::-webkit-input-placeholder {
 .details_port dd b.mar{
 	margin-left:torem(20);
 }
+.details_port dd b.pink{
+	color:#de5145;
+}
 .details_port a.ck{
 	width:torem(160);height:torem(50);float:$silde_r;border:torem(2) solid #4baa2c;border-radius:torem(35);
 	text-align: center;line-height:torem(50);margin-top:torem(33);color:#4baa2c;
@@ -225,9 +242,121 @@ input::-webkit-input-placeholder {
 
 
 
+.details_infor{
+	width:torem(706);height:torem(498);background:$white;border:torem(2) solid #d5d5d5;border-radius:torem(10);
+	margin-top:torem(43);padding:torem(20);
+}
+.details_infor li.title{
+	width:$Percen;height:torem(75);line-height:torem(55);border-bottom:torem(2) dashed #d5d5d5;
+}
+.details_infor li.title span{
+	color:#4baa2c;font-size:torem(28);float:$silde_l;margin-right:torem(8);
+}
+.details_infor li.title b{
+	float:$silde_r;font-weight:normal;margin-left:torem(15);color:#999;
+}
+.details_infor li.cho{
+	width:$Percen;height:torem(178);border-bottom:torem(2) dashed #d5d5d5;padding-top:torem(30);
+}
+.details_infor li.cho span{
+	height:$Percen;width:torem(25);float:$silde_l;
+}
+.details_infor li.cho span img{
+	width:torem(25);height:torem(29);margin:torem(40) 0 0 torem(3);
+}
+.details_infor li.cho p{
+	float:$silde_l;width:torem(600);margin-left:torem(33);font-size:torem(32);margin-bottom:torem(27);
+}
+.details_infor li.moeny{
+	width:$Percen;height:torem(88);border-bottom:torem(2) dashed #d5d5d5;padding:torem(10) 0;line-height:torem(66);
+}
+.details_infor li.moeny img{
+	width:torem(28);height:torem(27);margin:torem(-5) torem(18) 0 0;
+}
+.details_infor li.moeny span{
+	font-size:torem(30);color:#4baa2c;float:$silde_l;
+}
+.details_infor li.moeny b{
+	float:$silde_r;color:#de5246;font-size:torem(30);font-weight:normal;
+}
+.details_infor li.Explain{
+	font-size:torem(27);color:#999;margin-top:torem(25);
+}
+.details_introduce{
+	width:torem(706);margin-top:torem(20);font-size:torem(24);color:#999;text-align:center;
+}
 
 
-/*图片定位*/
+/*检测位置*/
+.Testing_Location{
+	width:torem(750);overflow:hidden;background:$white;
+}
+.Testing_title{
+	width:torem(750);height:torem(116);background:#eee;padding:torem(28) 0 0 torem(22);
+}
+.Testing_title p{
+	width:torem(627);height:torem(62);background:$white;border-radius:torem(8);font-size:torem(28);float:$silde_l;
+}
+.Testing_title p input.dq{
+	width:torem(180);height:torem(30);border-right:torem(1) solid #cbcbcb;padding:0 torem(5);
+	margin:torem(15) 0 0 torem(5);
+}
+.Testing_title p input.xq{
+	width:torem(108);height:torem(30);border-right:torem(1) solid #cbcbcb;padding:0 torem(5);margin-top:torem(15);
+}
+.Testing_title p input.qn{
+	width:torem(253);height:torem(30);padding:0 torem(5);margin-top:torem(15);
+}
+.Testing_title p img{
+	width:torem(30);height:torem(30);margin:torem(15) 0 0 torem(15);
+}
+.Testing_title a{
+	color:#999;font-size:torem(28);float:$silde_l;line-height:torem(60);margin-left:torem(15);
+}
+.Testing_title p input::-webkit-input-placeholder {
+	color: #d5d5d5 !important;
+}
+.Testing_Location h3{
+	width:$Percen;height:torem(90);line-height:torem(90);font-size:torem(32);padding-left:torem(25);
+	color:#333;font-weight:normal;word-spacing:torem(8); letter-spacing:torem(1);
+}
+.Testing_Location h2{
+	width:torem(712);height:torem(50);background:#eee;font-size:torem(22);color:#999;padding-left:torem(25);
+	line-height:torem(50);
+}
+.Testing_Location ul{
+	width:$Percen;height:torem(125);
+}
+.Testing_Location ul li{
+	width:torem(146);height:torem(56);border:torem(2) solid #eee;float:$silde_l;border-radius:torem(5);
+	text-align:center;line-height:torem(56);margin:torem(32) 0 0 torem(32);font-size:torem(32);color:#999;
+}
+.Testing_Location ul li.this{
+	border:torem(2) solid #4baa2c;color:#4baa2c;
+}
+.Testing_main{
+	width:torem(712);overflow:hidden;
+}
+.Testing_main dt{
+	width:$Percen;height:torem(48);background:#eee;line-height:torem(48);font-size:torem(22);color:#666;
+	padding-left:torem(20);font-weight:bold;
+}
+.Testing_main dd{
+	width:torem(690);height:torem(90);line-height:torem(90);font-size:torem(32);color:#333;
+	border-bottom:torem(1) solid #c8c7cc;margin-left:torem(22);
+}
+.Fixed{
+	width:torem(40);position:fixed;top:torem(139);right:0;
+}
+.Fixed li{
+	width:$Percen;height:torem(35);line-height:torem(35);color:#4baa2c;font-size:torem(20);text-align:center;
+}
+
+
+
+
+
+	/*图片定位*/
 .Location_to{
 	position:relative;
 }
@@ -241,6 +370,13 @@ input::-webkit-input-placeholder {
 .img_b{
 	width:torem(40);height:torem(44);
 }
+.img_c{
+	width:torem(45);height:torem(42);
+}
+.img_d{
+	width:torem(45);height:torem(45);
+}
+
 
 
 

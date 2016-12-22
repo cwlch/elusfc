@@ -10,7 +10,8 @@
             <img src="../../img/icon_5.png"/>
         </div>
         <div class="Results_main">
-            <div class="vehicles_list">
+            <a v-link="{path:'/driver/DriverDetails/'}">
+                <div class="vehicles_list">
                 <img class="list_img_a" src="../../img/icon_6.png"/>
                 <div class="vehicles_left">
                     <p class="seat"><img class="list_img_b" src="../../img/icon_7.png"/><span>4位</span></p>
@@ -27,7 +28,9 @@
                     19:00
                 </div>
             </div>
-            <div class="vehicles_list">
+            </a>
+            <a v-link="{path:'/driver/DriverDetails/'}">
+                <div class="vehicles_list">
                 <img class="list_img_a" src="../../img/icon_6.png"/>
                 <div class="vehicles_left">
                     <p class="seat"><img class="list_img_b" src="../../img/icon_7.png"/><span>4位</span></p>
@@ -44,7 +47,9 @@
                     19:00
                 </div>
             </div>
-            <div class="vehicles_list">
+            </a>
+            <a v-link="{path:'/driver/DriverDetails/'}">
+                <div class="vehicles_list">
                 <img class="list_img_a" src="../../img/icon_6.png"/>
                 <div class="vehicles_left">
                     <p class="seat"><img class="list_img_b" src="../../img/icon_7.png"/><span>4位</span></p>
@@ -61,6 +66,7 @@
                     19:00
                 </div>
             </div>
+            </a>
             <div class="Results_more">没有更多数据</div>
         </div>
     </div>

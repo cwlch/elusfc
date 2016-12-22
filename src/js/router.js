@@ -24,6 +24,20 @@ export default (route) => {
                             require(["../module/driver/DriverDetails.vue"], resolve);
                     }, 'module/driver/DriverDetails');
                     }
+                },
+                '/DriverRelease': {
+                    component (resolve) {
+                        require.ensure(["../module/driver/DriverRelease.vue"], (require) => {
+                            require(["../module/driver/DriverRelease.vue"], resolve);
+                    }, 'module/driver/DriverRelease');
+                    }
+                },
+                '/DriverList': {
+                    component (resolve) {
+                        require.ensure(["../module/driver/DriverList.vue"], (require) => {
+                            require(["../module/driver/DriverList.vue"], resolve);
+                    }, 'module/driver/DriverList');
+                    }
                 }
             }
         },
@@ -53,6 +67,13 @@ export default (route) => {
                         require.ensure(["../module/passenger/PassengerResults.vue"], (require) => {
                             require(["../module/passenger/PassengerResults.vue"], resolve);
                     }, 'module/passenger/PassengerResults');
+                    }
+                },
+                '/PassengerDetails': {
+                    component (resolve) {
+                        require.ensure(["../module/passenger/PassengerDetails.vue"], (require) => {
+                            require(["../module/passenger/PassengerDetails.vue"], resolve);
+                    }, 'module/passenger/PassengerDetails');
                     }
                 }
             }
