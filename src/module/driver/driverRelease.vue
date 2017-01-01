@@ -6,14 +6,8 @@
                     <img src="../../img/icon_1.png"/>
                 </dt>
                 <dd>
-                    <p class="edge">
-                        <input type="text" placeholder="北京-昌平区-霍营街道" />
-                        <i class="icon"><img src="../../img/icon_2.png"/></i>
-                    </p>
-                    <p>
-                        <input type="text" placeholder="选择你要去的地方" />
-                        <i class="icon"><img src="../../img/icon_2.png"/></i>
-                    </p>
+                    <a href="javascript:;" v-link="{path:'/address',query:{source:'driver_release',type:'start'}}">{{startAddressName}}</a>
+                    <a href="javascript:;" v-link="{path:'/address',query:{source:'driver_release',type:'end'}}">{{endAddressName}}</a>
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
@@ -51,8 +45,17 @@
     export default{
         data(){
             return{
-                msg:'hello vue'
+                startAddressName : '您从哪儿出发?',
+                startAddressVal : '',
+                endAddressName : '您要去哪儿?',
+                endAddressVal : ''
             }
+        },
+        ready(){
+            let start = JSON.parse(localStorage.getItem('driver_release_start_address')),
+                end = JSON.parse(localStorage.getItem('driver_release_end_address'));
+            if(start)this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
+            if(end)this.$set("endAddressName",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
         }
     }
 </script>

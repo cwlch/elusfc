@@ -65,14 +65,28 @@ input::-webkit-input-placeholder {
 .check dd{
 	width:torem(565);height:$Percen;float:$silde_l;
 }
-.check dd input{
-	width:$Percen;height:torem(45);margin-top:torem(34);font-size:torem(32);color:$gray;
+.check{
+	dd{
+		a{
+			width: 100%;
+			height:torem(114);
+			line-height: torem(114);
+			display: block;
+			background: url("../img/icon_2.png") no-repeat right center;
+			background-size: torem(18);
+			color: $gray;
+			font-size: torem(32);
+		}
+		a:first-child{
+			border-bottom:torem(1) solid #ccc;
+		}
+	}
 }
 .check dd p{
 	width:$Percen;height:torem(114);position:relative;
 }
 .edge{
-	border-bottom:torem(1) solid #ccc;
+
 }
 .icon{
 	width:torem(18);height:torem(34);position:absolute;right:torem(0);top:torem(40);

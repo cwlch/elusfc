@@ -79,10 +79,10 @@ export default (route) => {
                 },'module/account/index');
             }
         },
-        '/addres' : {
+        '/address' : {
             component (resolve) {
-                require.ensure(["../module/common/addres.vue"], (require) => {
-                    require( ["../module/common/addres.vue"],resolve );
+                require.ensure(["../module/common/address.vue"], (require) => {
+                    require( ["../module/common/address.vue"],resolve );
                 },'module/common/addres');
             }
         }
