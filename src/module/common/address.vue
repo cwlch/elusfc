@@ -51,7 +51,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    let data = [
+    let 模拟数据 = [
         {
             name : "邵阳",
             id : 1,
@@ -126,6 +126,8 @@
             id : 3
         }
     ];
+    //以上为模拟数据
+
     export default{
         data (){
             return {
@@ -196,8 +198,17 @@
              */
             queryCity(){
                 return new Promise( (res,rej) => {
-                    res(data);
-                    this.$set("addresData",data);
+                    let data = JSON.parse(localStorage.getItem('addresData'));
+                    if(!data){
+                        //如果本地没有数据则在这做数据请求
+
+                        localStorage.setItem("addresData",JSON.stringify(模拟数据));
+
+                    }else{
+                        this.$set("addresData",data);
+                        res(data);
+                    }
+
                 });
             },
             /**
@@ -212,11 +223,13 @@
                         if(mydata[i].id === this.selectedData.city.id){
                             if(mydata[i].childrens){
                                 data = mydata[i].childrens;
+                                res(data);
+                            }else{
+                                //如果发现本地数据没有这个市的区县就在这发送AJAX请求
                             }
                             break;
                         }
                     }
-                    res(data);
                 });
 
             },
@@ -232,11 +245,13 @@
                             if(mydata[i].id === this.selectedData.county.id){
                                 if(mydata[i].childrens){
                                     data = mydata[i].childrens;
+                                    res(data);
+                                }else{
+                                    //如果发现本地数据没有这个县的街道就在这发送AJAX请求
                                 }
                                 break;
                             }
                         }
-                        res(data);
                     });
                 });
             },

@@ -5,11 +5,11 @@ import "../sass/index.scss";
 import app_router from './router.js';
 
 Vue.use( VueRouter );
-let router = new VueRouter();
+let router = new VueRouter(),
+    App = Vue.extend();
 router.redirect({
     '*' : '/driver',
     '/driver':'/driver/driverRelease'
 });
 app_router(router);
-var App = Vue.extend();
 router.start(App,'html');
