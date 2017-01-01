@@ -6,9 +6,10 @@ import app_router from './router.js';
 
 Vue.use( VueRouter );
 let router = new VueRouter();
-// router.redirect({
-//     '*' : '/driver'
-// });
+router.redirect({
+    '*' : '/driver',
+    '/driver':'/driver/driverRelease'
+});
 app_router(router);
 var App = Vue.extend();
 router.start(App,'html');

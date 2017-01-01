@@ -11,31 +11,24 @@ export default (route) => {
                 },'module/driver/index');
             },
             subRoutes : {
-                '/list': {
+                '/driverDetails': {
                     component (resolve) {
-                        require.ensure(["../module/driver/list.vue"], (require) => {
-                            require(["../module/driver/list.vue"], resolve);
-                        }, 'module/driver/list');
-                    }
-                },
-                '/DriverDetails': {
-                    component (resolve) {
-                        require.ensure(["../module/driver/DriverDetails.vue"], (require) => {
-                            require(["../module/driver/DriverDetails.vue"], resolve);
+                        require.ensure(["../module/driver/driverDetails.vue"], (require) => {
+                            require(["../module/driver/driverDetails.vue"], resolve);
                     }, 'module/driver/DriverDetails');
                     }
                 },
-                '/DriverRelease': {
+                '/driverRelease': {
                     component (resolve) {
-                        require.ensure(["../module/driver/DriverRelease.vue"], (require) => {
-                            require(["../module/driver/DriverRelease.vue"], resolve);
+                        require.ensure(["../module/driver/driverRelease.vue"], (require) => {
+                            require(["../module/driver/driverRelease.vue"], resolve);
                     }, 'module/driver/DriverRelease');
                     }
                 },
-                '/DriverList': {
+                '/driverList': {
                     component (resolve) {
-                        require.ensure(["../module/driver/DriverList.vue"], (require) => {
-                            require(["../module/driver/DriverList.vue"], resolve);
+                        require.ensure(["../module/driver/driverList.vue"], (require) => {
+                            require(["../module/driver/driverList.vue"], resolve);
                     }, 'module/driver/DriverList');
                     }
                 }
@@ -84,6 +77,13 @@ export default (route) => {
                 require.ensure(["../module/account/index.vue"], (require) => {
                     require( ["../module/account/index.vue"],resolve );
                 },'module/account/index');
+            }
+        },
+        '/addres' : {
+            component (resolve) {
+                require.ensure(["../module/common/addres.vue"], (require) => {
+                    require( ["../module/common/addres.vue"],resolve );
+                },'module/common/addres');
             }
         }
     })
