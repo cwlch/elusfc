@@ -29,7 +29,7 @@
 	]
 	,"ui" : []
 	,"serverPath" : [{
-		"dev" : "http://10.100.140.106:8081/"
+		"dev" : "http://onlyone2017.com/"
 		,"test" : "http://10.100.140.106:8081/"
 		,"repro" : "http://10.100.146.57:8081/"
 		,"pro" : "http://lea.fuqianla.net/"

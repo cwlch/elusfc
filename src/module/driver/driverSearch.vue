@@ -1,6 +1,7 @@
 <template>
+
     <div class="FindCar_box">
-        <div class="FindCar_seach">
+        <div class="Passenger_seach">
             <dl class="check">
                 <dt>
                     <img src="../../img/icon_1.png"/>
@@ -11,33 +12,15 @@
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
-            <div class="FindCar_Choice">
-                <ul>
-                    <li class="Location_to left">
-                        <input class="Choice" type="text" placeholder="还剩几个座位"/>
-                        <img class="Location img_c" src="../../img/icon_11.png"/>
-                    </li>
-                    <li class="Location_to right">
-                        <input class="Choice " type="text" placeholder="收费多少呢"/>
-                        <img class="Location img_d" src="../../img/icon_12.png"/>
-                    </li>
-                    <li  class="Location_to enter">
-                        <input class="newDate" type="text" placeholder="2017年01月10  19:00"/>
-                        <img class="Location img_d" src="../../img/icon_3.png"/>
-                    </li>
-                </ul>
+            <div class="Pass_date">
+                <input type="text" id="txt1" placeholder="12月10日(今天)"/>
+                <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
             </div>
-            <img class="line" src="../../img/icon_3.gif"/>
-            <textarea class="FindCar_te" placeholder="有孕妈小宝贝、萌宠，记得提前告诉车主哦"></textarea>
-
-
         </div>
         <div class="Pass_btn">
-            <input type="button" value="发布找人信息"/>
+            <input  v-link="{path:'/passenger/PassengerResults/'}" type="button" value="寻找车辆"/>
         </div>
     </div>
-
-
 
 
 </template>

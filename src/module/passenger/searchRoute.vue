@@ -7,14 +7,8 @@
                     <img src="../../img/icon_1.png"/>
                 </dt>
                 <dd>
-                    <p class="edge">
-                        <input type="text" placeholder="北京-昌平区-霍营街道" />
-                        <i class="icon"><img src="../../img/icon_2.png"/></i>
-                    </p>
-                    <p>
-                        <input type="text" placeholder="选择你要去的地方" />
-                        <i class="icon"><img src="../../img/icon_2.png"/></i>
-                    </p>
+                    <input placeholder="您从哪儿出发?" v-link="{path:'/address',query:{source:'passenger_search',type:'start'}}" v-model="startAddressName"/>
+                    <input placeholder="您要去哪儿?" v-link="{path:'/address',query:{source:'passenger_search',type:'end'}}" v-model="endAddressName"/>
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
@@ -24,20 +18,46 @@
             </div>
         </div>
         <div class="Pass_btn">
-            <input  v-link="{path:'/passenger/PassengerResults/'}" type="button" value="寻找车辆"/>
+            <input @click="search()" type="button" value="寻找车辆"/>
         </div>
     </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
     export default{
         data(){
             return{
-                msg:'hello vue'
+                startAddressName : '',
+                dStart : '',
+                endAddressName : '',
+                dEnd : ''
             }
         },
         ready(){
-            let $Calendar = document.getElementById("txt1");
-            makeUpCalendar($Calendar);
+            let start = JSON.parse(localStorage.getItem('passenger_search_start_address')),
+                    end = JSON.parse(localStorage.getItem('passenger_search_end_address'));
+            if(start){
+                this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
+                this.$set("dStart",start.street.id);
+            }
+            if(end){
+                this.$set("endAddressName",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
+                this.$set("dEnd",end.street.id);
+            }
+        },
+        methods : {
+            search(){
+                let par={
+                    dStart : this.dStart,
+                    dEnd : this.dEnd,
+                    dDate : new Date().getTime()
+                };
+                elUtil.jsonp({
+                    url : eluConfig.serverPath + 'driver/queryCar',
+                    data : par
+                },res=>{
+                    console.log(res);
+                })
+            }
         }
     }
 </script>

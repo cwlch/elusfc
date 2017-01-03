@@ -67,7 +67,7 @@ input::-webkit-input-placeholder {
 }
 .check{
 	dd{
-		a{
+		input{
 			width: 100%;
 			height:torem(114);
 			line-height: torem(114);
@@ -77,8 +77,11 @@ input::-webkit-input-placeholder {
 			color: $gray;
 			font-size: torem(32);
 		}
-		a:first-child{
+		input:first-child{
 			border-bottom:torem(1) solid #ccc;
+		}
+		input[placeholder]{
+			color: #ccc;
 		}
 	}
 }

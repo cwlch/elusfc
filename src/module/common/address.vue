@@ -19,7 +19,7 @@
         <!--</ul>-->
         <div class="Testing_main">
             <dl>
-                <dd v-for="i in listData" data-id="{{i.id}}" @click="selectedAddres(i.id,i.name)">{{i.name}}</dd>
+                <dd v-for="i in listData" data-id="{{i.id}}" @click="selectedAddres(i.id,i.areaName)">{{i.areaName}}</dd>
             </dl>
         </div>
         <ul class="Fixed">
@@ -51,83 +51,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    let 模拟数据 = [
-        {
-            name : "邵阳",
-            id : 1,
-            childrens : [
-                {
-                    name : "城步",
-                    id : 11,
-                    childrens : [
-                        {
-                            name : "白毛坪",
-                            id : 111
-                        },
-                        {
-                            name : "南山",
-                            id : 112
-                        }
-                    ]
-                },
-                {
-                    name : "武冈",
-                    id : 12,
-                    childrens : [
-                        {
-                            name : "武冈某街道",
-                            id : 121
-                        },
-                        {
-                            name : "武冈某乡",
-                            id : 122
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            name : "北京",
-            id : 2,
-            childrens : [
-                {
-                    name : "昌平",
-                    id : 21,
-                    childrens : [
-                        {
-                            name : "霍营",
-                            id : 211
-                        },
-                        {
-                            name : "回龙观",
-                            id : 212
-                        }
-                    ]
-                },
-                {
-                    name : "朝阳",
-                    id : 22,
-                    childrens : [
-                        {
-                            name : "国贸",
-                            id : 221
-                        },
-                        {
-                            name : "大望路",
-                            id : 222
-                        }
-                    ]
-
-                }
-            ]
-        },
-        {
-            name : "天津",
-            id : 3
-        }
-    ];
-    //以上为模拟数据
-
+//Bug 每次选择二级目录时没有缓存在本地
     export default{
         data (){
             return {
@@ -201,8 +125,15 @@
                     let data = JSON.parse(localStorage.getItem('addresData'));
                     if(!data){
                         //如果本地没有数据则在这做数据请求
+                        elUtil.jsonp({
+                            url : 'http://onlyone2017.com/elu/areas/queryAreas',
+                            data : {
+                                level : 2
+                            }
+                        },({result}) => {
+                            localStorage.setItem("addresData",JSON.stringify(result));
+                        });
 
-                        localStorage.setItem("addresData",JSON.stringify(模拟数据));
 
                     }else{
                         this.$set("addresData",data);
@@ -226,6 +157,15 @@
                                 res(data);
                             }else{
                                 //如果发现本地数据没有这个市的区县就在这发送AJAX请求
+                                elUtil.jsonp({
+                                    url : 'http://onlyone2017.com/elu/areas/queryAreas',
+                                    data : {
+                                        level : 3,
+                                        parentId : mydata[i].id
+                                    }
+                                },({result}) => {
+                                    res(result);
+                                });
                             }
                             break;
                         }
@@ -248,6 +188,15 @@
                                     res(data);
                                 }else{
                                     //如果发现本地数据没有这个县的街道就在这发送AJAX请求
+                                    elUtil.jsonp({
+                                        url : 'http://onlyone2017.com/elu/areas/queryAreas',
+                                        data : {
+                                            level : 4,
+                                            parentId : mydata[i].id
+                                        }
+                                    },({result}) => {
+                                        res(result);
+                                    });
                                 }
                                 break;
                             }
@@ -324,6 +273,12 @@
                         break;
                     case 'driver_search'://司机搜索页面
                         path = '/driver/driverSearch';
+                        break;
+                    case 'passenger_release'://乘客发布页面
+                        path = '/driver/driverRelease';
+                        break;
+                    case 'passenger_search'://乘客搜索页面
+                        path = '/passenger/searchRoute';
                         break;
                     default ://默认返回司机端
                         path = '/driver'

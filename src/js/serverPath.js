@@ -1,1 +1,1 @@
-window.serverPath0 = "http://10.100.140.106:8081/";
+window.serverPath0 = "http://onlyone2017.com/";
