@@ -11,13 +11,6 @@ export default (route) => {
                 },'module/driver/index');
             },
             subRoutes : {
-                '/driverDetails': {
-                    component (resolve) {
-                        require.ensure(["../module/driver/driverDetails.vue"], (require) => {
-                            require(["../module/driver/driverDetails.vue"], resolve);
-                    }, 'module/driver/DriverDetails');
-                    }
-                },
                 '/driverRelease': {
                     component (resolve) {
                         require.ensure(["../module/driver/driverRelease.vue"], (require) => {
@@ -25,11 +18,25 @@ export default (route) => {
                     }, 'module/driver/DriverRelease');
                     }
                 },
+                '/driverSearch': {
+                    component (resolve) {
+                        require.ensure(["../module/driver/driverSearch.vue"], (require) => {
+                            require(["../module/driver/driverSearch.vue"], resolve);
+                    }, 'module/driver/driverSearch');
+                    }
+                },
                 '/driverList': {
                     component (resolve) {
                         require.ensure(["../module/driver/driverList.vue"], (require) => {
                             require(["../module/driver/driverList.vue"], resolve);
-                    }, 'module/driver/DriverList');
+                        }, 'module/driver/DriverList');
+                    }
+                },
+                '/driverDetails': {
+                    component (resolve) {
+                        require.ensure(["../module/driver/driverDetails.vue"], (require) => {
+                            require(["../module/driver/driverDetails.vue"], resolve);
+                        }, 'module/driver/DriverDetails');
                     }
                 }
             }
