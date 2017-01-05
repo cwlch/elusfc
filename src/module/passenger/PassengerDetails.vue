@@ -4,9 +4,9 @@
             <span><img src="../../img/pro.jpg"/></span>
             <dl>
                 <dt>Chen Hui Hui</dt>
-                <dd><b class="pink">信誉度70%</b><b class="mar">乘坐次数:70次</b></dd>
+                <dd><b>车型：豪华私家车</b><b class="mar">车牌：湘E12345</b></dd>
             </dl>
-            <a class="ck" v-link="">查看详情</a>
+            <a class="ck" v-link="">详情</a>
         </div>
         <div class="details_infor">
             <ul>
@@ -26,10 +26,11 @@
                     <p>深圳-龙岗-平湖区</p>
                 </li>
                 <li class="moeny">
-                    <b>可坐人数：6位</b>
+                    <span><img src="../../img/icon_7.png"/>还剩4个空位</span>
+                    <b>参考价:￥120</b>
                 </li>
                 <li class="Explain">
-                    乘客说：如果有会开车有驾照的朋友，一起乘车，价
+                    师傅说：如果有会开车有驾照的朋友，一起乘车，价
                     格可以优惠一半哦！赶紧联系我把。
                 </li>
             </ul>
@@ -40,12 +41,31 @@
         <div class="details_introduce">请说明您是在E鹿顺风车平台看到的哦！</div>
     </div>
 
+
+
 </template>
-<script>
+<script type="text/ecmascript-6">
     export default{
         data(){
             return{
                 msg:'hello vue'
+            }
+        },
+        ready(){
+            this.queryData()
+        },
+        methods : {
+            queryData(){
+                elUtil.jsonp({
+                    url : eluConfig.serverPath + 'driver/queryCarDetail',
+                    data : {
+                        recordId : this.$route.query.id,
+                        carId : 1,
+                        userId : 1
+                    }
+                },res=>{
+                    console.log(res)
+                })
             }
         }
     }
