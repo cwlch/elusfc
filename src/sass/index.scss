@@ -74,14 +74,22 @@ input::-webkit-input-placeholder {
 			display: block;
 			background: url("../img/icon_2.png") no-repeat right center;
 			background-size: torem(18);
-			color: $gray;
 			font-size: torem(32);
 		}
 		input:first-child{
 			border-bottom:torem(1) solid #ccc;
 		}
-		input[placeholder]{
-			color: #ccc;
+		input::-webkit-input-placeholder{
+			color:#999;
+		}
+		input::-moz-placeholder{
+			color:#999;
+		}
+		input::-moz-placeholder{ /* Mozilla Firefox 19+ */
+			color:#999;
+		}
+		input:-ms-input-placeholder{ /* Internet Explorer 10+ */
+			color: #999;
 		}
 	}
 }
@@ -102,7 +110,11 @@ input::-webkit-input-placeholder {
 	position: relative;
 }
 .Pass_date input{
-	width:torem(400);height:$Percen;line-height:torem(60);font-size:torem(30);color:$gray;
+	width:torem(400);
+	height:$Percen;
+	line-height:torem(60);
+	font-size:torem(30);
+	color:$gray;
 }
 .Pass_date img{
 	width:torem(40);height:torem(44);position:absolute;right:0;top:torem(10);
@@ -111,7 +123,12 @@ input::-webkit-input-placeholder {
 	width:torem(706);height:torem(100);margin-top:torem(20);
 }
 .Pass_btn input{
-	width:$Percen;height:$Percen;background:$green;border-radius:torem(20);color:$white;font-size:torem(32);
+	width:$Percen;
+	height:$Percen;
+	background:$green;
+	border-radius:torem(20);
+	color:$white;
+	font-size:torem(32);
 }
 
 
@@ -277,7 +294,12 @@ input::-webkit-input-placeholder {
 	color:#de5145;
 }
 .details_port a.ck{
-	width:torem(160);height:torem(50);float:$silde_r;border:torem(2) solid #4baa2c;border-radius:torem(35);
+
+	height:torem(50);
+	float:$silde_r;
+	border:torem(2) solid #4baa2c;
+	border-radius:torem(35);
+	padding: 0 torem(20);
 	text-align: center;line-height:torem(50);margin-top:torem(33);color:#4baa2c;
 }
 

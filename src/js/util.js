@@ -4,6 +4,44 @@
  * 这个Util对外暴露
  */
 let Util = {
+
+    /**
+     * 弹出提示
+     * @param str
+     * @param time
+     */
+    tipsMod(str, time) {
+        // 提示模块
+        return new Promise((resolve, rejec)=>{
+            var $doc = $(document),
+                $body = $('body'),
+                tips = '<div class="tips"></div>',
+                $tips = '',
+                time = time || 3000;
+
+            if ($doc.find('.tips').length == 0) {
+                $body.append(tips);
+            }
+            $tips = $doc.find('.tips');
+
+            if (str) {
+                $tips.html(str);
+            }
+
+            if (!$tips.data('ends')) {
+                $tips.data('ends', 1);
+                $tips.show().addClass('bounceIn').on('webkitAnimationEnd', function (event) {
+                    $(this).removeClass('bounceIn').addClass('bounceOut');
+                });
+                setTimeout(function () {
+                    $tips.removeClass('bounceOut').remove();
+                    $tips.data('ends', 0);
+                    resolve();
+                }, time);
+            }
+        });
+
+    },
     /**
      * 时间格式化
      * @param date
@@ -13,10 +51,10 @@ let Util = {
     dateFormat(fmt,date){
         let myDate = date ? new Date(date) : new Date(),
             o = {
-            "M+": myDate.getMonth() + 1, //月份
+            "m+": myDate.getMonth() + 1, //月份
             "d+": myDate.getDate(), //日
             "h+": myDate.getHours(), //小时
-            "m+": myDate.getMinutes(), //分
+            "i+": myDate.getMinutes(), //分
             "s+": myDate.getSeconds(), //秒
             "q+": Math.floor((myDate.getMonth() + 3) / 3), //季度
             "S": myDate.getMilliseconds() //毫秒

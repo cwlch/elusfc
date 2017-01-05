@@ -62,18 +62,18 @@ export default (route) => {
                     }, 'module/passenger/findCar');
                     }
                 },
-                '/PassengerResults': {
+                '/passengerResults': {
                     component (resolve) {
-                        require.ensure(["../module/passenger/PassengerResults.vue"], (require) => {
-                            require(["../module/passenger/PassengerResults.vue"], resolve);
-                    }, 'module/passenger/PassengerResults');
+                        require.ensure(["../module/passenger/passengerResults.vue"], (require) => {
+                            require(["../module/passenger/passengerResults.vue"], resolve);
+                    }, 'module/passenger/passengerResults');
                     }
                 },
-                '/PassengerDetails': {
+                '/passengerDetails': {
                     component (resolve) {
-                        require.ensure(["../module/passenger/PassengerDetails.vue"], (require) => {
-                            require(["../module/passenger/PassengerDetails.vue"], resolve);
-                    }, 'module/passenger/PassengerDetails');
+                        require.ensure(["../module/passenger/passengerDetails.vue"], (require) => {
+                            require(["../module/passenger/passengerDetails.vue"], resolve);
+                    }, 'module/passenger/passengerDetails');
                     }
                 }
             }

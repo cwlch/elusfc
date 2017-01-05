@@ -49,14 +49,16 @@
                 let par={
                     dStart : this.dStart,
                     dEnd : this.dEnd,
-                    dDate : new Date().getTime()
+//                    dDate : parseInt(new Date(elUtil.dateFormat("yyyy-MM-dd")).getTime()/1000)
                 };
-                elUtil.jsonp({
-                    url : eluConfig.serverPath + 'driver/queryCar',
-                    data : par
-                },res=>{
-                    console.log(res);
-                })
+                sessionStorage.setItem("passengerSearchPar",JSON.stringify(par));
+                this.$router.go("./passengerResults");
+//                elUtil.jsonp({
+//                    url : eluConfig.serverPath + 'driver/queryCar',
+//                    data : par
+//                },res=>{
+//                    console.log(res);
+//                });
             }
         }
     }
