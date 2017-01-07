@@ -103,4 +103,4 @@ let Util = {
         }
     }
 };
-window.elUtil = window.elUtil || Util;
+window.eluUtil = window.eluUtil || Util;

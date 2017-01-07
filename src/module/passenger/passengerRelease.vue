@@ -68,31 +68,31 @@
                     uDate : parseInt(new Date().getTime()/1000)
                 });
                 if(!par.uStart){
-                    elUtil.tipsMod("出发地点不能为空哦!");
+                    eluUtil.tipsMod("出发地点不能为空哦!");
                     return false;
                 }
                 if(!par.uEnd){
-                    elUtil.tipsMod("目的地点不能为空哦!");
+                    eluUtil.tipsMod("目的地点不能为空哦!");
                     return false;
                 }
                 if(!par.uCount){
-                    elUtil.tipsMod("乘坐人数不能为空!");
+                    eluUtil.tipsMod("乘坐人数不能为空!");
                     return false;
                 }
                 if(!par.uDate){
-                    elUtil.tipsMod("时间不能为空!");
+                    eluUtil.tipsMod("时间不能为空!");
                     return false;
                 }
                 if(!par.remark){
-                    elUtil.tipsMod("备注不能为空!");
+                    eluUtil.tipsMod("备注不能为空!");
                     return false;
                 }
-                elUtil.jsonp({
+                eluUtil.jsonp({
                     url : eluConfig.serverPath + 'user/queryRequire',
                     data : par
                 }, (res) => {
                     if(res.retCode == '200'){
-                    elUtil.tipsMod("成功")
+                    eluUtil.tipsMod("成功")
                 }
             })
             }

@@ -77,35 +77,35 @@
                     dDate : parseInt(new Date().getTime()/1000)
                 });
                 if(!par.dStart){
-                    elUtil.tipsMod("出发地点不能为空哦!");
+                    eluUtil.tipsMod("出发地点不能为空哦!");
                     return false;
                 }
                 if(!par.dEnd){
-                    elUtil.tipsMod("目的地点不能为空哦!");
+                    eluUtil.tipsMod("目的地点不能为空哦!");
                     return false;
                 }
                 if(!par.dCount){
-                    elUtil.tipsMod("坐位数不能为空!");
+                    eluUtil.tipsMod("坐位数不能为空!");
                     return false;
                 }
                 if(!par.dDate){
-                    elUtil.tipsMod("时间不能为空!");
+                    eluUtil.tipsMod("时间不能为空!");
                     return false;
                 }
                 if(!par.dPrice){
-                    elUtil.tipsMod("价格不能为空!");
+                    eluUtil.tipsMod("价格不能为空!");
                     return false;
                 }
                 if(!par.dRemark){
-                    elUtil.tipsMod("备注不能为空!");
+                    eluUtil.tipsMod("备注不能为空!");
                     return false;
                 }
-                elUtil.jsonp({
+                eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/publishCars',
                     data : par
                 }, (res) => {
                     if(res.retCode == '200'){
-                        elUtil.tipsMod("成功")
+                        eluUtil.tipsMod("成功")
                     }
                 })
             }

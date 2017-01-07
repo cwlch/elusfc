@@ -125,7 +125,7 @@
                     let data = JSON.parse(localStorage.getItem('addresData'));
                     if(!data){
                         //如果本地没有数据则在这做数据请求
-                        elUtil.jsonp({
+                        eluUtil.jsonp({
                             url : 'http://onlyone2017.com/elu/areas/queryAreas',
                             data : {
                                 level : 2
@@ -157,7 +157,7 @@
                                 res(data);
                             }else{
                                 //如果发现本地数据没有这个市的区县就在这发送AJAX请求
-                                elUtil.jsonp({
+                                eluUtil.jsonp({
                                     url : 'http://onlyone2017.com/elu/areas/queryAreas',
                                     data : {
                                         level : 3,
@@ -188,7 +188,7 @@
                                     res(data);
                                 }else{
                                     //如果发现本地数据没有这个县的街道就在这发送AJAX请求
-                                    elUtil.jsonp({
+                                    eluUtil.jsonp({
                                         url : 'http://onlyone2017.com/elu/areas/queryAreas',
                                         data : {
                                             level : 4,

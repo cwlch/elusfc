@@ -47,7 +47,7 @@
                 let par={
                     dStart : this.dStart,
                     dEnd : this.dEnd,
-//                    dDate : parseInt(new Date(elUtil.dateFormat("yyyy-MM-dd") + "00:00").getTime()/1000)
+//                    dDate : parseInt(new Date(eluUtil.dateFormat("yyyy-MM-dd") + "00:00").getTime()/1000)
                 };
                 sessionStorage.setItem("passengerSearchPar",JSON.stringify(par));
                 this.$router.go("./passengerResults");
