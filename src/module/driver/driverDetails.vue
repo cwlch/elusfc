@@ -3,52 +3,65 @@
     <div class="details_port">
         <span><img src="../../img/pro.jpg"/></span>
         <dl>
-            <dt>Chen Hui Hui</dt>
-            <dd><b class="pink">信誉度70%</b><b class="mar">乘坐次数:70次</b></dd>
+            <dt>{{userData.userName}}</dt>
+            <dd><b class="pink">信誉度{{userValData.userVal}}%</b><b class="mar">乘坐次数:{{userValData.userCount}}次</b></dd>
         </dl>
-        <a class="ck" v-link="">查看详情</a>
+        <a class="ck" v-link="">详情</a>
     </div>
     <div class="details_infor">
         <ul>
             <li class="title">
                 <span>出发日期：</span>
-                <span>10-01</span>
-                <span>10:00</span>
-                <b>10:05</b>
-                <b>09-28</b>
+                <span>{{format("mm-dd hh:ii",recordData.createTime)}}</span>
+                <b>{{format("mm-dd hh:ii",recordData.uDate)}}</b>
                 <b>最后更新:</b>
             </li>
             <li class="cho">
                     <span>
                         <img src="../../img/icon_10.png"/>
                     </span>
-                <p>邵阳-城步-白茅坪</p>
-                <p>深圳-龙岗-平湖区</p>
+                <p>{{recordData.uStart}}</p>
+                <p>{{recordData.uEnd}}</p>
             </li>
             <li class="moeny">
-                <b>可坐人数：6位</b>
+                <b>可坐人数：{{recordData.uCount}}位</b>
             </li>
-            <li class="Explain">
-                乘客说：如果有会开车有驾照的朋友，一起乘车，价
-                格可以优惠一半哦！赶紧联系我把。
-            </li>
+            <li class="Explain">{{recordData.remark}}</li>
         </ul>
     </div>
-    <div class="Pass_btn">
-        <input type="button" tel="17744563689" value="联系他"/>
-    </div>
+    <a class="button" href="tel:15347393950">联系他</a>
     <div class="details_introduce">请说明您是在E鹿顺风车平台看到的哦！</div>
 </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
     export default{
         data(){
             return{
-                msg:'hello vue'
+                userData : {},
+                recordData : {},
+                userValData : {},
+                format : eluUtil.dateFormat
             }
         },
         ready(){
-
+            this.queryData()
+        },
+        methods : {
+            queryData(){
+                eluUtil.jsonp({
+                    url : eluConfig.serverPath + 'user/queryRequireDetail',
+                    data : {
+                        recordId : this.$route.query.id,
+                        userId : 1
+                    }
+                },res => {
+                        if(res.retCode == '200'){
+                        this.$set('userData',res.user);
+                        this.$set('userValData',res.userVal);
+                        this.$set('recordData',res.record);
+                    }
+                })
+            }
         }
     }
 </script>

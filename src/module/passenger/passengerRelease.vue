@@ -63,7 +63,7 @@
         methods : {
             save (){
                 let par= Object.assign({
-                    userId : '0442'
+                    userId : '044232'
                 },this.savePar,{
                     uDate : parseInt(new Date().getTime()/1000)
                 });
@@ -88,7 +88,7 @@
                     return false;
                 }
                 eluUtil.jsonp({
-                    url : eluConfig.serverPath + 'user/queryRequire',
+                    url : eluConfig.serverPath + 'user/publishRequire',
                     data : par
                 }, (res) => {
                     if(res.retCode == '200'){

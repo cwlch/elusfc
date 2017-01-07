@@ -28,7 +28,7 @@ export default (route) => {
                     }, 'module/driver/driverSearch');
                     }
                 },
-                '/driverList': {
+                '/driverResults': {
                     name : 'driverRelease',
                     component (resolve) {
                         require.ensure(["../module/driver/driverResults.vue"], (require) => {

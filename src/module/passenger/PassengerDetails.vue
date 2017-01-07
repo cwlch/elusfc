@@ -45,7 +45,7 @@
             return{
                 carData : {},
                 recordData : {},
-                format : elUtil.dateFormat
+                format : eluUtil.dateFormat
             }
         },
         ready(){
@@ -53,7 +53,7 @@
         },
         methods : {
             queryData(){
-                elUtil.jsonp({
+                eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/queryCarDetail',
                     data : {
                         recordId : this.$route.query.id,

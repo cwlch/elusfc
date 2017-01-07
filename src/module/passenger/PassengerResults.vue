@@ -38,7 +38,7 @@
             return{
                 searchPar : JSON.parse(sessionStorage.getItem("passengerSearchPar")),
                 listData : [],
-                format : elUtil.dateFormat
+                format : eluUtil.dateFormat
             }
         },
         ready(){
@@ -46,7 +46,7 @@
         },
         methods : {
             queryData(){
-                elUtil.jsonp({
+                eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/queryCar',
                     data : this.searchPar
                 },res=>{

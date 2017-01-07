@@ -20,7 +20,7 @@
         <!--<div class="Pass_btn">-->
             <!--<input  v-link="{path:'/passenger/PassengerResults/'}" type="button" value="寻找车辆"/>-->
         <!--</div>-->
-        <a class="button">寻找车辆</a>
+        <a class="button" @click="search()">寻找车辆</a>
     </div>
 
 
@@ -29,17 +29,34 @@
     export default{
         data(){
             return{
-                startAddressName : '您从哪儿出发?',
-                startAddressVal : '',
-                endAddressName : '您要去哪儿?',
-                endAddressVal : ''
+                startAddressName : '',
+                uStart : '',
+                endAddressName : '',
+                uEnd : ''
             }
         },
         ready(){
-            let start = JSON.parse(localStorage.getItem('driver_release_start_address')),
-                end = JSON.parse(localStorage.getItem('driver_release_end_address'));
-            if(start)this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
-            if(end)this.$set("endAddressName",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
+            let start = JSON.parse(localStorage.getItem('driver_search_start_address')),
+                end = JSON.parse(localStorage.getItem('driver_search_end_address'));
+            if(start){
+                this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
+                this.$set("uStart",start.street.id);
+            }
+            if(end){
+                this.$set("endAddressName",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
+                this.$set("uEnd",end.street.id);
+            }
+        },
+        methods : {
+            search(){
+                let par={
+                    uStart : this.uStart,
+                    uEnd : this.uEnd,
+//                    dDate : parseInt(new Date(eluUtil.dateFormat("yyyy-MM-dd") + "00:00").getTime()/1000)
+                };
+                sessionStorage.setItem("driverSearchPar",JSON.stringify(par));
+                this.$router.go("./driverResults");
+            }
         }
     }
 </script>
