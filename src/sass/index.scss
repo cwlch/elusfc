@@ -119,16 +119,17 @@ input::-webkit-input-placeholder {
 .Pass_date img{
 	width:torem(40);height:torem(44);position:absolute;right:0;top:torem(10);
 }
-.Pass_btn{
-	width:torem(706);height:torem(100);margin-top:torem(20);
-}
-.Pass_btn input{
-	width:$Percen;
-	height:$Percen;
+.button{
+	display: block;
+	width:torem(706);
+	height:torem(100);
+	line-height: torem(100);
+	margin-top:torem(20);
 	background:$green;
 	border-radius:torem(20);
 	color:$white;
 	font-size:torem(32);
+	text-align: center;
 }
 
 
@@ -235,7 +236,7 @@ input::-webkit-input-placeholder {
 	font-size:torem(16);color:#999;margin-top:torem(12);
 }
 .ve_line{
-	width:torem(22);height:torem(200);position:absolute;top:0;left:torem(188);
+	width:torem(22);height:torem(200);position:absolute;top:-1px;left:torem(188);
 }
 .vehicles_center{
 	width:torem(316);height:torem(146);float:$silde_l;margin:torem(40) torem(27) 0 torem(27);text-align:center;

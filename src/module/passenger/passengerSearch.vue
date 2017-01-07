@@ -17,9 +17,7 @@
                 <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
             </div>
         </div>
-        <div class="Pass_btn">
-            <input @click="search()" type="button" value="寻找车辆"/>
-        </div>
+        <a class="button" href="javascript:;" @click="search()">寻找车辆</a>
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -49,16 +47,10 @@
                 let par={
                     dStart : this.dStart,
                     dEnd : this.dEnd,
-//                    dDate : parseInt(new Date(elUtil.dateFormat("yyyy-MM-dd")).getTime()/1000)
+//                    dDate : parseInt(new Date(elUtil.dateFormat("yyyy-MM-dd") + "00:00").getTime()/1000)
                 };
                 sessionStorage.setItem("passengerSearchPar",JSON.stringify(par));
                 this.$router.go("./passengerResults");
-//                elUtil.jsonp({
-//                    url : eluConfig.serverPath + 'driver/queryCar',
-//                    data : par
-//                },res=>{
-//                    console.log(res);
-//                });
             }
         }
     }

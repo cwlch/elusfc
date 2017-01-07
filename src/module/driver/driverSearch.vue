@@ -7,8 +7,8 @@
                     <img src="../../img/icon_1.png"/>
                 </dt>
                 <dd>
-                    <a href="javascript:;" v-link="{path:'/address',query:{source:'driver_release',type:'start'}}">{{startAddressName}}</a>
-                    <a href="javascript:;" v-link="{path:'/address',query:{source:'driver_release',type:'end'}}">{{endAddressName}}</a>
+                    <input placeholder="您从哪儿出发?" readonly v-link="{path:'/address',query:{source:'driver_search',type:'start'}}" v-model="startAddressName"/>
+                    <input placeholder="您要去哪儿?" readonly v-link="{path:'/address',query:{source:'driver_search',type:'end'}}" v-model="endAddressName"/>
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
@@ -17,9 +17,10 @@
                 <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
             </div>
         </div>
-        <div class="Pass_btn">
-            <input  v-link="{path:'/passenger/PassengerResults/'}" type="button" value="寻找车辆"/>
-        </div>
+        <!--<div class="Pass_btn">-->
+            <!--<input  v-link="{path:'/passenger/PassengerResults/'}" type="button" value="寻找车辆"/>-->
+        <!--</div>-->
+        <a class="button">寻找车辆</a>
     </div>
 
 

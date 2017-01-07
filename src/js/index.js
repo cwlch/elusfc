@@ -11,5 +11,10 @@ router.redirect({
     '*' : '/driver',
     '/driver':'/driver/driverRelease'
 });
+router.afterEach(function (transition) {
+    if (transition.to.title) {
+        document.title = transition.to.title;
+    }
+});
 app_router(router);
 router.start(App,'html');

@@ -3,8 +3,8 @@
         <div class="details_port">
             <span><img src="../../img/pro.jpg"/></span>
             <dl>
-                <dt>Chen Hui Hui</dt>
-                <dd><b>车型：豪华私家车</b><b class="mar">车牌：湘E12345</b></dd>
+                <dt>{{carData.userId}}</dt>
+                <dd><b>车型：{{carData.brand}}</b><b class="mar">车牌：{{carData.carNo}}</b></dd>
             </dl>
             <a class="ck" v-link="">详情</a>
         </div>
@@ -12,32 +12,27 @@
             <ul>
                 <li class="title">
                     <span>出发日期：</span>
-                    <span>10-01</span>
-                    <span>10:00</span>
-                    <b>10:05</b>
-                    <b>09-28</b>
+                    <span>{{format("mm-dd hh:ii",recordData.dDate)}}</span>
+                    <b>{{format("mm-dd hh:ii",recordData.createTime)}}</b>
                     <b>最后更新:</b>
                 </li>
                 <li class="cho">
                     <span>
                         <img src="../../img/icon_10.png"/>
                     </span>
-                    <p>邵阳-城步-白茅坪</p>
-                    <p>深圳-龙岗-平湖区</p>
+                    <p>{{recordData.dStart}}</p>
+                    <p>{{recordData.dEnd}}</p>
                 </li>
                 <li class="moeny">
-                    <span><img src="../../img/icon_7.png"/>还剩4个空位</span>
-                    <b>参考价:￥120</b>
+                    <span><img src="../../img/icon_7.png"/>还剩{{recordData.dCount}}个空位</span>
+                    <b>参考价:￥{{recordData.dPrice}}</b>
                 </li>
                 <li class="Explain">
-                    师傅说：如果有会开车有驾照的朋友，一起乘车，价
-                    格可以优惠一半哦！赶紧联系我把。
+                    师傅说：{{recordData.dRemark}}
                 </li>
             </ul>
         </div>
-        <div class="Pass_btn">
-            <input type="button" tel="17744563689" value="联系他"/>
-        </div>
+        <a class="button" href="tel:15347393950">联系他</a>
         <div class="details_introduce">请说明您是在E鹿顺风车平台看到的哦！</div>
     </div>
 
@@ -48,7 +43,9 @@
     export default{
         data(){
             return{
-                msg:'hello vue'
+                carData : {},
+                recordData : {},
+                format : elUtil.dateFormat
             }
         },
         ready(){
@@ -63,8 +60,11 @@
                         carId : 1,
                         userId : 1
                     }
-                },res=>{
-                    console.log(res)
+                },res => {
+                    if(res.retCode == '200'){
+                        this.$set('carData',res.car);
+                        this.$set('recordData',res.record);
+                    }
                 })
             }
         }

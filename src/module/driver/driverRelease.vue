@@ -6,8 +6,8 @@
                     <img src="../../img/icon_1.png"/>
                 </dt>
                 <dd>
-                    <input placeholder="您从哪儿出发?" v-link="{path:'/address',query:{source:'driver_release',type:'start'}}" v-model="startAddressName"/>
-                    <input placeholder="您要去哪儿?" v-link="{path:'/address',query:{source:'driver_release',type:'end'}}" v-model="endAddressName"/>
+                    <input placeholder="您从哪儿出发?" readonly v-link="{path:'/address',query:{source:'driver_release',type:'start'}}" v-model="startAddressName"/>
+                    <input placeholder="您要去哪儿?" readonly v-link="{path:'/address',query:{source:'driver_release',type:'end'}}" v-model="endAddressName"/>
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
@@ -32,9 +32,7 @@
 
 
         </div>
-        <div class="Pass_btn">
-            <input type="button" value="发布行程" @click="save()"/>
-        </div>
+            <a class="button" @click="save()">发布行程</a>
     </div>
 
 
@@ -73,8 +71,8 @@
         methods : {
             save (){
                 let par= Object.assign({
-                    userId : '123',
-                    carId : '000'
+                    userId : '0442',
+                    carId : '232221'
                 },this.savePar,{
                     dDate : parseInt(new Date().getTime()/1000)
                 });

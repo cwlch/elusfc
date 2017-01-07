@@ -46,6 +46,9 @@
             return{
                 msg:'hello vue'
             }
+        },
+        ready(){
+
         }
     }
 </script>

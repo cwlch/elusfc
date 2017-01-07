@@ -275,10 +275,10 @@
                         path = '/driver/driverSearch';
                         break;
                     case 'passenger_release'://乘客发布页面
-                        path = '/driver/driverRelease';
+                        path = '/passenger/passengerRelease';
                         break;
                     case 'passenger_search'://乘客搜索页面
-                        path = '/passenger/searchRoute';
+                        path = '/passenger/passengerSearch';
                         break;
                     default ://默认返回司机端
                         path = '/driver'
