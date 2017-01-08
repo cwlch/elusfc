@@ -27,6 +27,7 @@
 
 
 
+
 /*Passenger我是乘客*/
 
 $white:#fff;
@@ -45,7 +46,7 @@ $green:#4baa2c;
 }
 
 input::-webkit-input-placeholder {
-	color: #333 !important;
+	color: $gray !important;
 }
 .Passenger_box{
 	width:torem(706);margin:0 auto;
@@ -55,18 +56,14 @@ input::-webkit-input-placeholder {
 }
 .check{
 	width:$Percen;height:torem(229);
-}
-.check dt{
-	width:torem(120);height:$Percen;float:$silde_l;
-}
-.check dt img{
-	width:torem(60);height:torem(68);margin:torem(88) 0 0 torem(30);
-}
-.check dd{
-	width:torem(565);height:$Percen;float:$silde_l;
-}
-.check{
+	dt{
+		width:torem(120);height:$Percen;float:$silde_l;
+		img{
+			width:torem(60);height:torem(68);margin:torem(88) 0 0 torem(30);
+		}
+	}
 	dd{
+		width:torem(565);height:$Percen;float:$silde_l;
 		input{
 			width: 100%;
 			height:torem(114);
@@ -91,10 +88,10 @@ input::-webkit-input-placeholder {
 		input:-ms-input-placeholder{ /* Internet Explorer 10+ */
 			color: #999;
 		}
+		p{
+			width:$Percen;height:torem(114);position:relative;
+		}
 	}
-}
-.check dd p{
-	width:$Percen;height:torem(114);position:relative;
 }
 .edge{
 
@@ -447,5 +444,20 @@ input::-webkit-input-placeholder {
 
 
 
+/*****个人中心样式******/
+.aut_header{
+	height: torem(450);
+	line-height: torem(450);
+	font-size: torem(32);
+	background: #000;
+	h2{
+		font-size: torem(23);
+		b{
 
+		}
+	}
+}
+.aut_header h2{
+
+}
 

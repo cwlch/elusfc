@@ -95,6 +95,15 @@ export default (route) => {
                 require.ensure(["../module/account/index.vue"], (require) => {
                     require( ["../module/account/index.vue"],resolve );
                 },'module/account/index');
+            },
+            subRoutes : {
+                '/main' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/main.vue"], (require) => {
+                            require(["../module/account/main.vue"], resolve);
+                        }, 'module/account/main');
+                    }
+                }
             }
         },
         '/address' : {
