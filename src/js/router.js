@@ -103,6 +103,13 @@ export default (route) => {
                             require(["../module/account/main.vue"], resolve);
                         }, 'module/account/main');
                     }
+                },
+                '/editUserInfo' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/editUserInfo.vue"], (require) => {
+                            require(["../module/account/editUserInfo.vue"], resolve);
+                        }, 'module/account/editUserInfo');
+                    }
                 }
             }
         },
