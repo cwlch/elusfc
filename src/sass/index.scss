@@ -445,19 +445,109 @@ input::-webkit-input-placeholder {
 
 
 /*****个人中心样式******/
-.aut_header{
-	height: torem(450);
-	line-height: torem(450);
-	font-size: torem(32);
-	background: #000;
-	h2{
-		font-size: torem(23);
-		b{
-
-		}
-	}
+.aut_top{
+	margin-top:torem(25);
+	background:#fff;
+	overflow: hidden;
 }
-.aut_header h2{
+.aut_top_icon{
+	height:torem(40);
+	padding-right:torem(29);
+	text-align: right;
+	margin-bottom: torem(5);
+	margin-top:torem(25)
+}
+.aut_top_icon img{
+	width:torem(40);
+	height:torem(40);
+	cursor: pointer;
 
+}
+.aut_tu{
+	text-align: center;
+	padding-bottom: torem(65);
+}
+.aut_tu img{
+	width: torem(235);
+	height:torem(235);
+	margin-bottom: torem(25);
+	cursor: pointer;
+}
+.aut_tu p{
+	color:#333;
+	font-size:torem(32);
+	padding-bottom: torem(20);
+}
+.aut_tu img{
+	border-radius: torem(236);
+}
+.aut_tu span{
+	color:#6f7782;
+	font-size: torem(28);
+}
+.aut_list_b{
+	boder-top:1px solid #d5d5d5;
+	height:torem(300);
+	overflow: hidden;
+	margin-bottom: torem(30);
+}
+.aut_list_b li{
+	width:torem(249);
+	height:torem(149);
+	border-right:1px solid #d5d5d5;
+	border-bottom: 1px solid #d5d5d5;
+	text-align: center;
+	float:left;
+	font-size: torem(28);
+}
+.aut_list_b li img{
+	display: block;
+	margin:torem(32) auto 0 auto
+}
+.aut_list_b li a{
+	color:#333 !important;
+}
+.aut_list_b li img{
+	display: block;
+}
+.aut_list_b li.img1 img{
+	width:torem(50);
+	height:torem(46);
+	margin:torem(33) auto torem(20) auto;
+}
+.aut_list_b li.img2 img{
+	width:torem(38);
+	height:torem(32);
+	margin:torem(39) auto torem(28) auto
+}
+.aut_list_b li.img3 img{
+	width:torem(40);
+	height:torem(40);
+	margin:torem(34) auto torem(25) auto;
+	border-right: 0;
+}
+.aut_list_b li.img4 img{
+	width:torem(50);
+	height:torem(44);
+	margin:torem(32) auto torem(22) auto
+}
+.aut_list_b li.img5 img{
+	width:torem(47);
+	height:torem(44);
+	margin:torem(32) auto torem(22) auto
+}
+.aut_list_b li.img6 img{
+	width:torem(41);
+	height:torem(42);
+	margin:torem(31) auto torem(25) auto;
+	border-right:0;
+}
+.aut_button{
+	width:torem(706);
+	height:torem(90);
+	margin:0 auto;
+}
+.aut_main .button{
+	margin:0 auto;
 }
 

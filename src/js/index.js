@@ -13,7 +13,8 @@ let router = new VueRouter(),
     });
 router.redirect({
     '*' : '/driver',
-    '/driver':'/driver/driverRelease'
+    '/driver':'/driver/driverRelease',
+    '/account': '/account/main'
 });
 router.afterEach(function (transition) {
     if (transition.to.title) {
