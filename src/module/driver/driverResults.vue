@@ -2,10 +2,10 @@
     <div class="Results">
         <div class="Results_title">
             <ul>
-                <li class="current">11月01</li>
-                <li>11月02</li>
-                <li>11月03</li>
-                <li>11月04</li>
+                <li v-bind:class="{'current': current == '2016-11-01'}" @click="dateSelect('2016-11-01')">11月01</li>
+                <li v-bind:class="{'current': current == '2016-11-02'}" @click="dateSelect('2016-11-02')">11月02</li>
+                <li v-bind:class="{'current': current == '2016-11-03'}" @click="dateSelect('2016-11-03')">11月03</li>
+                <li v-bind:class="{'current': current == '2016-11-04'}" @click="dateSelect('2016-11-04')">11月04</li>
             </ul>
             <img src="../../img/icon_5.png"/>
         </div>
@@ -36,7 +36,8 @@
             return{
                 searchPar : JSON.parse(sessionStorage.getItem("driverSearchPar")),
                 listData : [],
-                format : eluUtil.dateFormat
+                format : eluUtil.dateFormat,
+                current : '2016-11-02'
             }
         },
         ready(){
@@ -49,7 +50,15 @@
                     data : this.searchPar
                 },res=>{
                     this.$set("listData",res.result);
-            });
+                });
+            }
+            /**
+             * 时间切换
+             */
+            ,dateSelect(date){
+                this.current = date;
+                this.searchPar.dDate = new Date(date).getTime();
+                this.queryData()
             }
         }
     }
