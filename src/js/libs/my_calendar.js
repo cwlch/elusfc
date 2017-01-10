@@ -107,11 +107,14 @@
         if(added)return;
         added=true;
 
+<<<<<<< HEAD
         var oLink = document.createElement('link');
         oLink.rel='stylesheet';
         oLink.href="my_calendar.css";
         var oHead = document.getElementsByTagName('head')[0];
         oHead.appendChild(oLink);
+=======
+>>>>>>> dev_yang
     }
 
 })();

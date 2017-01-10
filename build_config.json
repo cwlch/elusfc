@@ -5,13 +5,15 @@
 		"zeptojs" : "./js/libs/zeptojs.min.1.1.6.js",
 		"Vue" : "./js/libs/vue.js",
 		"VueRouter" : "./js/libs/vue-router.js",
-		"swipe" : "./js/libs/swipe.js"
+		"swipe" : "./js/libs/swipe.js",
+		"calendar" : "./js/libs/my_calendar.js"
 	},
 	"providePlugin" : {
 		"zeptojs" : "zeptojs",
 		"Vue" : "Vue",
 		"VueRouter" : "VueRouter",
-		"swipe" : "swipe"
+		"swipe" : "swipe",
+		"calendar":"calendar"
 	}
 	,"config" : {
 		"port":1620,
@@ -20,14 +22,14 @@
 		"srcpath": "/server"
 	}
 	,"common" : [
-		"zeptojs","Vue","VueRouter","swipe",
+		"zeptojs","Vue","VueRouter","swipe","calendar",
 		"./js/config.js",
 		"./js/util.js",
 		"./js/base.js"
 	]
 	,"ui" : []
 	,"serverPath" : [{
-		"dev" : "http://10.100.140.106:8081/"
+		"dev" : "http://onlyone2017.com/"
 		,"test" : "http://10.100.140.106:8081/"
 		,"repro" : "http://10.100.146.57:8081/"
 		,"pro" : "http://lea.fuqianla.net/"

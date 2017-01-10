@@ -16,11 +16,34 @@ body { font-family: "\5FAE\8F6F\96C5\9ED1",'Helvetica Neue', Helvetica, STHeiTi,
 	color:#333; }
 
 html {overflow-x: hidden;-webkit-user-select: none;}
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{ -webkit-appearance: none !important; margin: 0; }
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button,input,textarea,select{outline: 0 none; border-radius: 0; -webkit-appearance: none !important; margin: 0; }
 * {-webkit-box-sizing: border-box; box-sizing: border-box;}
 *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box;}
-input:focus,select {outline: 0 none;}
 body{
 	background: #eeeff3;
 	color: #333;
 }
+
+
+
+.tips{
+	position: fixed;
+	top:50%;
+	left: 50%;
+	-webkit-transform: translate(-50%);
+	-moz-transform: translate(-50%);
+	-ms-transform: translate(-50%);
+	-o-transform: translate(-50%);
+	transform: translate(-50%);
+	background: #000;
+	opacity: 0.8;
+	color: #fff;
+	width: 90%;
+	text-align: center;
+	line-height: torem(44);
+	font-size: torem(32);
+	padding: torem(20);
+	border-radius: torem(10);
+}
+
