@@ -97,6 +97,13 @@ export default (route) => {
                 },'module/account/index');
             },
             subRoutes : {
+                '/mainZy' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/mainZy.vue"], (require) => {
+                            require(["../module/account/mainZy.vue"], resolve);
+                        }, 'module/account/mainZy');
+                    }
+                },
                 '/main' : {
                     component (resolve) {
                         require.ensure(["../module/account/main.vue"], (require) => {
