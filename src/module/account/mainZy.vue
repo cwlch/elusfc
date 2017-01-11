@@ -1,5 +1,5 @@
 <template>
-    <h2>2323223</h2>
+    <h2>232</h2>
 </template>
 <script type="text/ecmascript-6">
     export default{
