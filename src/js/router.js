@@ -97,6 +97,27 @@ export default (route) => {
                 },'module/account/index');
             },
             subRoutes : {
+                '/mainEdit' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/mainEdit.vue"], (require) => {
+                            require(["../module/account/mainEdit.vue"], resolve);
+                        }, 'module/account/mainEdit');
+                    }
+                },
+                '/mainZl' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/mainZl.vue"], (require) => {
+                            require(["../module/account/mainZl.vue"], resolve);
+                        }, 'module/account/mainZl');
+                    }
+                },
+                '/mainZy' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/mainZy.vue"], (require) => {
+                            require(["../module/account/mainZy.vue"], resolve);
+                        }, 'module/account/mainZy');
+                    }
+                },
                 '/main' : {
                     component (resolve) {
                         require.ensure(["../module/account/main.vue"], (require) => {
