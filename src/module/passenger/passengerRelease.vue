@@ -6,8 +6,8 @@
                     <img src="../../img/icon_1.png"/>
                 </dt>
                 <dd>
-                    <input placeholder="您从哪儿出发?" readonly v-link="{path:'/address',query:{source:'passenger_release',type:'start'}}" v-model="startAddressName"/>
-                    <input placeholder="您要去哪儿?" readonly v-link="{path:'/address',query:{source:'passenger_release',type:'end'}}" v-model="endAddressName"/>
+                    <input placeholder="您从哪儿出发?" readonly v-link="{path:'/address',query:{source:'passenger_release',type:'start'}}" v-model="savePar.uStartStr"/>
+                    <input placeholder="您要去哪儿?" readonly v-link="{path:'/address',query:{source:'passenger_release',type:'end'}}" v-model="savePar.uEndStr"/>
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
@@ -37,9 +37,9 @@
     export default{
         data(){
             return{
-                startAddressName : '您从哪儿出发?',
-                endAddressName : '您要去哪儿?',
                 savePar : {
+                    uStartStr : '您从哪儿出发',
+                    uEndStr : '您要去哪儿?',
                     uStart : '',
                     uEnd : '',
                     uCount : '',
@@ -52,20 +52,20 @@
             let start = JSON.parse(localStorage.getItem('passenger_release_start_address')),
                     end = JSON.parse(localStorage.getItem('passenger_release_end_address'));
             if(start){
-                this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
+                this.$set("savePar.uStartStr",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
                 this.$set('savePar.uStart',start.street.id);
             }
             if(end){
-                this.$set("endAddressName",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
+                this.$set("savePar.uEndStr",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
                 this.$set('savePar.uEnd',end.street.id);
             }
         },
         methods : {
             save (){
-                let par= Object.assign({
-                    userId : '044232'
+                let par = Object.assign({
+                    userId : '044232',
                 },this.savePar,{
-                    uDate : parseInt(new Date().getTime()/1000)
+                    uDate : new Date(this.savePar.uDate).getTime() /1000
                 });
                 if(!par.uStart){
                     eluUtil.tipsMod("出发地点不能为空哦!");
@@ -87,14 +87,26 @@
                     eluUtil.tipsMod("备注不能为空!");
                     return false;
                 }
-                eluUtil.jsonp({
+
+                $.ajax({
                     url : eluConfig.serverPath + 'user/publishRequire',
-                    data : par
-                }, (res) => {
-                    if(res.retCode == '200'){
-                    eluUtil.tipsMod("成功")
-                }
-            })
+                    type : 'get',
+                    dataType : "jsonp",
+                    data : par,
+                    success : function (data) {
+                        if(data.retCode == '200'){
+                            alert("我成功了");
+                        }
+                    }
+                });
+//                eluUtil.jsonp({
+//                    url : eluConfig.serverPath + 'user/publishRequire',
+//                    data : par
+//                }, function(res){
+//                    if(res.retCode == '200'){
+//                        eluUtil.tipsMod("成功")
+//                    }
+//                })
             }
         }
     }

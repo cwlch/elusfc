@@ -3,7 +3,7 @@
         <div class="aut_zl">
             <div class="aut_zls">
                 <ul>
-                    <li>个人</li>
+                    <li v-link="{path:'./mainZl'}">个人</li>
                     <li class="curr1">车辆</li>
                 </ul>
             </div>
