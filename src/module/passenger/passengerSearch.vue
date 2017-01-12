@@ -28,12 +28,13 @@
                 dStart : '',
                 endAddressName : '',
                 dEnd : '' ,
-                dDate : ''
+                dDate : eluUtil.dateFormat("yyyy/mm/dd")
             }
         },
         ready(){
             let start = JSON.parse(localStorage.getItem('passenger_search_start_address')),
                     end = JSON.parse(localStorage.getItem('passenger_search_end_address'));
+            this.dateInit();
             if(start){
                 this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
                 this.$set("dStart",start.street.id);
@@ -44,14 +45,34 @@
             }
         },
         methods : {
+            /**
+             * 搜索按钮事件
+             */
             search(){
                 let par={
                     dStart : this.dStart,
                     dEnd : this.dEnd,
-                    dDate : parseInt(new Date(this.dDate).getTime()/1000)
+                    dDate : parseInt(new Date(this.dDate).getTime())
                 };
                 sessionStorage.setItem("passengerSearchPar",JSON.stringify(par));
                 this.$router.go("./passengerResults");
+            },
+            /**
+             * 时间初始化,时间格式只到日
+             */
+            dateInit (){
+                var now = new Date(this.dDate),
+                        maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
+                $('#txt1').mobiscroll().date({
+                    theme: 'mobiscroll',
+                    lang: 'zh',
+                    display: 'bottom',
+                    minDate: now,
+                    maxDate: maxDate,
+                    dateOrder: 'MM dd',
+                    dateFormat : 'yyyy/mm/dd',
+                    rows : 3
+                });
             }
         }
     }

@@ -20,9 +20,9 @@
                     </div>
                     <img class="ve_line" src="../../img/icon_8.gif"/>
                     <div class="vehicles_center">
-                        <p>{{i.dStart}}</p>
+                        <p>{{i.dStartStr}}</p>
                         <p class="center"><img src="../../img/icon_9.png"/></p>
-                        <p>{{i.dEnd}}</p>
+                        <p>{{i.dEndStr}}</p>
                     </div>
                     <div class="vehicles_right">{{format("hh:ii",i.dDate)}}</div>
                 </div>
@@ -36,27 +36,36 @@
     export default{
         data(){
             return{
-                searchPar : JSON.parse(sessionStorage.getItem("passengerSearchPar")),
+                searchPar : Object.assign({
+                    page : 0,
+                    per : 5
+                },JSON.parse(sessionStorage.getItem("passengerSearchPar"))),
                 listData : [],
                 format : eluUtil.dateFormat
             }
         },
         ready(){
             this.queryData();
+            $(".Results_main").on("swipeup",()=>{
+                this.pageation();
+            })
         },
         methods : {
             queryData(){
-                console.log(this.searchPar);
-                this.searchPar.dDate = new Date(this.searchPar.dDate).getTime() /100;
+                let par = Object.assign({},this.searchPar);
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/queryCar',
-                    data : this.searchPar
+                    data : par
                 },res=>{
-                    this.$set("listData",res.result);
+                    this.$set("listData",this.listData.concat(res.result));
                 });
             },
             selectDate(date){
                 this.searchPar.dDate = date;
+                this.queryData();
+            },
+            pageation(){
+                this.searchPar.page++;
                 this.queryData();
             }
         }

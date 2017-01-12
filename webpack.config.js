@@ -94,13 +94,10 @@ util = {
 			{
 				test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
 				loader: 'file-loader?name=fonts/[name].[ext]'
-			}/*,{
+			},{
 				test: /\.css$/,
 				loader:ExtractTextPlugin.extract("style", "css")
 			}, { //编译SCSS生成link链接
-				test: /\.scss$/,
-				loader: ExtractSCSS.extract('style', 'css!sass?sourceMap')
-			}*/, { //编译SCSS生成link链接
 				test: /\.scss$/,
 				loader: ExtractTextPlugin.extract('style', 'css!sass?sourceMap')
 			}

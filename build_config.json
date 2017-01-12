@@ -2,18 +2,22 @@
 	"dest" : "elusfc"
 	,"src" : "./src"
 	,"libs" : {
-		"zeptojs" : "./js/libs/zeptojs.min.1.1.6.js",
+		"jquery" : "./js/libs/jquery-1.12.4.min.js",
 		"Vue" : "./js/libs/vue.js",
 		"VueRouter" : "./js/libs/vue-router.js",
 		"swipe" : "./js/libs/swipe.js",
-		"calendar" : "./js/libs/my_calendar.js"
+		"calendar" : "./js/libs/my_calendar.js",
+		"mobiscroll" : "./js/libs/mobiscroll/mobiscroll.custom-2.17.0.min.js"
 	},
 	"providePlugin" : {
-		"zeptojs" : "zeptojs",
+		"jquery" : "jquery",
+		"jQuery":"jquery",
+		"$":"jquery",
 		"Vue" : "Vue",
 		"VueRouter" : "VueRouter",
 		"swipe" : "swipe",
-		"calendar":"calendar"
+		"calendar":"calendar",
+		"mobiscroll" : "mobiscroll"
 	}
 	,"config" : {
 		"port":1620,
@@ -22,7 +26,7 @@
 		"srcpath": "/server"
 	}
 	,"common" : [
-		"zeptojs","Vue","VueRouter","swipe","calendar",
+		"jquery","Vue","VueRouter","swipe","calendar","mobiscroll",
 		"./js/config.js",
 		"./js/util.js",
 		"./js/base.js"
