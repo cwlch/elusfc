@@ -3,15 +3,30 @@
         <div class="aut_zl">
             <div class="aut_zls">
                 <ul>
-                    <li class="curr">个人</li>
-                    <li>车辆</li>
+                    <li>个人</li>
+                    <li class="curr1">车辆</li>
                 </ul>
             </div>
         </div>
-        <div class="aut_zl_tu">
-            <div class="aut_zl_t">
-                <img src="../../img/icon_24.png"/>
-                <span><a href="#"> <img src="../../img/icon_25.png"/></a></span>
+        <div class="aut_zl_bj_li">
+            <div class="aut_zl_blist1">
+                <form>
+                    <ul>
+                        <li>
+                            <label>姓名</label>
+                            <input type="text">
+                        </li>
+                        <li>
+                            <label>驾驶证号</label>
+                            <input type="text">
+                        </li>
+                        <li>
+                            <label>驾驶证</label>
+                            <input type="text">
+                            <a href="#"><img src="../../img/icon_27.png"/></a>
+                        </li>
+                    </ul>
+                </form>
             </div>
         </div>
         <div class="aut_zl_bd">
@@ -19,29 +34,32 @@
                 <form>
                     <ul>
                         <li>
-                            <label>呢称</label>
-                            <input type="text">
-                        </li>
-                        <li>
-                            <label>性别</label>
-                            <input type="text">
-                        </li>
-                        <li>
-                            <label>年龄</label>
+                            <label>品牌型号</label>
                             <input type="text">
                             <img src="../../img/icon_26.png"/>
                         </li>
                         <li>
-                            <label>家乡</label>
+                            <label>车牌号</label>
                             <input type="text">
-                            <img src="../../img/icon_26.png"/>
                         </li>
-
+                        <li>
+                            <label>车辆所属人</label>
+                            <input type="text">
+                        </li>
+                        <li>
+                            <label>注册日期</label>
+                            <input type="text">
+                        </li>
+                        <li>
+                            <label>行驶证</label>
+                            <input type="text">
+                            <a href="#"> <img src="../../img/icon_27.png"/></a>
+                        </li>
                     </ul>
                 </form>
             </div>
         </div>
-        <a class="button v-link-active" href="#!/account/">保存</a>
+        <a class="button v-link-active" href="#!/account/">申请认证</a>
     </div>
 </template>
 <script type="text/ecmascript-6">

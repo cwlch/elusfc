@@ -636,7 +636,6 @@ input::-webkit-input-placeholder {
 	background:#4baa2c;
 	color:#fff;
 	border:1px solid #4baa2c;
-
 }
 .aut_zl_tu{
 	height:torem(260);
@@ -700,10 +699,37 @@ input::-webkit-input-placeholder {
 	width: torem(676);
 	text-align: right;
 	float:left;
-	padding-right:torem(8)
+	padding-right:torem(14);
+	color:#666;
 }
 .aut_zl_blist1 li img{
 	width:torem(17);
 	float: right;
 	padding-top:torem(27)
+}
+.aut_zl_blist1 li a{
+	width: torem(36);
+	position: absolute;
+	right: 0;
+	top:0;
+	height:100%;
+
+}
+.aut_zl_blist1 li a img{
+	width:torem(36);
+
+}
+.aut_zls li.curr1{
+	border-top-right-radius:torem(10);
+	border-bottom-right-radius:torem(10);
+	background:#4baa2c;
+	color:#fff;
+	border:1px solid #4baa2c;
+}
+.aut_zl_bj_li{
+	height:torem(268);
+	border-top:1px solid #c8c7cc;
+	border-bottom: 1px solid #c8c7cc;
+	background:#fff;
+	margin-bottom: torem(30);
 }
