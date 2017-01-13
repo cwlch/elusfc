@@ -13,7 +13,7 @@
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
             <div class="Pass_date">
-                <input type="text" id="txt1" placeholder="12月10日(今天)"/>
+                <input type="text" id="txt1" v-model="dDate" placeholder="12月10日(今天)"/>
                 <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
             </div>
         </div>
@@ -27,7 +27,8 @@
                 startAddressName : '',
                 dStart : '',
                 endAddressName : '',
-                dEnd : ''
+                dEnd : '' ,
+                dDate : ''
             }
         },
         ready(){
@@ -47,7 +48,7 @@
                 let par={
                     dStart : this.dStart,
                     dEnd : this.dEnd,
-//                    dDate : parseInt(new Date(eluUtil.dateFormat("yyyy-MM-dd") + "00:00").getTime()/1000)
+                    dDate : parseInt(new Date(this.dDate).getTime()/1000)
                 };
                 sessionStorage.setItem("passengerSearchPar",JSON.stringify(par));
                 this.$router.go("./passengerResults");

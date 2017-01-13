@@ -2,8 +2,8 @@
     <div class="Results">
         <div class="Results_title">
             <ul>
-                <li class="current">11月01</li>
-                <li>11月02</li>
+                <li class="current" @click="selectDate('2017-01-06')">01月06</li>
+                <li @click="selectDate('2017-01-07')">01月07</li>
                 <li>11月03</li>
                 <li>11月04</li>
             </ul>
@@ -46,12 +46,18 @@
         },
         methods : {
             queryData(){
+                console.log(this.searchPar);
+                this.searchPar.dDate = new Date(this.searchPar.dDate).getTime() /100;
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/queryCar',
                     data : this.searchPar
                 },res=>{
                     this.$set("listData",res.result);
                 });
+            },
+            selectDate(date){
+                this.searchPar.dDate = date;
+                this.queryData();
             }
         }
     }
