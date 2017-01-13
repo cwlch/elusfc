@@ -6,7 +6,7 @@
            </div>
            <div class="aut_tu">
                <img src="../../img/icon_15.png"/>
-               <p v-model="msg.userId">{{msg.userId}}</p>
+               <p v-model="msg.userId">{{data.userName}}</p>
                <span v-model="msg.phone">{{msg.phone}}</span>
            </div>
        </div>
@@ -28,9 +28,9 @@
         data(){
             return{
                 msg:{
-                    userId:'',
-                    phone:''
-                }
+                    uid:'test01',
+                },
+                data : {}
             }
         },
         ready(){
@@ -38,13 +38,17 @@
         },
         methods : {
             Obtain(){
-                let par = Object.assign({},this.msg);
+                let par = Object.assign({},this.msg),
+                        _this = this;
                 $.ajax({
-                    url : eluConfig.serverPath + 'user/queryRequireDetail',
+                    url : eluConfig.serverPath + 'user/queryUser',
                     type : 'get',
                     dataType : "jsonp",
                     data:par,
                     success : function (data) {
+                        if(data.retCode == '200'){
+                            _this.$set('data',data.user)
+                        }
                         console.log(data);
                     }
                 });
