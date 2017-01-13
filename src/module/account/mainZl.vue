@@ -36,7 +36,6 @@
                             <input type="text">
                             <img src="../../img/icon_26.png"/>
                         </li>
-
                     </ul>
                 </form>
             </div>

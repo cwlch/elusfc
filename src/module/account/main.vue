@@ -6,8 +6,8 @@
            </div>
            <div class="aut_tu">
                <img src="../../img/icon_15.png"/>
-               <p>Miss Chen hui</p>
-               <span>153***3950</span>
+               <p v-model="msg.userId">{{msg.userId}}</p>
+               <span v-model="msg.phone">{{msg.phone}}</span>
            </div>
        </div>
        <div class="aut_list_b">
@@ -27,11 +27,28 @@
     export default{
         data(){
             return{
-                msg:'hello vue'
+                msg:{
+                    userId:'',
+                    phone:''
+                }
             }
         },
+        ready(){
+            this.Obtain();
+        },
         methods : {
-
+            Obtain(){
+                let par = Object.assign({},this.msg);
+                $.ajax({
+                    url : eluConfig.serverPath + 'user/queryRequireDetail',
+                    type : 'get',
+                    dataType : "jsonp",
+                    data:par,
+                    success : function (data) {
+                        console.log(data);
+                    }
+                });
+            }
         }
     }
 </script>
