@@ -64,6 +64,12 @@ let Util = {
             if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
         return fmt;
     },
+    setDateDay(date = new Date(),num){
+        let myDate = new Date(date),
+            time = myDate.getTime(),
+            endTime = time + (num * 24 * 60 * 60 * 1000);
+        return new Date(endTime);
+    },
     /**
      * jsonp跨域请求
      * @param url

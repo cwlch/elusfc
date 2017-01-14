@@ -11,14 +11,14 @@
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
-            <div class="FindCar_Choice">
+            <div class="FindCar_Choice clear_fix">
                 <ul>
                     <li class="Location_to left">
                         <input class="Choice" type="tel" v-model="savePar.uCount" placeholder="乘车人数"/>
                         <img class="Location img_a" src="../../img/icon_4.png"/>
                     </li>
                     <li class="Location_to right">
-                        <input class="Choice" v-model="savePar.uDate" type="text" placeholder="10月01日"/>
+                        <input class="Choice" id="date" v-model="savePar.uDate" type="text" placeholder="出发时间"/>
                         <img class="Location img_b" src="../../img/icon_3.png"/>
                     </li>
                 </ul>
@@ -43,7 +43,7 @@
                     uStart : '',
                     uEnd : '',
                     uCount : '',
-                    uDate : '',
+                    uDate : eluUtil.dateFormat("yyyy/mm/dd"),
                     remark : ''
                 }
             }
@@ -59,54 +59,56 @@
                 this.$set("savePar.uEndStr",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
                 this.$set('savePar.uEnd',end.street.id);
             }
+            this.dateInit();
         },
         methods : {
             save (){
                 let par = Object.assign({
-                    userId : '044232',
+                    userId : '1'
                 },this.savePar,{
-                    uDate : new Date(this.savePar.uDate).getTime() /1000
+                    uDate : new Date(this.savePar.uDate).getTime()
                 });
                 if(!par.uStart){
-                    eluUtil.tipsMod("出发地点不能为空哦!");
+                    eluUtil.tipsMod("出发地不能为空");
                     return false;
                 }
                 if(!par.uEnd){
-                    eluUtil.tipsMod("目的地点不能为空哦!");
+                    eluUtil.tipsMod("目的地不能为空");
                     return false;
                 }
                 if(!par.uCount){
-                    eluUtil.tipsMod("乘坐人数不能为空!");
+                    eluUtil.tipsMod("可乘人数不能为空");
                     return false;
                 }
                 if(!par.uDate){
-                    eluUtil.tipsMod("时间不能为空!");
+                    eluUtil.tipsMod("时间不能为空");
                     return false;
                 }
-                if(!par.remark){
-                    eluUtil.tipsMod("备注不能为空!");
-                    return false;
-                }
-
-                $.ajax({
+                eluUtil.jsonp({
                     url : eluConfig.serverPath + 'user/publishRequire',
-                    type : 'get',
-                    dataType : "jsonp",
-                    data : par,
-                    success : function (data) {
-                        if(data.retCode == '200'){
-                            alert("我成功了");
-                        }
+                    data : par
+                }, function(res){
+                    if(res.retCode == '200'){
+                        eluUtil.tipsMod("成功");
                     }
                 });
-//                eluUtil.jsonp({
-//                    url : eluConfig.serverPath + 'user/publishRequire',
-//                    data : par
-//                }, function(res){
-//                    if(res.retCode == '200'){
-//                        eluUtil.tipsMod("成功")
-//                    }
-//                })
+            },
+            /**
+             * 时间初始化,时间格式只到日
+             */
+            dateInit (){
+                var now = new Date(this.savePar.uDate),
+                        maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
+                $('#date').mobiscroll().date({
+                    theme: 'mobiscroll',
+                    lang: 'zh',
+                    display: 'bottom',
+                    minDate: now,
+                    maxDate: maxDate,
+                    dateOrder: 'MM dd',
+                    dateFormat : 'yyyy/mm/dd',
+                    rows : 3
+                });
             }
         }
     }

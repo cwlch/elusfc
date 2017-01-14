@@ -3,7 +3,7 @@
         <div class="details_port">
             <span><img src="../../img/pro.jpg"/></span>
             <dl>
-                <dt>{{carData.userId}}</dt>
+                <dt>{{carData.carLord}}</dt>
                 <dd><b>车型：{{carData.brand}}</b><b class="mar">车牌：{{carData.carNo}}</b></dd>
             </dl>
             <a class="ck" v-link="">详情</a>
@@ -20,8 +20,8 @@
                     <span>
                         <img src="../../img/icon_10.png"/>
                     </span>
-                    <p>{{recordData.dStart}}</p>
-                    <p>{{recordData.dEnd}}</p>
+                    <p>{{recordData.dStartStr}}</p>
+                    <p>{{recordData.dEndStr}}</p>
                 </li>
                 <li class="moeny">
                     <span><img src="../../img/icon_7.png"/>还剩{{recordData.dCount}}个空位</span>

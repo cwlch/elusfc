@@ -44,6 +44,12 @@ $green:#4baa2c;
 .right{
 	float:$silde_r;
 }
+.clear_fix:after{
+	display: block;
+	height: 0;
+	content: '';
+	clear: both;
+}
 
 input::-webkit-input-placeholder {
 	color: $gray !important;
@@ -154,14 +160,14 @@ input::-webkit-input-placeholder {
 	padding-bottom:torem(30);
 }
 .FindCar_Choice{
-	width:torem(706);margin:torem(20) 0; overflow: hidden;
+	width:torem(706);margin:torem(20) 0;
 }
 
 .FindCar_Choice input.newDate{
-	width:torem(652);height:torem(80);border:torem(2) solid #d5d5d5;border-radius:torem(10);padding:0 torem(10);
+	width:torem(652);height:torem(80);border:1px solid #d5d5d5;border-radius:torem(10);padding:0 torem(10);
 }
 .Choice{
-	width:torem(292);height:torem(76);border:torem(2) solid #d5d5d5;border-radius:torem(8);
+	width:torem(292);height:torem(76);border:1px solid #d5d5d5;border-radius:torem(8);
 	padding:0 torem(10);
 }
 .FindCar_Choice li{
@@ -187,6 +193,15 @@ input::-webkit-input-placeholder {
 }
 .Results_title{
 	width:$Percen;height:torem(90);background:#4baa2c;
+	input{
+		background: url("../img/icon_5.png");
+		background-size: torem(40);
+		float: right;
+		width: torem(40);
+		height:torem(44);
+		margin:torem(22) torem(22) 0 0;
+		color: #fff;
+	}
 }
 .Results_title li{
 	width:torem(167);height:$Percen;float:$silde_l;text-align:center;line-height:torem(90);color:#333;
@@ -238,6 +253,12 @@ input::-webkit-input-placeholder {
 .vehicles_center{
 	width:torem(316);height:torem(146);float:$silde_l;margin:torem(40) torem(27) 0 torem(27);text-align:center;
 	font-size:torem(30);color:#333;
+	p{
+		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
 .v_top{
 	margin-top:torem(30);
