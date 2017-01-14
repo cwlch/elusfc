@@ -7,14 +7,14 @@
                     <img src="../../img/icon_1.png"/>
                 </dt>
                 <dd>
-                    <input placeholder="您从哪儿出发?" v-link="{path:'/address',query:{source:'passenger_search',type:'start'}}" v-model="startAddressName"/>
-                    <input placeholder="您要去哪儿?" v-link="{path:'/address',query:{source:'passenger_search',type:'end'}}" v-model="endAddressName"/>
+                    <input placeholder="您从哪儿出发?" readonly v-link="{path:'/address',query:{source:'passenger_search',type:'start'}}" v-model="startAddressName"/>
+                    <input placeholder="您要去哪儿?" readonly v-link="{path:'/address',query:{source:'passenger_search',type:'end'}}" v-model="endAddressName"/>
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
             <div class="Pass_date">
                 <input type="text" id="txt1" v-model="dDate" placeholder="12月10日(今天)"/>
-                <img src="../../img/icon_3.png"/>
+                <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
             </div>
         </div>
         <a class="button" href="javascript:;" @click="search()">寻找车辆</a>
@@ -54,6 +54,14 @@
                     dEnd : this.dEnd,
                     dDate : parseInt(new Date(this.dDate).getTime())
                 };
+                if(!par.dStart){
+                    eluUtil.tipsMod("出发地不能为空!");
+                    return false;
+                }
+                if(!par.dEnd){
+                    eluUtil.tipsMod("目的地不能为空!");
+                    return false;
+                }
                 sessionStorage.setItem("passengerSearchPar",JSON.stringify(par));
                 this.$router.go("./passengerResults");
             },
@@ -63,7 +71,7 @@
             dateInit (){
                 var now = new Date(this.dDate),
                         maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
-                $('#txt1').mobiscroll().date({
+                $('#date').mobiscroll().date({
                     theme: 'mobiscroll',
                     lang: 'zh',
                     display: 'bottom',
