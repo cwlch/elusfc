@@ -2,7 +2,7 @@
     <div class="aut_main">
         <div class="aut_top">
             <div class="aut_top_icon">
-                <img src="../../img/icon_14.png"/>
+                <img v-link="{path:'mainZl'}" src="../../img/icon_14.png"/>
             </div>
             <div class="aut_tu">
                 <img src="../../img/icon_15.png"/>

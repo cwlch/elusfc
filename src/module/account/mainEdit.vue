@@ -22,7 +22,7 @@
                         </li>
                         <li>
                             <label>驾驶证</label>
-                            <input type="file" accept="image/*">
+                            <input type="file" accept="image/*" @change="selectFile">
                             <a href="#"><img src="../../img/icon_27.png"/></a>
                         </li>
                     </ul>
@@ -91,7 +91,7 @@
                         if(data.retCode == '200'){
                             data.car.createTime = eluUtil.dateFormat("yyyy/mm/dd",data.car.createTime);
                             _this.$set('data',Object.assign({},_this.data,data.car));
-                            console.log(_this.data)
+//                            console.log(_this.data)
                         }
                     }
                 });
@@ -141,6 +141,19 @@
                         }
                     }
                 });
+            },
+            selectFile(e){
+//                eluUtil.convertImgToBase64($(e.target).val());
+                let $target = $(e.target),
+                    file = e.target.files[0];
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload =function(e){
+                    console.log(e.target.result)
+                };
+
+//                console.log(file)
+//                console.log(eluUtil.convertImgToBase64('file:///me/l.jpg',file.type));
             }
         }
     }

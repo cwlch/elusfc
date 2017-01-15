@@ -33,7 +33,7 @@
                 uStart : '',
                 endAddressName : '',
                 uEnd : '',
-                dDate : eluUtil.dateFormat("yyyy/mm/dd")
+                uDate : eluUtil.dateFormat("yyyy/mm/dd")
             }
         },
         ready(){
@@ -54,7 +54,7 @@
                 let par={
                     uStart : this.uStart,
                     uEnd : this.uEnd,
-                    uDate : parseInt(new Date(this.dDate).getTime())
+                    uDate : parseInt(new Date(this.uDate).getTime())
                 };
                 if(!par.uStart){
                     eluUtil.tipsMod("出发地不能为空!");

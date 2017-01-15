@@ -11,7 +11,7 @@
        <div class="aut_zl_tu">
            <div class="aut_zl_t">
                <img src="../../img/icon_24.png"/>
-               <span><a href="#"> <img src="../../img/icon_25.png"/></a></span>
+               <span><img src="../../img/icon_25.png"/></span>
            </div>
        </div>
        <div class="aut_zl_bd">

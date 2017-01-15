@@ -1,10 +1,10 @@
 <template>
    <div class="aut_main">
        <div class="aut_top">
-           <div class="aut_top_icon">
-               <img src="../../img/icon_14.png" v-link="{path : 'mainEdit'}"/>
-           </div>
-           <div class="aut_tu">
+           <!--<div class="aut_top_icon">-->
+               <!--<img src="../../img/icon_14.png" v-link="{path : 'mainEdit'}"/>-->
+           <!--</div>-->
+           <div class="aut_tu" v-link="{path : './mainZy'}">
                <img src="../../img/icon_15.png"/>
                <p v-model="msg.userId">{{data.userName}}</p>
                <span v-model="msg.phone">{{msg.phone}}</span>
