@@ -280,6 +280,9 @@
                     case 'passenger_search'://乘客搜索页面
                         path = '/passenger/passengerSearch';
                         break;
+                    case 'home'://乘客搜索页面
+                        path = '/account/mainZl';
+                        break;
                     default ://默认返回司机端
                         path = '/driver'
                 }

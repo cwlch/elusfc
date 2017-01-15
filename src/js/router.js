@@ -131,6 +131,13 @@ export default (route) => {
                             require(["../module/account/editUserInfo.vue"], resolve);
                         }, 'module/account/editUserInfo');
                     }
+                },
+                '/myTrip' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/myTrip.vue"], (require) => {
+                            require(["../module/account/myTrip.vue"], resolve);
+                    }, 'module/account/myTrip');
+                    }
                 }
             }
         },

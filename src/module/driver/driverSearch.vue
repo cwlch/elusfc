@@ -13,31 +13,33 @@
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
             <div class="Pass_date">
-                <input type="text" id="txt1" placeholder="12月10日(今天)"/>
-                <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
+                <input type="text" v-model="dDate" id="txt1" placeholder="12月10日(今天)"/>
+                <img src="../../img/icon_3.png"/>
             </div>
         </div>
         <!--<div class="Pass_btn">-->
             <!--<input  v-link="{path:'/passenger/PassengerResults/'}" type="button" value="寻找车辆"/>-->
         <!--</div>-->
-        <a class="button" @click="search()">寻找车辆</a>
+        <a class="button" @click="search()">寻找乘客</a>
     </div>
 
 
 </template>
-<script>
+<script  type="text/ecmascript-6">
     export default{
         data(){
             return{
                 startAddressName : '',
                 uStart : '',
                 endAddressName : '',
-                uEnd : ''
+                uEnd : '',
+                dDate : eluUtil.dateFormat("yyyy/mm/dd")
             }
         },
         ready(){
             let start = JSON.parse(localStorage.getItem('driver_search_start_address')),
                 end = JSON.parse(localStorage.getItem('driver_search_end_address'));
+            this.dateInit();
             if(start){
                 this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
                 this.$set("uStart",start.street.id);
@@ -52,10 +54,24 @@
                 let par={
                     uStart : this.uStart,
                     uEnd : this.uEnd,
-//                    dDate : parseInt(new Date(eluUtil.dateFormat("yyyy-MM-dd") + "00:00").getTime()/1000)
+                    dDate : parseInt(new Date(this.dDate).getTime())
                 };
                 sessionStorage.setItem("driverSearchPar",JSON.stringify(par));
                 this.$router.go("./driverResults");
+            },
+            dateInit (){
+                var now = new Date(this.dDate),
+                    maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
+                $('#txt1').mobiscroll().date({
+                    theme: 'mobiscroll',
+                    lang: 'zh',
+                    display: 'bottom',
+                    minDate: now,
+                    maxDate: maxDate,
+                    dateOrder: 'MM dd',
+                    dateFormat : 'yyyy/mm/dd',
+                    rows : 3
+                });
             }
         }
     }
