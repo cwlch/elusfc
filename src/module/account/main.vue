@@ -13,7 +13,7 @@
        <div class="aut_list_b">
            <ul>
                <li class="img1"><img src="../../img/icon_16.png"/><a href="#">我的消息</a></li>
-               <li class="img2"><img src="../../img/icon_17.png"/><a href="#">我的行程</a></li>
+               <li class="img2" v-link="{path : 'myTripDriver'}"><img src="../../img/icon_17.png"/><a href="#">我发布的</a></li>
                <li class="img3"><img src="../../img/icon_18.png"/><a href="#">我的评价</a></li>
                <li class="img4"><img src="../../img/icon_19.png"/><a href="#">我的好友</a></li>
                <li class="img5"><img src="../../img/icon_20.png"/><a href="#">关注路线</a></li>

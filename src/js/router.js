@@ -132,11 +132,32 @@ export default (route) => {
                         }, 'module/account/editUserInfo');
                     }
                 },
-                '/myTrip' : {
+                '/myTripDriver' : {
                     component (resolve) {
-                        require.ensure(["../module/account/myTrip.vue"], (require) => {
-                            require(["../module/account/myTrip.vue"], resolve);
-                    }, 'module/account/myTrip');
+                        require.ensure(["../module/account/myTripDriver.vue"], (require) => {
+                            require(["../module/account/myTripDriver.vue"], resolve);
+                    }, 'module/account/myTripDriver');
+                    }
+                },
+                '/myTripDriverDetail' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/myTripDriverDetail.vue"], (require) => {
+                            require(["../module/account/myTripDriverDetail.vue"], resolve);
+                    }, 'module/account/myTripDriverDetail');
+                    }
+                },
+                '/myTripPassenger' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/myTripPassenger.vue"], (require) => {
+                            require(["../module/account/myTripPassenger.vue"], resolve);
+                    }, 'module/account/myTripDriver');
+                    }
+                },
+                '/myTripPassengerDetail' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/myTripPassengerDetail.vue"], (require) => {
+                            require(["../module/account/myTripPassengerDetail.vue"], resolve);
+                    }, 'module/account/myTripPassengerDetail');
                     }
                 }
             }
