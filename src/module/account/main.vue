@@ -2,7 +2,7 @@
    <div class="aut_main">
        <div class="aut_top">
            <div class="aut_top_icon">
-               <img src="../../img/icon_14.png"/>
+               <img src="../../img/icon_14.png" v-link="{path : 'mainEdit'}"/>
            </div>
            <div class="aut_tu">
                <img src="../../img/icon_15.png"/>
@@ -28,7 +28,7 @@
         data(){
             return{
                 msg:{
-                    uid:'test01',
+                    uid:'test01'
                 },
                 data : {}
             }

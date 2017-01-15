@@ -132,14 +132,12 @@
                             }
                         },({result}) => {
                             localStorage.setItem("addresData",JSON.stringify(result));
+                            res(result);
                         });
-
-
                     }else{
                         this.$set("addresData",data);
                         res(data);
                     }
-
                 });
             },
             /**

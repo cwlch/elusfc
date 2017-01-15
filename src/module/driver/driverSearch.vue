@@ -54,13 +54,21 @@
                 let par={
                     uStart : this.uStart,
                     uEnd : this.uEnd,
-                    dDate : parseInt(new Date(this.dDate).getTime())
+                    uDate : parseInt(new Date(this.dDate).getTime())
                 };
+                if(!par.uStart){
+                    eluUtil.tipsMod("出发地不能为空!");
+                    return false;
+                }
+                if(!par.uEnd){
+                    eluUtil.tipsMod("目的地不能为空!");
+                    return false;
+                }
                 sessionStorage.setItem("driverSearchPar",JSON.stringify(par));
                 this.$router.go("./driverResults");
             },
             dateInit (){
-                var now = new Date(this.dDate),
+                var now = new Date(this.uDate),
                     maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
                 $('#txt1').mobiscroll().date({
                     theme: 'mobiscroll',

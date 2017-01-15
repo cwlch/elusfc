@@ -22,7 +22,7 @@
                         </li>
                         <li>
                             <label>驾驶证</label>
-                            <input >
+                            <input type="file" accept="image/*">
                             <a href="#"><img src="../../img/icon_27.png"/></a>
                         </li>
                     </ul>

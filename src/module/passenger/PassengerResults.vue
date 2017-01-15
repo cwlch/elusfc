@@ -49,11 +49,6 @@
                 this.pageation();
             })
         },
-//        computed : {
-//            dateView (){
-//                return new Date(this.searchPar.dDate).getTime();
-//            }
-//        },
         methods : {
             reloadData(){
                 this.$set("listData",[]);
@@ -94,7 +89,7 @@
             },
             dateInit(){
                 var now = new Date(),
-                        defaultDate = this.searchPar.dDate,
+                        defaultDate = this.searchPar.uDate,
                         maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
                 $('#date').mobiscroll().date({
                     theme: 'mobiscroll',

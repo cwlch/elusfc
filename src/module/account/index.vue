@@ -2,8 +2,6 @@
     <router-view></router-view>
     <account-menu></account-menu>
 </template>
-<style>
-</style>
 <script type="text/ecmascript-6">
     import accountMenu from "./common/menu.vue";
     export default{

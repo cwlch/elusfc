@@ -13,8 +13,8 @@
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
             <div class="Pass_date">
-                <input type="text" id="txt1" v-model="dDate" placeholder="12月10日(今天)"/>
-                <a v-link="{path:'/passenger/Find_car'}"><img src="../../img/icon_3.png"/></a>
+                <input type="text" id="date" v-model="dDate" placeholder="12月10日(今天)"/>
+                <img src="../../img/icon_3.png"/>
             </div>
         </div>
         <a class="button" href="javascript:;" @click="search()">寻找车辆</a>
