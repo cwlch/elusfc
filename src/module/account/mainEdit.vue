@@ -18,11 +18,11 @@
                         </li>
                         <li>
                             <label>驾驶证号</label>
-                            <input v-model="data.licence_id"  type="text">
+                            <input v-model="data.licenceId"  type="text">
                         </li>
                         <li>
                             <label>驾驶证</label>
-                            <input type="file" accept="image/*" @change="selectFile">
+                            <input type="file" accept="image/*" @change="selectFile1">
                             <a href="#"><img src="../../img/icon_27.png"/></a>
                         </li>
                     </ul>
@@ -52,7 +52,7 @@
                         </li>
                         <li>
                             <label>行驶证</label>
-                            <input type="text">
+                            <input type="file" accept="image/*" @change="selectFile2">
                             <a href="#"> <img src="../../img/icon_27.png"/></a>
                         </li>
                     </ul>
@@ -130,10 +130,11 @@
                     eluUtil.tipsMod("注册日期不能为空!");
                     return false;
                 }
+                console.log(parSer)
+//                return false
                 $.ajax({
                     url : eluConfig.serverPath + 'user/addCarAndLicence',
-                    type : 'get',
-                    dataType : "jsonp",
+                    type : 'post',
                     data:parSer,
                     success : function (data) {
                         if(data.retCode == '200'){
@@ -142,18 +143,24 @@
                     }
                 });
             },
-            selectFile(e){
-//                eluUtil.convertImgToBase64($(e.target).val());
-                let $target = $(e.target),
-                    file = e.target.files[0];
-                var reader = new FileReader();
+            selectFile1(e){
+                let file = e.target.files[0],
+                    reader = new FileReader();
                 reader.readAsDataURL(file);
-                reader.onload =function(e){
-                    console.log(e.target.result)
+                alert(file.size)
+                reader.onload = (e) =>{
+                    let bas64 = e.target.result.split(",")[1];
+                    this.$set('data.carImgCode',bas64);
                 };
-
-//                console.log(file)
-//                console.log(eluUtil.convertImgToBase64('file:///me/l.jpg',file.type));
+            },
+            selectFile2(e){
+                let file = e.target.files[0],
+                    reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (e) =>{
+                    let bas64 = e.target.result.split(",")[1];
+                    this.$set('data.liceneceImgCode',bas64);
+                };
             }
         }
     }
