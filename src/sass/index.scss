@@ -723,6 +723,9 @@ input::-webkit-input-placeholder {
 	padding-right:torem(14);
 	color:#666;
 }
+.aut_zl_blist1 li input[type=file]{
+	opacity: 0;
+}
 .aut_zl_blist1 li img{
 	width:torem(17);
 	float: right;

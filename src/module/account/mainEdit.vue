@@ -14,11 +14,11 @@
                     <ul>
                         <li>
                             <label>姓名</label>
-                            <input v-model="data.carLord" type="text">
+                            <input v-model="data.userLicence.licenceName" type="text">
                         </li>
                         <li>
                             <label>驾驶证号</label>
-                            <input v-model="data.licenceId"  type="text">
+                            <input v-model="data.userLicence.licenceId"  type="text">
                         </li>
                         <li>
                             <label>驾驶证</label>
@@ -35,30 +35,32 @@
                     <ul>
                         <li>
                             <label>品牌型号</label>
-                            <input v-model="data.brand" type="text">
+                            <input v-model="data.car.brand" type="text">
                             <img src="../../img/icon_26.png"/>
                         </li>
                         <li>
                             <label>车牌号</label>
-                            <input v-model="data.carNo" type="text">
+                            <input v-model="data.car.carNo" type="text">
                         </li>
                         <li>
                             <label>车辆所属人</label>
-                            <input v-model="data.carLord" type="text">
+                            <input v-model="data.car.carLord" type="text">
                         </li>
                         <li>
                             <label>注册日期</label>
-                            <input v-model="data.createTime" type="text">
+                            <input v-model="data.car.regTime" type="text">
                         </li>
                         <li>
                             <label>行驶证</label>
                             <input type="file" accept="image/*" @change="selectFile2">
-                            <a href="#"> <img src="../../img/icon_27.png"/></a>
+                            <a href="javascript:;"> <img src="../../img/icon_27.png"/></a>
                         </li>
                     </ul>
                 </form>
             </div>
         </div>
+        <img :src="'http://onlyone2017.com/images/' + data.car.regImg" style="width: 50px !important;"/>
+        <img :src="'http://onlyone2017.com/images/' + data.userLicence.licenceImg" style="width: 50px !important;"/>
         <a class="button v-link-active" @click="SubAdd()">申请认证</a>
     </div>
 </template>
@@ -66,13 +68,8 @@
     export default{
         data(){
             return{
-                msg:{
-                    uid:'test01',
-                },
-                data : {
-                    licenceId:'12345655',
-                    licenceImg:'b.jpg'
-                }
+                uid:'test01',
+                data : {}
             }
         },
         ready(){
@@ -80,40 +77,37 @@
         },
         methods : {
             Obtain(){
-                let par = Object.assign({},this.msg),
+                let par = {
+                    uid : this.uid
+                },
                     _this = this;
-                $.ajax({
-                    url : 'http://onlyone2017.com/elu/user/queryUserDetail',
-                    type : 'get',
-                    dataType : "jsonp",
-                    data:par,
-                    success : function (data) {
-                        if(data.retCode == '200'){
-                            data.car.createTime = eluUtil.dateFormat("yyyy/mm/dd",data.car.createTime);
-                            _this.$set('data',Object.assign({},_this.data,data.car));
-//                            console.log(_this.data)
-                        }
+                eluUtil.jsonp({
+                    url : eluConfig.serverPath +'user/queryUserDetail',
+                    data:par
+                },(data)=>{
+                    if(data.retCode == '200'){
+                        data.car.regTime = eluUtil.dateFormat("yyyy/mm/dd",data.car.regTime);
+                        _this.$set('data',data);
                     }
                 });
             },
             SubAdd(){
-                let parSer =Object.assign({},this.msg,this.data);
-                parSer.createTime = new Date(parSer.createTime).getTime();
+                let data = this.data,
+                    parSer = {
+                        userId : data.car.userId,
+                        licenceId : data.userLicence.licenceId,
+                        liceneceImgCode : data.userLicence.liceneceImgCode,
+                        licenceName: data.userLicence.licenceName,
+                        carLord : data.car.carLord,
+                        brand : data.car.brand,
+                        carNo : data.car.carNo,
+                        regTime : new Date(data.car.regTime).getTime(),
+                        carImgCode : data.car.carImgCode
+                    };
                 if(!parSer.carLord){
                     eluUtil.tipsMod("姓名不能为空!");
                     return false;
                 }
-                /*
-                *驾驶证和驾驶证号
-                if(!parSer.carLord){
-                    eluUtil.tipsMod("姓名不能为空!");
-                    return false;
-                }
-                if(!parSer.carLord){
-                    eluUtil.tipsMod("姓名不能为空!");
-                    return false;
-                }
-                */
                 if(!parSer.brand){
                     eluUtil.tipsMod("品牌型号不能为空!");
                     return false;
@@ -126,12 +120,11 @@
                     eluUtil.tipsMod("车辆所属人不能为空!");
                     return false;
                 }
-                if(!parSer.createTime){
+                if(!parSer.regTime){
                     eluUtil.tipsMod("注册日期不能为空!");
                     return false;
                 }
-                console.log(parSer)
-//                return false
+
                 $.ajax({
                     url : eluConfig.serverPath + 'user/addCarAndLicence',
                     type : 'post',
@@ -147,10 +140,10 @@
                 let file = e.target.files[0],
                     reader = new FileReader();
                 reader.readAsDataURL(file);
-                alert(file.size)
+//                alert(file.size)
                 reader.onload = (e) =>{
                     let bas64 = e.target.result.split(",")[1];
-                    this.$set('data.carImgCode',bas64);
+                    this.$set('data.car.carImgCode',bas64);
                 };
             },
             selectFile2(e){
@@ -159,7 +152,7 @@
                 reader.readAsDataURL(file);
                 reader.onload = (e) =>{
                     let bas64 = e.target.result.split(",")[1];
-                    this.$set('data.liceneceImgCode',bas64);
+                    this.$set('data.userLicence.liceneceImgCode',bas64);
                 };
             }
         }
