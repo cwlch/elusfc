@@ -111,17 +111,21 @@ let Util = {
     convertImgToBase64(url, callback, outputFormat){
         var canvas = document.createElement('CANVAS'),
             ctx = canvas.getContext('2d'),
-            img = new Image;
-        img.crossOrigin = 'Anonymous';
-        img.onload = function(){
-            canvas.height = img.height;
-            canvas.width = img.width;
-            ctx.drawImage(img,0,0);
+            img = document.createElement('img');
+        // img.crossOrigin = 'Anonymous';
+        img.src = url;
+        $(img).load(function(){
+            let w = 400,
+                rda = w / img.width,
+                h = img.height * rda;
+            canvas.height = h;
+            canvas.width = w;
+            ctx.drawImage(img,0,0,w,h);
             var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+            // alert(dataURL)
             callback.call(this, dataURL);
             canvas = null;
-        };
-        img.src = url;
+        });
     }
 };
 window.eluUtil = window.eluUtil || Util;

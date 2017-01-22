@@ -1,10 +1,8 @@
 <template>
    <div class="aut_main">
-       <div class="aut_top">
-           <!--<div class="aut_top_icon">-->
-               <!--<img src="../../img/icon_14.png" v-link="{path : 'mainEdit'}"/>-->
-           <!--</div>-->
-           <div class="aut_tu" v-link="{path : './mainZy'}">
+       <div class="aut_top" v-link="{path : './mainZy'}">
+           <div class="aut_top_icon green">个人主页 </div>
+           <div class="aut_tu">
                <img src="../../img/icon_15.png"/>
                <p v-model="msg.userId">{{data.userName}}</p>
                <span v-model="msg.phone">{{msg.phone}}</span>
@@ -12,15 +10,15 @@
        </div>
        <div class="aut_list_b">
            <ul>
-               <li class="img1"><img src="../../img/icon_16.png"/><a href="#">我的消息</a></li>
-               <li class="img2" v-link="{path : 'myTripDriver'}"><img src="../../img/icon_17.png"/><a href="#">我发布的</a></li>
-               <li class="img3"><img src="../../img/icon_18.png"/><a href="#">我的评价</a></li>
-               <li class="img4"><img src="../../img/icon_19.png"/><a href="#">我的好友</a></li>
-               <li class="img5"><img src="../../img/icon_20.png"/><a href="#">关注路线</a></li>
-               <li class="img6"><img src="../../img/icon_21.png"/><a href="#">系统设置</a></li>
+               <li class="img1" @click="tips()"><img src="../../img/icon_16.png"/><a href="javascript:;">我的消息</a></li>
+               <li class="img2" v-link="{path : 'myTripDriver'}"><img src="../../img/icon_17.png"/><a href="javascript:;">我发布的</a></li>
+               <li class="img3" @click="tips()"><img src="../../img/icon_18.png"/><a href="javascript:;">我的评价</a></li>
+               <li class="img4" @click="tips()"><img src="../../img/icon_19.png"/><a href="javascript:;">我的好友</a></li>
+               <li class="img5" @click="tips()"><img src="../../img/icon_20.png"/><a href="javascript:;">关注路线</a></li>
+               <li class="img6" @click="tips()"><img src="../../img/icon_21.png"/><a href="javascript:;">系统设置</a></li>
            </ul>
        </div>
-       <a class="button" v-link="{path:'/account/'}">认证成为车主</a>
+       <a class="button" v-link="{path:'/account/mainEdit'}">认证成为车主</a>
    </div>
 </template>
 <script type="text/ecmascript-6">
@@ -52,6 +50,9 @@
                         console.log(data);
                     }
                 });
+            },
+            tips(){
+                eluUtil.tipsMod("此模块暂未开通!")
             }
         }
     }

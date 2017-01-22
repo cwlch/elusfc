@@ -21,8 +21,8 @@
                 <li class="Explain">乘客说：{{recordData.remark}}</li>
             </ul>
         </div>
-        <a class="button" href="tel:15347393950">联系他</a>
-        <div class="details_introduce">请说明您是在E鹿顺风车平台看到的哦！</div>
+        <a class="button cancel">编辑</a>
+        <a class="button">刷新(更新信息置顶)</a>
     </div>
 </template>
 <script type="text/ecmascript-6">

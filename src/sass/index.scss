@@ -21,6 +21,15 @@
 		background: #fff;
 	}
 }
+.green{
+	color: green;
+}
+.red{
+	color: red;
+}
+.blue{
+	color: blue;
+}
 
 
 
@@ -134,7 +143,9 @@ input::-webkit-input-placeholder {
 	font-size:torem(32);
 	text-align: center;
 }
-
+.cancel{
+	background: #ccc;
+}
 
 /*日历样式*/
 .my_calendar{ display:none; position:absolute; width:210px; border:1px solid black; top:0; left:0;  overflow:hidden; background:#fff;}
@@ -272,6 +283,17 @@ input::-webkit-input-placeholder {
 .vehicles_right{
 	width:torem(139);height:torem(146);float:$silde_l; text-align: center;line-height:torem(126);
 	color:#4baa2c;font-size:torem(36);margin-top:torem(40);
+	em,b{
+		font-style: normal;
+		font-size: torem(28);
+		display: block;
+		height: 50%;
+		line-height: torem(70);
+	}
+	b{
+		font-size: torem(32);
+		line-height: torem(30);
+	}
 }
 .Results_more{
 	width:$Percen;height:torem(50);line-height:torem(50);font-size:torem(36);color:#b8b8b8;text-align:center;
@@ -488,6 +510,9 @@ input::-webkit-input-placeholder {
 	text-align: center;
 	padding-bottom: torem(65);
 }
+.main_tu{
+	padding-top: torem(30);
+}
 .aut_tu img{
 	width: torem(235);
 	height:torem(235);
@@ -689,11 +714,21 @@ input::-webkit-input-placeholder {
 	height:torem(45);
 }
 .aut_zl_bd{
-	height:torem(628);
+	//height:torem(628);
 	border-top: 1px solid #c8c7cc;
 	border-bottom:1px solid #c8c7cc;
 	background:#fff;
 	margin-bottom: torem(30);
+}
+.aut_zl_bd_titile{
+	line-height: torem(70);
+	font-size: torem(32);
+	padding-left: torem(22);
+	font-weight: normal;
+	span{
+		font-size: torem(28);
+		margin-left: torem(10);
+	}
 }
 .aut_zl_blist1{
 	margin-left:torem(22);
@@ -706,6 +741,9 @@ input::-webkit-input-placeholder {
 	 line-height:torem(89);
 	position: relative;
  }
+.aut_zl_blist1 li:last-child{
+	border:0
+}
 .aut_zl_blist1 li label{
 	display: block;
 	height: 100%;
@@ -725,6 +763,9 @@ input::-webkit-input-placeholder {
 }
 .aut_zl_blist1 li input[type=file]{
 	opacity: 0;
+}
+.aut_zl_blist1 li input[disabled]{
+	color: #d2d9e1;
 }
 .aut_zl_blist1 li img{
 	width:torem(17);

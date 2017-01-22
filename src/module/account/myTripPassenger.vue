@@ -22,7 +22,10 @@
                         <p class="center"><img src="../../img/icon_9.png"/></p>
                         <p>{{i.uEndStr}}</p>
                     </div>
-                    <div class="vehicles_right">{{format("mm-dd",i.uDate)}}</div>
+                    <div class="vehicles_right">
+                        <em>{{format("mm-dd",i.uDate)}}</em>
+                        <b>{{format("hh:ii",i.uDate)}}</b>
+                    </div>
                 </div>
             </a>
             <div class="Results_more">没有更多数据</div>

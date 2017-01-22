@@ -20,8 +20,8 @@
                     <span>
                         <img src="../../img/icon_10.png"/>
                     </span>
-                <p>{{recordData.uStart}}</p>
-                <p>{{recordData.uEnd}}</p>
+                <p>{{recordData.uStartStr}}</p>
+                <p>{{recordData.uEndStr}}</p>
             </li>
             <li class="moeny">
                 <b>可坐人数：{{recordData.uCount}}位</b>

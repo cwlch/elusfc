@@ -13,7 +13,7 @@
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
             <div class="Pass_date">
-                <input type="text" v-model="dDate" id="txt1" placeholder="12月10日(今天)"/>
+                <input type="text" v-model="uDate" id="txt1" placeholder="出发日期"/>
                 <img src="../../img/icon_3.png"/>
             </div>
         </div>

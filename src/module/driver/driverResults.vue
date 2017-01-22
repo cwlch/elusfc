@@ -1,7 +1,7 @@
 <template>
     <div class="Results">
         <div class="Results_title"><ul>
-            <li v-for="i in dateList" :class="{'current' : i.time == searchPar.dDate}" @click="selectDate(i.time)">{{i.date}}</li>
+            <li v-for="i in dateList" :class="{'current' : i.time == searchPar.uDate}" @click="selectDate(i.time)">{{i.date}}</li>
         </ul>
             <img id="date" src="../../img/icon_5.png"/>
         </div>
@@ -15,9 +15,9 @@
                     </div>
                     <img class="ve_line" src="../../img/icon_8.gif"/>
                     <div class="vehicles_center v_top">
-                        <p>{{i.uStart}}</p>
+                        <p>{{i.uStartStr}}</p>
                         <p class="center"><img src="../../img/icon_9.png"/></p>
-                        <p>{{i.uEnd}}</p>
+                        <p>{{i.uEndStr}}</p>
                     </div>
                     <div class="vehicles_right">{{format("hh:ii",i.uDate)}}</div>
                 </div>
@@ -67,7 +67,7 @@
                     i = -1;
                     len = 3;
                 }
-                this.$set("searchPar.dDate",myDay);
+                this.$set("searchPar.uDate",myDay);
                 $('#date').mobiscroll('setVal', new Date(myDay));
                 for(; i < len; i++){
                     me = eluUtil.setDateDay(myDate,i);
@@ -81,7 +81,7 @@
             },
             dateInit(){
                 var now = new Date(),
-                        defaultDate = this.searchPar.dDate,
+                        defaultDate = this.searchPar.uDate,
                         maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
                 $('#date').mobiscroll().date({
                     theme: 'mobiscroll',
@@ -94,7 +94,7 @@
                     dateFormat : 'yyyy/mm/dd',
                     rows : 3,
                     onClose : (event, inst) =>{
-                        if(new Date(event).getTime() !== this.searchPar.dDate && inst ==='set'){
+                        if(new Date(event).getTime() !== this.searchPar.uDate && inst ==='set'){
                             this.selectDate(event);
                         }
                     }

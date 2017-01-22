@@ -43,7 +43,7 @@
                     uStart : '',
                     uEnd : '',
                     uCount : '',
-                    uDate : eluUtil.dateFormat("yyyy/mm/dd"),
+                    uDate : eluUtil.dateFormat("yyyy/mm/dd hh:ii"),
                     remark : ''
                 }
             }
@@ -99,7 +99,7 @@
             dateInit (){
                 var now = new Date(this.savePar.uDate),
                         maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
-                $('#date').mobiscroll().date({
+                $('#date').mobiscroll().datetime({
                     theme: 'mobiscroll',
                     lang: 'zh',
                     display: 'bottom',
