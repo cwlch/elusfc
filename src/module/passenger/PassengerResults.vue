@@ -25,8 +25,7 @@
                     <div class="vehicles_right">{{format("hh:ii",i.dDate)}}</div>
                 </div>
             </a>
-
-            <div class="Results_more">没有更多数据</div>
+            <div class="Results_more" v-text="queryTxt"></div>
         </div>
     </div>
 </template>
@@ -34,6 +33,8 @@
     export default{
         data(){
             return{
+                queryTxt : "正在查询...",
+                queryStatus : false,
                 searchPar : Object.assign({
                     page : 0,
                     per : 5
@@ -45,21 +46,41 @@
         ready(){
             this.selectDate(this.searchPar.dDate);
             this.dateInit();
+            this.setMainHeight();
             $(".Results_main").on("swipeup",()=>{
                 this.pageation();
-            })
+            });
+
+
         },
         methods : {
             reloadData(){
                 this.$set("listData",[]);
                 this.queryData();
             },
+            setMainHeight(){
+                let wH = $(document).height(),
+                        tH = $(".Results_title").height() + 10,
+                        bH = $(".menu").height(),
+                        mH = wH - tH - bH;
+                $(".Results_main").height(mH).css('margin-top',tH);
+            },
             queryData(){
+                if(this.queryStatus){
+                    return false;
+                }
                 let par = Object.assign({},this.searchPar);
+                this.$set("queryTxt","正在查询...");
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/queryCar',
                     data : par
                 },res=>{
+                    if(res.result.length <= 0){
+                        this.$set("queryTxt","没有更多数据");
+                        this.$set("queryStatus",true);
+                    }else{
+                        this.$set("queryTxt","下拉查看更多");
+                    }
                     this.$set("listData",this.listData.concat(res.result));
                 });
             },
@@ -76,6 +97,7 @@
                     len = 3;
                 }
                 this.$set("searchPar.dDate",myDay);
+                sessionStorage.setItem("passengerSearchPar",JSON.stringify(this.searchPar));
                 $('#date').mobiscroll('setVal', new Date(myDay));
                 for(; i < len; i++){
                     me = eluUtil.setDateDay(myDate,i);
@@ -84,12 +106,13 @@
                         date : eluUtil.dateFormat("mm月dd",me)
                     });
                 }
+                this.$set("queryStatus",false);
                 this.$set('dateList',date);
                 this.reloadData();
             },
             dateInit(){
                 var now = new Date(),
-                        defaultDate = this.searchPar.uDate,
+                        defaultDate = this.searchPar.dDate,
                         maxDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate(),23,59);
                 $('#date').mobiscroll().date({
                     theme: 'mobiscroll',

@@ -1,1 +1,1 @@
-window.serverPath0 = "http://onlyone2017.com/";
+window.serverPath0 = "http://localhost:8080/";

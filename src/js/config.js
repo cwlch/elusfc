@@ -4,7 +4,7 @@
 import serverPath from "./serverPath.js";
 let Config = {
     all : '这是全局变量',
-    serverPath : serverPath0 + 'elu/'
+    serverPath : serverPath0
 };
 
 window.eluConfig = window.eluConfig || Config;

@@ -41,6 +41,7 @@
         ready(){
             this.selectDate(this.searchPar.uDate);
             this.dateInit();
+            this.setMainHeight();
         },
         methods : {
             queryData(){
@@ -99,6 +100,13 @@
                         }
                     }
                 });
+            },
+            setMainHeight(){
+                let wH = $(document).height(),
+                        tH = $(".Results_title").height() + 10,
+                        bH = $(".menu").height(),
+                        mH = wH - tH - bH;
+                $(".Results_main").height(mH).css('margin-top',tH);
             }
         }
     }

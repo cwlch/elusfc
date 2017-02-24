@@ -8,7 +8,7 @@
                </ul>
            </div>
        </div>
-       <div class="aut_zl_tu">
+       <div class="aut_zl_tu aut_zl_top">
            <div class="aut_zl_t">
                <img src="../../img/icon_24.png"/>
                <span><img src="../../img/icon_25.png"/></span>
@@ -24,7 +24,8 @@
                         </li>
                         <li>
                             <label>性别</label>
-                            <input  v-model="data.gender"   type="text">
+                            <m-vue-slect :opt-list="genderList" placeholder="请选择性别" :v-model.sync="data.gender" name-key="name" val-key="id"></m-vue-slect>
+
                         </li>
                         <li>
                             <label>年龄</label>
@@ -44,18 +45,32 @@
    </div>
 </template>
 <script type="text/ecmascript-6">
+    import mSelect from  '../common/m-vue-slect.vue';
     export default{
         data(){
             return{
                 msg:{
                     uid:'test01',
                 },
+                genderList : [
+                    {
+                        name : '男',
+                        id : 0
+                    },
+                    {
+                        name : '女',
+                        id : 1
+                    }
+                ],
                 data : {}
             }
         },
         ready(){
             this.Exhibition();
             this.dateInit();
+        },
+        components : {
+            'm-vue-slect' : mSelect
         },
         methods : {
             format : eluUtil.dateFormat,

@@ -1,0 +1,17 @@
+@import "base";
+
+
+.passenger_layers{
+	padding: torem(20);
+	font-size: torem(28);
+	text-align: center;
+	b{
+		font-size: torem(34);
+	}
+	a{
+		color: $green;
+	}
+	p{
+		margin: torem(20) 0;
+	}
+}

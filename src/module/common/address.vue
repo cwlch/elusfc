@@ -9,43 +9,36 @@
             </p>
             <a @click="goBack()">取消</a>
         </div>
-        <!--<h3>当前定位城市:北京市</h3>-->
-        <!--<h2>热门城市</h2>-->
-        <!--<ul class="hot">-->
-            <!--<li class="this">北京</li>-->
-            <!--<li>长沙</li>-->
-            <!--<li>深圳</li>-->
-            <!--<li>邵阳</li>-->
-        <!--</ul>-->
         <div class="Testing_main">
             <dl>
+                <dt v-if="queryTipsTxt.length > 0">{{queryTipsTxt}}</dt>
                 <dd v-for="i in listData" data-id="{{i.id}}" @click="selectedAddres(i.id,i.areaName)">{{i.areaName}}</dd>
             </dl>
         </div>
-        <ul class="Fixed">
-            <li>A</li>
-            <li>B</li>
-            <li>C</li>
-            <li>D</li>
-            <li>E</li>
-            <li>F</li>
-            <li>G</li>
-            <li>H</li>
-            <li>J</li>
-            <li>K</li>
-            <li>L</li>
-            <li>M</li>
-            <li>N</li>
-            <li>P</li>
-            <li>Q</li>
-            <li>R</li>
-            <li>S</li>
-            <li>T</li>
-            <li>W</li>
-            <li>X</li>
-            <li>Y</li>
-            <li>Z</li>
-        </ul>
+        <!--<ul class="Fixed">-->
+            <!--<li>A</li>-->
+            <!--<li>B</li>-->
+            <!--<li>C</li>-->
+            <!--<li>D</li>-->
+            <!--<li>E</li>-->
+            <!--<li>F</li>-->
+            <!--<li>G</li>-->
+            <!--<li>H</li>-->
+            <!--<li>J</li>-->
+            <!--<li>K</li>-->
+            <!--<li>L</li>-->
+            <!--<li>M</li>-->
+            <!--<li>N</li>-->
+            <!--<li>P</li>-->
+            <!--<li>Q</li>-->
+            <!--<li>R</li>-->
+            <!--<li>S</li>-->
+            <!--<li>T</li>-->
+            <!--<li>W</li>-->
+            <!--<li>X</li>-->
+            <!--<li>Y</li>-->
+            <!--<li>Z</li>-->
+        <!--</ul>-->
 
 
     </div>
@@ -58,6 +51,7 @@
                 currentKey : null,
                 addresData : [],
                 listData : [],
+                queryTipsTxt : '数据加载中...',
                 selectedData : {
                     city : {},
                     county:{},
@@ -101,6 +95,9 @@
              */
             setListData (type){
                 let promesin;
+
+                this.$set('queryTipsTxt',"数据加载中...");
+                this.$set('listData', []);
                 switch (type){
                     case 'city':
                         promesin = this.queryCity();
@@ -113,6 +110,11 @@
                         break;
                 }
                 promesin.then( data => {
+                    if(data.length > 0){
+                        this.$set('queryTipsTxt',"");
+                    }else{
+                        this.$set('queryTipsTxt',"暂无数据");
+                    }
                     this.$set('listData', data)
                 })
             },
@@ -126,12 +128,13 @@
                     if(!data){
                         //如果本地没有数据则在这做数据请求
                         eluUtil.jsonp({
-                            url : 'http://onlyone2017.com/elu/areas/queryAreas',
+                            url : eluConfig.serverPath + 'areas/queryAreas',
                             data : {
                                 level : 2
                             }
                         },({result}) => {
                             localStorage.setItem("addresData",JSON.stringify(result));
+                            this.$set("addresData",result);
                             res(result);
                         });
                     }else{
@@ -150,18 +153,23 @@
                             mydata = this.addresData;
                     for(let i = mydata.length;i--;){
                         if(mydata[i].id === this.selectedData.city.id){
+                            console.log(mydata[i].childrens);
+                            console.log(mydata[i]);
                             if(mydata[i].childrens){
                                 data = mydata[i].childrens;
                                 res(data);
                             }else{
                                 //如果发现本地数据没有这个市的区县就在这发送AJAX请求
                                 eluUtil.jsonp({
-                                    url : 'http://onlyone2017.com/elu/areas/queryAreas',
+                                    url : eluConfig.serverPath + 'areas/queryAreas',
                                     data : {
                                         level : 3,
                                         parentId : mydata[i].id
                                     }
                                 },({result}) => {
+                                    mydata[i].childrens = result;
+                                    this.$set("addresData",mydata);
+                                    sessionStorage.setItem("addresData",JSON.stringify(mydata));
                                     res(result);
                                 });
                             }
@@ -187,7 +195,7 @@
                                 }else{
                                     //如果发现本地数据没有这个县的街道就在这发送AJAX请求
                                     eluUtil.jsonp({
-                                        url : 'http://onlyone2017.com/elu/areas/queryAreas',
+                                        url : eluConfig.serverPath + 'areas/queryAreas',
                                         data : {
                                             level : 4,
                                             parentId : mydata[i].id

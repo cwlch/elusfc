@@ -1,11 +1,14 @@
 <template>
     <div class="aut_main">
         <div class="aut_zl">
-            <div class="aut_zls">
+            <div class="aut_zls l">
                 <ul>
                     <li v-link="{path:'./myTripPassenger'}">找车</li>
                     <li class="curr1">找人</li>
                 </ul>
+            </div>
+            <div class="aut_xz">
+                <m-vue-slect :opt-list="statusList" placeholder="选择状态" :v-model.sync="sataus" name-key="name" val-key="id"></m-vue-slect>
             </div>
         </div>
         <div class="Results_main">
@@ -31,14 +34,34 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
+    import mSelect from  '../common/m-vue-slect.vue';
     export default{
         data(){
             return {
-                listData : []
+                listData : [],
+                sataus : 0,
+                statusList : [
+                    {
+                        name : '进行中',
+                        id : 0
+                    },
+                    {
+                        name : '已关闭',
+                        id : 1
+                    },
+                    {
+                        name : '已过期',
+                        id : 2
+                    }
+                ]
             }
         },
         ready(){
             this.queryData();
+            this.setMainHeight();
+        },
+        components : {
+            'm-vue-slect' : mSelect
         },
         methods:{
             queryData(){
@@ -57,7 +80,14 @@
                     }
                 });
             },
-            format : eluUtil.dateFormat
+            format : eluUtil.dateFormat,
+            setMainHeight(){
+                let wH = $(document).height(),
+                        tH = $(".aut_zl").height()+10,
+                        bH = $(".menu").height(),
+                        mH = wH - tH - bH;
+                $(".Results_main").height(mH).css('margin-top',tH);
+            }
         }
     }
 </script>

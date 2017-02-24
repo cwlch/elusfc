@@ -28,14 +28,10 @@
         </div>
         <a class="button" @click="save()">发布找车信息</a>
     </div>
-
-
-
-
 </template>
 <script type="text/ecmascript-6">
-    export default{
-        data(){
+        export default{
+                data(){
             return{
                 savePar : {
                     uStartStr : '您从哪儿出发',
@@ -89,7 +85,10 @@
                     data : par
                 }, function(res){
                     if(res.retCode == '200'){
-                        eluUtil.tipsMod("成功");
+                        let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b><p>请前往<a href="./index.html#!/account/myTripPassenger" id="layers_url">我的行程</a>中查看</p></div>`);
+                        layer.$con.find('#layers_url').click(res =>{
+                            layer.close();
+                        });
                     }
                 });
             },

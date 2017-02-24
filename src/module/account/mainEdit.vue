@@ -8,7 +8,7 @@
                 </ul>
             </div>
         </div>
-        <h2 class="aut_zl_bd_titile">驾驶证
+        <h2 class="aut_zl_bd_titile aut_zl_top">驾驶证
             <span v-if="data.userLicence.status == '1'" class="blue">认证中<small>(1-7个工作日)</small></span>
             <span v-if="data.userLicence.status == '2'" class="red">认证失败<small>(失败原因)</small></span>
             <span v-if="data.userLicence.status == '3'" class="green">认证成功</span>
@@ -25,7 +25,7 @@
                             <label>驾驶证号</label>
                             <input v-model="data.userLicence.licenceId" disabled type="text">
                         </li>
-                        <li v-if="data.userLicence.status=='0' || data.userLicence.status=='2'">
+                        <li v-if="data.userLicence.status =='0' || data.userLicence.status=='2'">
                             <label>驾驶证</label>
                             <input type="file" accept="image/*" @change="selectFile1">
                             <a href="javascript:;"><img src="../../img/icon_27.png"/></a>
@@ -58,7 +58,8 @@
                         </li>
                         <li>
                             <label>注册日期</label>
-                            <input v-model="data.car.regTime" disabled id="date" type="text">
+                            <input v-model="data.car.regTime"  v-show="data.car.status =='0' || data.car.status=='2'" id="date" type="text">
+                            <input v-model="data.car.regTime"  v-show="data.car.status =='1' || data.car.status=='3'" disabled type="text">
                         </li>
                         <li v-if="data.car.status=='0' || data.car.status=='2'">
                             <label>行驶证</label>
@@ -69,8 +70,7 @@
                 </form>
             </div>
         </div>
-        <a class="button v-link-active" @click="SubAdd()">申请认证</a>
-        <a class="button v-link-active" @click="SubAdd()">申请认证</a>
+        <a class="button v-link-active" v-if="data.car.status == 0 || data.userLicence.status == 0" @click="SubAdd()">申请认证</a>
     </div>
 </template>
 <script type="text/ecmascript-6">

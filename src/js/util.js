@@ -3,7 +3,8 @@
  * 网站所有的一些公共方法
  * 这个Util对外暴露
  */
-let Util = {
+let ajaxStatus = [],
+    Util = {
 
     /**
      * 弹出提示
@@ -41,6 +42,24 @@ let Util = {
             }
         });
 
+    },
+    layers(str,{close = true,confirm = false,cancel = false} = {}){
+        let closeStr = close ? '<div class="layers_close"><em>×</em></div>' : '',
+            operationStr = (confirm || cancel) ? `<div class="layers_operation"></div>` : '',
+            $con = $(`<div class="layers">${closeStr}<div class="layers_con">${str}</div>${operationStr}</div>`),
+            $bg = $(`<div class="bg"></div>`),
+            closeFn = ()=>{
+                $con.remove();
+                $bg.remove();
+            };
+        $("body").append($con).append($bg);
+        if(close){
+            $con.find(".layers_close").on('click',closeFn);
+        }
+        return {
+            $con : $con.find(".layers_con"),
+            close : closeFn
+        };
     },
     /**
      * 时间格式化
@@ -92,10 +111,23 @@ let Util = {
         },
         finish =() =>{},
         success = res =>{
+            for(let i = ajaxStatus.length; i--;){
+                if(ajaxStatus[i] == url){
+                    ajaxStatus.splice(i,1)
+                }
+            }
             cbk(res);
             finish();
         }
     },cbk){
+        //防止重复请求
+        console.log(ajaxStatus);
+        for(let i = ajaxStatus.length; i--;){
+            if(ajaxStatus[i] == url){
+                return false;
+            }
+        }
+        ajaxStatus.push(url);
         let promise =  $.ajax({
             url : url,
             type: type,
@@ -105,7 +137,13 @@ let Util = {
             error : error
         });
         if(!cbk){
-            return promise;
+            return promise.then(()=>{
+                for(let i = ajaxStatus.length; i--;){
+                    if(ajaxStatus[i] == url){
+                        ajaxStatus.splice(i,1)
+                    }
+                }
+            });
         }
     },
     convertImgToBase64(url, callback, outputFormat){
