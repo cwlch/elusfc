@@ -41,7 +41,7 @@ eluUtil.jsonp({
     eluConfig.user = res.user;
     eluConfig.user.verifyDriver = res.status;
     let layer = eluUtil.layers(`<div class="account_layers">
-                <b>法律声明:</b>
+                <b>服务协议:</b>
                 <p>e鹿同行平台免费提供发布顺风车信息服务,不与用户有任何利益关系。搭车前请自行协商,e鹿同行平台不负担任何责任!</p>
                 <a>我知道了</a>
             </div>`);

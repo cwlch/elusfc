@@ -159,6 +159,27 @@ export default (route) => {
                             require(["../module/account/myTripPassengerDetail.vue"], resolve);
                     }, 'module/account/myTripPassengerDetail');
                     }
+                },
+                '/system' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/system.vue"], (require) => {
+                            require(["../module/account/system.vue"], resolve);
+                    }, 'module/account/system');
+                    }
+                },
+                '/agreement' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/agreement.vue"], (require) => {
+                            require(["../module/account/agreement.vue"], resolve);
+                    }, 'module/account/agreement');
+                    }
+                },
+                '/about' : {
+                    component (resolve) {
+                        require.ensure(["../module/account/about.vue"], (require) => {
+                            require(["../module/account/about.vue"], resolve);
+                    }, 'module/account/about');
+                    }
                 }
             }
         },

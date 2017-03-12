@@ -15,7 +15,7 @@
                <li class="img3 disable" @click="tips()"><img src="../../img/icon_18.png"/><a href="javascript:;">我的评价</a></li>
                <li class="img4 disable" @click="tips()"><img src="../../img/icon_19.png"/><a href="javascript:;">我的好友</a></li>
                <li class="img5 disable" @click="tips()"><img src="../../img/icon_20.png"/><a href="javascript:;">关注路线</a></li>
-               <li class="img6 disable" @click="tips()"><img src="../../img/icon_21.png"/><a href="javascript:;">系统设置</a></li>
+               <li class="img6" v-link="{path : 'system'}"><img src="../../img/icon_21.png"/><a href="javascript:;">系统设置</a></li>
            </ul>
        </div>
        <a class="button" v-if="!data.verifyDriver" v-link="{path:'/account/carInfo'}">认证成为车主</a>
