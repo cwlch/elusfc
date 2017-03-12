@@ -30,6 +30,9 @@
 .blue{
 	color: blue;
 }
+.relative{
+	position: relative;
+}
 
 
 
@@ -588,6 +591,9 @@ input::-webkit-input-placeholder {
 	float:left;
 	font-size: torem(28);
 }
+.aut_list_b li.disable a{
+	color:#999 !important;
+}
 .aut_list_b li img{
 	display: block;
 	margin:torem(32) auto 0 auto
@@ -864,7 +870,6 @@ input::-webkit-input-placeholder {
 	border:1px solid #4baa2c;
 }
 .aut_zl_bj_li{
-	height:torem(268);
 	border-top:1px solid #c8c7cc;
 	border-bottom: 1px solid #c8c7cc;
 	background:#fff;

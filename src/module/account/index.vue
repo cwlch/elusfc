@@ -11,6 +11,9 @@
                 msg:'hello vue'
             }
         },
+        ready(){
+
+        },
         components : {
             "account-menu" : accountMenu
         }

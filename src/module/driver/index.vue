@@ -13,14 +13,12 @@ export default{
         }
     },
     ready(){
-        this.verifyStatus();
+        eluUtil.verifyDriver();
     },
     components : {
         "driver-menu" : driverMenu
     },
     methods : {
-        verifyStatus (){
-        }
     }
 }
 </script>

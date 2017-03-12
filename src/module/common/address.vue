@@ -15,32 +15,6 @@
                 <dd v-for="i in listData" data-id="{{i.id}}" @click="selectedAddres(i.id,i.areaName)">{{i.areaName}}</dd>
             </dl>
         </div>
-        <!--<ul class="Fixed">-->
-            <!--<li>A</li>-->
-            <!--<li>B</li>-->
-            <!--<li>C</li>-->
-            <!--<li>D</li>-->
-            <!--<li>E</li>-->
-            <!--<li>F</li>-->
-            <!--<li>G</li>-->
-            <!--<li>H</li>-->
-            <!--<li>J</li>-->
-            <!--<li>K</li>-->
-            <!--<li>L</li>-->
-            <!--<li>M</li>-->
-            <!--<li>N</li>-->
-            <!--<li>P</li>-->
-            <!--<li>Q</li>-->
-            <!--<li>R</li>-->
-            <!--<li>S</li>-->
-            <!--<li>T</li>-->
-            <!--<li>W</li>-->
-            <!--<li>X</li>-->
-            <!--<li>Y</li>-->
-            <!--<li>Z</li>-->
-        <!--</ul>-->
-
-
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -287,7 +261,7 @@
                         path = '/passenger/passengerSearch';
                         break;
                     case 'home'://乘客搜索页面
-                        path = '/account/mainZl';
+                        path = '/account/userInfo';
                         break;
                     default ://默认返回司机端
                         path = '/driver'

@@ -60,7 +60,7 @@
         methods : {
             save (){
                 let par = Object.assign({
-                    userId : '1'
+                    userId : eluConfig.user.uid
                 },this.savePar,{
                     uDate : new Date(this.savePar.uDate).getTime()
                 });

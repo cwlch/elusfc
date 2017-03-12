@@ -4,7 +4,7 @@
            <div class="aut_zls">
                <ul>
                    <li class="curr">个人</li>
-                   <li v-link="{path:'./mainEdit'}">车辆</li>
+                   <li v-link="{path:'./carInfo'}">车辆</li>
                </ul>
            </div>
        </div>
@@ -50,7 +50,7 @@
         data(){
             return{
                 msg:{
-                    uid:'test01',
+                    uid: eluConfig.user.uid
                 },
                 genderList : [
                     {

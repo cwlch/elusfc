@@ -68,7 +68,7 @@
                 let par = {
                     page : 0,
                     per : 50,
-                    uid : 'test01'
+                    uid : eluConfig.user.uid
                 };
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/queryCar',

@@ -97,25 +97,25 @@ export default (route) => {
                 },'module/account/index');
             },
             subRoutes : {
-                '/mainEdit' : {
+                '/carInfo' : {
                     component (resolve) {
-                        require.ensure(["../module/account/mainEdit.vue"], (require) => {
-                            require(["../module/account/mainEdit.vue"], resolve);
-                        }, 'module/account/mainEdit');
+                        require.ensure(["../module/account/carInfo.vue"], (require) => {
+                            require(["../module/account/carInfo.vue"], resolve);
+                        }, 'module/account/carInfo');
                     }
                 },
-                '/mainZl' : {
+                '/userInfo' : {
                     component (resolve) {
-                        require.ensure(["../module/account/mainZl.vue"], (require) => {
-                            require(["../module/account/mainZl.vue"], resolve);
-                        }, 'module/account/mainZl');
+                        require.ensure(["../module/account/userInfo.vue"], (require) => {
+                            require(["../module/account/userInfo.vue"], resolve);
+                        }, 'module/account/userInfo');
                     }
                 },
-                '/mainZy' : {
+                '/home' : {
                     component (resolve) {
-                        require.ensure(["../module/account/mainZy.vue"], (require) => {
-                            require(["../module/account/mainZy.vue"], resolve);
-                        }, 'module/account/mainZy');
+                        require.ensure(["../module/account/home.vue"], (require) => {
+                            require(["../module/account/home.vue"], resolve);
+                        }, 'module/account/home');
                     }
                 },
                 '/main' : {

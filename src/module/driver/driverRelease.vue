@@ -77,8 +77,8 @@
              */
             save (){
                 let par = Object.assign({
-                    userId: '0442',
-                    carId: '232221'
+                    userId: eluConfig.user.uid,
+                    carId: '0000'
                 }, this.savePar, {
                     dDate: new Date(this.savePar.dDate).getTime()
                 });
