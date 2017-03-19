@@ -1,19 +1,19 @@
 <template>
     <div class="Driver_details">
     <div class="details_port">
-        <span><img src="../../img/pro.jpg"/></span>
+        <span><img src="../../img/icon_15.png"/></span>
         <dl>
             <dt>{{userData.userName}}</dt>
-            <dd><b class="pink">信誉度{{userValData.userVal}}%</b><b class="mar">乘坐次数:{{userValData.userCount}}次</b></dd>
+            <!--<dd><b class="pink">信誉度{{userValData.userVal}}%</b><b class="mar">乘坐次数:{{userValData.userCount}}次</b></dd>-->
         </dl>
-        <a class="ck" v-link="">详情</a>
+        <a class="ck" v-link="{path : 'home',query : {uid : userData.uid}}">详情</a>
     </div>
     <div class="details_infor">
         <ul>
             <li class="title">
                 <span>出发日期：</span>
-                <span>{{format("mm-dd hh:ii",recordData.createTime)}}</span>
-                <b>{{format("mm-dd hh:ii",recordData.uDate)}}</b>
+                <span>{{format("mm-dd hh:ii",recordData.uDate)}}</span>
+                <b>{{format("mm-dd hh:ii",recordData.createTime)}}</b>
                 <b>最后更新:</b>
             </li>
             <li class="cho">
@@ -24,12 +24,12 @@
                 <p>{{recordData.uEndStr}}</p>
             </li>
             <li class="moeny">
-                <b>可坐人数：{{recordData.uCount}}位</b>
+                <b>乘坐人数：{{recordData.uCount}}位</b>
             </li>
-            <li class="Explain">{{recordData.remark}}</li>
+            <li class="Explain">乘客说：{{recordData.remark}}</li>
         </ul>
     </div>
-    <a class="button" href="tel:15347393950">联系他</a>
+    <a class="button" :href="tel">联系他</a>
     <div class="details_introduce">请说明您是在E鹿顺风车平台看到的哦！</div>
 </div>
 </template>
@@ -40,7 +40,8 @@
                 userData : {},
                 recordData : {},
                 userValData : {},
-                format : eluUtil.dateFormat
+                format : eluUtil.dateFormat,
+                tel : 'javascript:;'
             }
         },
         ready(){
@@ -59,6 +60,7 @@
                         this.$set('userData',res.user);
                         this.$set('userValData',res.userVal);
                         this.$set('recordData',res.record);
+                        this.$set('tel','tel:' +res.user.phone);
                     }
                 })
             }

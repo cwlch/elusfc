@@ -60,7 +60,7 @@
         methods : {
             save (){
                 let par = Object.assign({
-                    userId : eluConfig.user.uid
+                    userId : eluConfig.user.id
                 },this.savePar,{
                     uDate : new Date(this.savePar.uDate).getTime()
                 });
@@ -89,6 +89,8 @@
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
                         });
+                    }else{
+                        eluUtil.tipsMod(res.retMsg);
                     }
                 });
             },

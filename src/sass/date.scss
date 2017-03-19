@@ -515,7 +515,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-progress-bar {
-	background: #4eccc4
+	background: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-progress-value {
@@ -600,7 +600,7 @@
 	width: 1em;
 	height: 1em;
 	border-radius: 1.125em;
-	background: #4eccc4;
+	background: #4baa2c;
 	-webkit-transform: scale(1);
 	-moz-transform: scale(1);
 	transform: scale(1);
@@ -635,7 +635,7 @@
 	text-align: center;
 	font-size: .75em;
 	color: #eee;
-	background-color: #4eccc4;
+	background-color: #4baa2c;
 	z-index: 5;
 	-webkit-transform: scale(.4) translate3d(0,5em,0);
 	-moz-transform: scale(.4) translate3d(0,5em,0);
@@ -871,7 +871,7 @@
 .mbsc-mobiscroll .dwv {
 	padding: 0 .6666em;
 	padding-top: .6666em;
-	color: #4eccc4;
+	color: #4baa2c;
 	font-size: .75em;
 	text-transform: uppercase;
 	min-height: 2em;
@@ -898,7 +898,7 @@
 	height: 2.5em;
 	line-height: 2.5em;
 	padding: 0 1em;
-	color: #4eccc4;
+	color: #4baa2c;
 	text-transform: uppercase
 }
 
@@ -1797,7 +1797,7 @@
 	font-size: .75em;
 	text-transform: uppercase;
 	line-height: 2em;
-	background: #4eccc4;
+	background: #4baa2c;
 	margin-top: -1px;
 	color: #f7f7f7
 }
@@ -1807,16 +1807,16 @@
 }
 
 .mbsc-lv-mobiscroll .mbsc-lv-arr {
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-lv-mobiscroll .mbsc-lv-handle-bar {
-	background: #4eccc4
+	background: #4baa2c
 }
 
 .mbsc-lv-mobiscroll .mbsc-lv-item.mbsc-lv-item-dragging {
 	margin: 0;
-	background: #4eccc4;
+	background: #4baa2c;
 	color: #f7f7f7;
 	-webkit-box-shadow: none;
 	box-shadow: none
@@ -2280,12 +2280,12 @@
 
 .mbsc-mobiscroll.mbsc-form *::-moz-selection {
 	color: #fff;
-	background: #4eccc4
+	background: #4baa2c
 }
 
 .mbsc-mobiscroll.mbsc-form *::selection {
 	color: #fff;
-	background: #4eccc4
+	background: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-desc {
@@ -2294,7 +2294,7 @@
 
 .mbsc-mobiscroll .mbsc-divider {
 	padding: 1.5em 1em .5em 1em;
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-err-msg {
@@ -2313,7 +2313,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-input select:focus ~ input,.mbsc-mobiscroll .mbsc-input textarea:focus,.mbsc-mobiscroll .mbsc-input input:focus {
-	border-color: #4eccc4
+	border-color: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-input select:disabled ~ input,.mbsc-mobiscroll .mbsc-input select:disabled ~ .mbsc-select-ic,.mbsc-mobiscroll .mbsc-input textarea:disabled,.mbsc-mobiscroll .mbsc-input input:disabled {
@@ -2380,7 +2380,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-checkbox-box {
-	background: #4eccc4;
+	background: #4baa2c;
 	margin-top: -.5625em;
 	width: 1.125em;
 	height: 1.125em;
@@ -2411,7 +2411,7 @@
 	height: 1.125em;
 	margin-top: -.5625em;
 	background: transparent;
-	border: .125em solid #4eccc4
+	border: .125em solid #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-radio-box:after {
@@ -2419,7 +2419,7 @@
 	height: .5em;
 	margin-top: -.25em;
 	margin-left: -.25em;
-	background: #4eccc4;
+	background: #4baa2c;
 	border-radius: .625em
 }
 
@@ -2461,7 +2461,7 @@
 .mbsc-mobiscroll .mbsc-btn {
 	margin: .5em;
 	padding: .6875em;
-	background: #4eccc4;
+	background: #4baa2c;
 	color: #f0f0f0;
 	font-size: 1em;
 	text-transform: uppercase
@@ -2490,7 +2490,7 @@
 
 .mbsc-mobiscroll .mbsc-btn-flat {
 	background: transparent;
-	color: #4eccc4;
+	color: #4baa2c;
 	border-color: transparent
 }
 
@@ -2504,7 +2504,7 @@
 }
 
 .mbsc-mobiscroll a {
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-switch {
@@ -2543,7 +2543,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-switch input:checked+.mbsc-switch-track .mbsc-switch-handle {
-	background: #4eccc4
+	background: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-switch input:disabled+.mbsc-switch-track {
@@ -2564,9 +2564,9 @@
 	margin: 0 -.07142857em;
 	line-height: 2.28575em;
 	padding: 0 .28571em;
-	border: .142857em solid #4eccc4;
+	border: .142857em solid #4baa2c;
 	text-transform: uppercase;
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-stepper input {
@@ -2574,7 +2574,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-stepper .mbsc-active .mbsc-segmented-content,.mbsc-mobiscroll .mbsc-segmented input:checked+.mbsc-segmented-content {
-	background: #4eccc4;
+	background: #4baa2c;
 	color: #f7f7f7
 }
 
@@ -2828,7 +2828,7 @@
 }
 
 .mbsc-mobiscroll .dwl {
-	color: #4eccc4;
+	color: #4baa2c;
 	font-size: .75em;
 	text-transform: uppercase
 }
@@ -2850,8 +2850,8 @@
 }
 
 .mbsc-mobiscroll .dwwol {
-	border-top: 1px solid #4eccc4;
-	border-bottom: 1px solid #4eccc4
+	border-top: 1px solid #4baa2c;
+	border-bottom: 1px solid #4baa2c
 }
 
 .mbsc-mobiscroll .dwpm .dwwol {
@@ -2859,7 +2859,7 @@
 }
 
 .mbsc-mobiscroll .dwwb {
-	color: #4eccc4;
+	color: #4baa2c;
 	background: #f7f7f7
 }
 
@@ -2896,7 +2896,7 @@
 
 .mbsc-mobiscroll .dw-msel:before {
 	font-size: 40px;
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .dwwms .dwwol {
@@ -3009,7 +3009,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-np-del {
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-np-tbl-c {
@@ -3806,18 +3806,18 @@
 }
 
 .mbsc-mobiscroll .dw-hl-now .dw-cal-today {
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .dw-cal-btn-txt {
-	color: #4eccc4;
+	color: #4baa2c;
 	font-size: 1em;
 	line-height: 40px
 }
 
 .mbsc-mobiscroll .dw-cal-days {
-	color: #4eccc4;
-	border-bottom: 1px solid #4eccc4
+	color: #4baa2c;
+	border-bottom: 1px solid #4baa2c
 }
 
 .mbsc-mobiscroll .dw-cal-days th {
@@ -3839,17 +3839,17 @@
 }
 
 .mbsc-mobiscroll .dw-cal .dw-sel .dw-i {
-	background: #4eccc4;
+	background: #4baa2c;
 	color: #fff
 }
 
 .mbsc-mobiscroll .dw-cal-day-hl .dw-i {
-	border-color: #4eccc4
+	border-color: #4baa2c
 }
 
 .mbsc-mobiscroll .dw-week-nrs-c {
 	font-size: .6875em;
-	color: #4eccc4;
+	color: #4baa2c;
 	background: #f7f7f7
 }
 
@@ -3873,7 +3873,7 @@
 }
 
 .mbsc-mobiscroll .dw-cal-tab {
-	border: 1px solid #4eccc4;
+	border: 1px solid #4baa2c;
 	font-size: .7em
 }
 
@@ -3904,7 +3904,7 @@
 }
 
 .mbsc-mobiscroll .dw-cal-tabs .dw-sel {
-	background: #4eccc4
+	background: #4baa2c
 }
 
 .mbsc-mobiscroll .dw-cal-tabs .dw-sel .dw-i {
@@ -3941,12 +3941,12 @@
 .mbsc-mobiscroll .dw-dr {
 	margin: 0 .3333em;
 	padding: .3333em;
-	border: 1px solid #4eccc4;
+	border: 1px solid #4baa2c;
 	font-size: .75em
 }
 
 .mbsc-mobiscroll .dw-sel .dw-dr {
-	background: #4eccc4;
+	background: #4baa2c;
 	color: #f7f7f7
 }
 
@@ -3964,7 +3964,7 @@
 }
 
 .mbsc-mobiscroll.dw-range .dw-cal-table .dw-cal-day-hl .dw-i {
-	background: #4eccc4;
+	background: #4baa2c;
 	color: #f7f7f7
 }
 
@@ -4481,24 +4481,24 @@
 }
 
 .mbsc-mobiscroll.mbsc-ms-b.mbsc-ms-top {
-	border-bottom: 1px solid #4eccc4
+	border-bottom: 1px solid #4baa2c
 }
 
 .mbsc-mobiscroll.mbsc-ms-b.mbsc-ms-bottom {
-	border-top: 1px solid #4eccc4
+	border-top: 1px solid #4baa2c
 }
 
 .mbsc-mobiscroll.mbsc-ms-b .mbsc-ms-item-sel .mbsc-ms-item-i {
-	border-bottom-color: #4eccc4
+	border-bottom-color: #4baa2c
 }
 
 .mbsc-mobiscroll.mbsc-ms-b.mbsc-ms-bottom .mbsc-ms-item-sel .mbsc-ms-item-i {
-	border-top-color: #4eccc4;
+	border-top-color: #4baa2c;
 	border-bottom-color: transparent
 }
 
 .mbsc-mobiscroll.mbsc-ms-a .mbsc-ms-item-sel .mbsc-ms-item-i {
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .dw-ltr .mbsc-img-w {
@@ -4729,7 +4729,7 @@
 	width: 4px;
 	height: 4px;
 	margin: 0 1px;
-	background: #4eccc4;
+	background: #4baa2c;
 	border-radius: 3px
 }
 
@@ -4764,11 +4764,11 @@
 }
 
 .mbsc-mobiscroll .dw-cal-event-color {
-	background: #4eccc4
+	background: #4baa2c
 }
 
 .mbsc-mobiscroll .dw-cal-event-time,.mbsc-mobiscroll .dw-cal-event-dur {
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .dw-cal-events-arr {
@@ -4828,7 +4828,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-rating-icon {
-	color: #4eccc4
+	color: #4baa2c
 }
 
 .mbsc-mobiscroll .mbsc-rating-icon-unf {
@@ -4836,7 +4836,7 @@
 }
 
 .mbsc-mobiscroll .mbsc-rating-circle {
-	background: #4eccc4;
+	background: #4baa2c;
 	color: #f7f7f7
 }
 
@@ -4844,7 +4844,7 @@
 	background: 0;
 	width: 24px;
 	height: 24px;
-	border: 1px solid #4eccc4
+	border: 1px solid #4baa2c
 }
 
 .mbsc-android-holo .mbsc-rating-icon {

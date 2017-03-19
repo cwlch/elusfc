@@ -4,8 +4,8 @@
            <div class="aut_top_icon green">个人主页 </div>
            <div class="aut_tu">
                <img src="../../img/icon_15.png"/>
-               <p v-model="msg.userId">{{data.userName}}</p>
-               <span v-model="msg.phone">{{msg.phone}}</span>
+               <p>{{data.userName}}</p>
+               <span>{{msg.phone}}</span>
            </div>
        </div>
        <div class="aut_list_b">

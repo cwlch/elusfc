@@ -55,11 +55,11 @@
                 genderList : [
                     {
                         name : '男',
-                        id : 0
+                        id : 1
                     },
                     {
                         name : '女',
-                        id : 1
+                        id : 2
                     }
                 ],
                 data : {}

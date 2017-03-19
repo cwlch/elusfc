@@ -77,8 +77,8 @@
              */
             save (){
                 let par = Object.assign({
-                    userId: eluConfig.user.uid,
-                    carId: '0000'
+                    userId: eluConfig.user.id,
+                    carId: eluConfig.car.id
                 }, this.savePar, {
                     dDate: new Date(this.savePar.dDate).getTime()
                 });
@@ -115,6 +115,8 @@
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
                         });
+                    }else{
+                        eluUtil.tipsMod(res.retMsg);
                     }
                 })
             },

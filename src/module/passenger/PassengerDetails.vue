@@ -1,12 +1,12 @@
 <template>
     <div class="Driver_details">
         <div class="details_port">
-            <span><img src="../../img/pro.jpg"/></span>
+            <span><img src="../../img/icon_15.png"/></span>
             <dl>
                 <dt>{{carData.carLord}}</dt>
                 <dd><b>车型：{{carData.brand}}</b><b class="mar">车牌：{{carData.carNo}}</b></dd>
             </dl>
-            <a class="ck" v-link="">详情</a>
+            <a class="ck" v-link="{path : 'home',query:{uid : userData.uid }}">详情</a>
         </div>
         <div class="details_infor">
             <ul>
@@ -28,11 +28,11 @@
                     <b>参考价:￥{{recordData.dPrice}}</b>
                 </li>
                 <li class="Explain">
-                    师傅说：{{recordData.dRemark}}
+                    车主说：{{recordData.dRemark}}
                 </li>
             </ul>
         </div>
-        <a class="button" href="tel:15347393950">联系他</a>
+        <a class="button" :href="tel">联系他</a>
         <div class="details_introduce">请说明您是在E鹿顺风车平台看到的哦！</div>
     </div>
 
@@ -45,7 +45,9 @@
             return{
                 carData : {},
                 recordData : {},
-                format : eluUtil.dateFormat
+                userData : {},
+                format : eluUtil.dateFormat,
+                tel : 'javascript:;'
             }
         },
         ready(){
@@ -57,13 +59,15 @@
                     url : eluConfig.serverPath + 'driver/queryCarDetail',
                     data : {
                         recordId : this.$route.query.id,
-                        carId : 1,
-                        userId : 1
+                        carId : this.$route.query.carId,
+                        userId : this.$route.query.userId
                     }
                 },res => {
                     if(res.retCode == '200'){
                         this.$set('carData',res.car);
                         this.$set('recordData',res.record);
+                        this.$set('userData',res.user);
+                        this.$set('tel','tel:' +res.user.phone);
                     }
                 })
             }

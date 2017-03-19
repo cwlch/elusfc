@@ -48,7 +48,7 @@
                     <ul>
                         <li>
                             <label>品牌型号</label>
-                            <input v-model="data.car.brand" type="text">
+                            <input v-model="data.car.brand" v-link="{path : '/carType',query:{'source':'car'}}" type="text">
                             <img src="../../img/icon_26.png"/>
                         </li>
                         <li>
@@ -120,6 +120,10 @@
                         _this.dateInit();
                         if(_this.data.userLicence.realName){
                             this.type = 'edit';
+                        }
+                        let selectCarBrand = eluConfig.selectCarBrand;
+                        if(selectCarBrand){
+                            this.data.car.brand = `${selectCarBrand.brand.makeName} - ${selectCarBrand.type.makeName}`
                         }
                     }
                 });
@@ -229,6 +233,10 @@
                     dateFormat : 'yyyy/mm/dd',
                     rows : 3
                 });
+            },
+            getSetVal(val){
+                alert(1)
+                console.log(val)
             }
         }
     }

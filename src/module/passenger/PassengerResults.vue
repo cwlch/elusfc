@@ -8,7 +8,7 @@
             <!--<input id="date" v-model="dateView">-->
         </div>
         <div class="Results_main">
-            <a v-link="{path:'./passengerDetails',query:{id:i.id,carId:i.carId}}" v-for="i in listData">
+            <a v-link="{path:'./passengerDetails',query:{id:i.id,carId:i.carId,userId : i.userId}}" v-for="i in listData">
                 <div class="vehicles_list clear_fix">
                     <img class="list_img_a" src="../../img/icon_6.png"/>
                     <div class="vehicles_left">

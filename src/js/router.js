@@ -43,6 +43,14 @@ export default (route) => {
                             require(["../module/driver/driverDetails.vue"], resolve);
                         }, 'module/driver/DriverDetails');
                     }
+                },
+                '/home': {
+                    name : 'driverRelease',
+                    component (resolve) {
+                        require.ensure(["../module/driver/home.vue"], (require) => {
+                            require(["../module/driver/home.vue"], resolve);
+                        }, 'module/driver/home');
+                    }
                 }
             }
         },
@@ -84,6 +92,14 @@ export default (route) => {
                         require.ensure(["../module/passenger/passengerDetails.vue"], (require) => {
                             require(["../module/passenger/passengerDetails.vue"], resolve);
                     }, 'module/passenger/passengerDetails');
+                    }
+                },
+                '/home': {
+                    name : 'passengerSearch',
+                    component (resolve) {
+                        require.ensure(["../module/passenger/home.vue"], (require) => {
+                            require(["../module/passenger/home.vue"], resolve);
+                    }, 'module/passenger/home');
                     }
                 }
             }
@@ -188,6 +204,13 @@ export default (route) => {
                 require.ensure(["../module/common/address.vue"], (require) => {
                     require( ["../module/common/address.vue"],resolve );
                 },'module/common/addres');
+            }
+        },
+        '/carType' : {
+            component (resolve) {
+                require.ensure(["../module/common/carType.vue"], (require) => {
+                    require( ["../module/common/carType.vue"],resolve );
+                },'module/common/carType');
             }
         }
     })

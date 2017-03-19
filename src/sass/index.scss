@@ -6,19 +6,26 @@
 .menu{
 	position: fixed;
 	bottom:0;
-	height: torem(100);
+	height: torem(99);
 	line-height: torem(100);
 	width: 100%;
-	background: #d5d5d5;
-	border-top: 1px solid #cccccc;
+	background: #f4f4f4;
+	border-top: 1px solid #bfbfbf;
+	font-size: torem(26);
 	a{
-		width: 32%;
-		display: inline-block;
+		width: torem(249);
+		display: block;
+		float: left;
 		text-align: center;
 		color: #000;
+		border-right:1px solid #bfbfbf;
+	}
+	a:last-child{
+		border-right:0;
 	}
 	a.hover{
 		background: #fff;
+		color: green;
 	}
 }
 .green{
@@ -182,6 +189,10 @@ input::-webkit-input-placeholder {
 	color:$white;
 	font-size:torem(32);
 	text-align: center;
+	em{
+		font-size: torem(28);
+		font-style: normal;
+	}
 }
 .cancel{
 	background: #ccc;
@@ -216,10 +227,13 @@ input::-webkit-input-placeholder {
 
 .FindCar_Choice input.newDate{
 	width:torem(652);height:torem(80);border:1px solid #d5d5d5;border-radius:torem(10);padding:0 torem(10);
+	font-size: torem(28);
 }
 .Choice{
-	width:torem(292);height:torem(76);border:1px solid #d5d5d5;border-radius:torem(8);
+	width:torem(292);height:torem(76);
+	border:1px solid #d5d5d5;border-radius:torem(8);
 	padding:0 torem(10);
+	font-size: torem(28);
 }
 .FindCar_Choice li{
 	width:torem(300);margin:0 torem(22);

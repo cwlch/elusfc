@@ -151,7 +151,6 @@
                         }
                     }
                 });
-
             },
             /**
              * 查询街道数据
@@ -260,7 +259,7 @@
                     case 'passenger_search'://乘客搜索页面
                         path = '/passenger/passengerSearch';
                         break;
-                    case 'home'://乘客搜索页面
+                    case 'home'://乘客个人中心页面
                         path = '/account/userInfo';
                         break;
                     default ://默认返回司机端

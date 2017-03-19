@@ -24,8 +24,9 @@
                 </li>
             </ul>
         </div>
-        <a class="button cancel">编辑</a>
-        <a class="button">刷新(更新信息置顶)</a>
+        <a class="button cancel" v-if="recordData.dStatus == 2">已经结束行程不能再操作</a>
+        <a class="button" v-if="recordData.dStatus == 0" @click="setStatus(1)">关闭信息<em>(乘客已满,防止骚扰)</em></a>
+        <a class="button" v-if="recordData.dStatus == 1" @click="setStatus(0)">打开信息</a>
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -53,6 +54,23 @@
                     if(res.retCode == '200'){
                         this.$set('carData',res.car);
                         this.$set('recordData',res.record);
+                    }
+                })
+            },
+            setStatus(type){
+
+                eluUtil.jsonp({
+                    url : eluConfig.serverPath + 'driver/updateDriverRecordStatus',
+                    data : {
+                        id : this.$route.query.id,
+                        status : type
+                    }
+                },res => {
+                    if(res.retCode == '200'){
+                        this.recordData.dStatus = type;
+                        eluUtil.tipsMod("修改成功");
+                    }else{
+                        eluUtil.tipsMod("修改失败" + res.retMsg);
                     }
                 })
             }
