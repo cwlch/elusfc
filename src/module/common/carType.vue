@@ -3,17 +3,24 @@
         <div class="Testing_title">
             <p>
                 <img src="../../img/icon_13.png"/>
-                <input class="dq" type="text" v-model="brandName" placeholder="车辆品牌"/>
-                <input class="xq" type="text" v-model="typeName" placeholder="车辆类型"/>
+                <input class="dq" type="text" v-model="brandName" @focus="selectedFocus('brand')" placeholder="车辆品牌"/>
+                <input class="xq" type="text" v-model="typeName" @focus="selectedFocus('type')"  placeholder="车辆类型"/>
             </p>
             <a @click="goBack()">取消</a>
         </div>
         <div class="Testing_main">
-            <dl>
-                <dt v-if="queryTipsTxt.length > 0">{{queryTipsTxt}}</dt>
-                <dd v-for="i in listData" data-id="{{i.id}}" @click="selectedCar(i.makeName)">{{i.makeName}}</dd>
+            <p v-if="queryTipsTxt.length > 0">{{queryTipsTxt}}</p>
+            <dl :id="i.key" v-for="i in listData"  v-if="currentKey == 'brand'">
+                <dt>{{i.key}}</dt>
+                <dd v-for="x in i.childrens" data-id="{{x.id}}" @click="selectedCar(x.makeName)">{{x.makeName}}</dd>
+            </dl>
+            <dl v-if="currentKey !== 'brand'">
+                <dd  v-for="i in listData" data-id="{{i.id}}" @click="selectedCar(i.makeName)">{{i.makeName}}</dd>
             </dl>
         </div>
+        <ul class="Fixed" v-if="currentKey == 'brand'">
+            <li v-for="i in listData" :class="{'hover' : currentLetter == i.key}" @click="setScrollTop(i.key)">{{i.key}}</li>
+        </ul>
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -21,6 +28,7 @@
         data(){
             return{
                 currentKey : null,
+                currentLetter : '',
                 queryTipsTxt : '数据加载中...',
                 selectedData : {
                     brand : {},
@@ -55,8 +63,30 @@
                 }
 
             },
+            /**
+             * 输入框focus事件
+             * @param type 输入框类型
+             */
+            selectedFocus(type){
+                let  parentName;
+                switch (type){
+                    case 'type' :
+                        parentName = 'brand';
+                        break;
+                    default:
+                        parentName = null;
+                        break;
+                }
+                if(parentName && !this[parentName+'Name']){
+                    this.selectedFocus(parentName);
+                }else{
+                    this.setListData(type);
+                    this.reloadCurrentKey(type);
+                }
+            },
             setListData(type){
-                let promesin;
+                let promesin,
+                        azData = [];
 
                 this.$set('queryTipsTxt',"数据加载中...");
                 this.$set('listData', []);
@@ -65,13 +95,34 @@
                 }else{
                     promesin = this.getCarType();
                 }
+
                 promesin.then( data => {
                     if(data.length > 0){
                         this.$set('queryTipsTxt',"");
                     }else{
                         this.$set('queryTipsTxt',"暂无数据");
                     }
-                    this.$set('listData', data)
+                    for(let i = 0,key,myData ; i < 26;i++){
+                        key = String.fromCharCode(65+i);
+                        myData = [];
+                        for(let x of data){
+                            if(key == x.firstLetter){
+                                myData.push(x)
+                            }
+                        }
+                        if(myData.length > 0){
+                            azData.push({
+                                key : key,
+                                childrens: myData
+                            })
+                        }
+
+                    }
+                    if(this.currentKey !== 'brand'){
+                        this.$set('listData', data);
+                    }else{
+                        this.$set('listData', azData);
+                    }
                 })
             },
             /**
@@ -160,6 +211,10 @@
                         path = '/account/userInfo'
                 }
                 this.$router.go(path)
+            },
+            setScrollTop(key){
+                this.$set("currentLetter",key);
+                $("body").scrollTop($("#" + key).offset().top - $(".Testing_title").height() - 10)
             }
         }
     }

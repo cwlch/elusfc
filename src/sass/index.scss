@@ -454,10 +454,14 @@ input::-webkit-input-placeholder {
 
 /*检测位置*/
 .Testing_Location{
-	width:torem(750);overflow:hidden;background:$white;
+	width:torem(750);overflow:hidden;
 }
 .Testing_title{
-	width:torem(750);height:torem(116);background:#eee;padding:torem(28) 0 0 torem(22);
+	width:100%;height:torem(116);background:#f4f4f4;padding:torem(28) 0 0 torem(22);
+	position: fixed;
+	top:0;
+	left:0;
+	border-bottom: 1px solid #bfbfbf;
 }
 .Testing_title p{
 	width:torem(627);height:torem(62);background:$white;border-radius:torem(8);font-size:torem(28);float:$silde_l;
@@ -500,24 +504,36 @@ input::-webkit-input-placeholder {
 	border:torem(2) solid #4baa2c;color:#4baa2c;
 }
 .Testing_main{
-	width:torem(712);overflow:hidden;
+	width:$Percen;overflow:hidden;
+	padding-top: torem(116);
 }
 .Testing_main dt{
-	width:$Percen;height:torem(48);background:#eee;line-height:torem(48);font-size:torem(22);color:#666;
+	width:$Percen;height:torem(48);line-height:torem(48);font-size:torem(22);color:#666;
 	padding-left:torem(20);font-weight:bold;
 }
 .Testing_main dd{
-	width:torem(690);height:torem(90);line-height:torem(90);font-size:torem(32);color:#333;
-	border-bottom:torem(1) solid #c8c7cc;margin-left:torem(22);
+	height:torem(90);line-height:torem(90);font-size:torem(32);color:#333;
+	border-bottom:torem(1) solid #c8c7cc;padding-left:torem(22);
+	background: $white;
 }
 .Fixed{
-	width:torem(40);position:fixed;top:torem(139);right:0;
+	width:torem(60);
+	height: 100%;
+	position:fixed;
+	top:torem(116);
+	right:0;
+	padding-top: torem(20);
+	background: #fff;
 }
 .Fixed li{
-	width:$Percen;height:torem(35);line-height:torem(35);color:#4baa2c;font-size:torem(20);text-align:center;
+	height:torem(40);line-height:torem(40);font-size:torem(20);text-align:center;
+	color: #999;
 }
 
-
+.Fixed li.hover{
+	color: #4baa2c;
+	background: #f4f4f4;
+}
 
 
 
@@ -856,8 +872,9 @@ input::-webkit-input-placeholder {
 .aut_zl_blist1 li input[type=file]{
 	opacity: 0;
 }
-.aut_zl_blist1 li input[disabled]{
-	color: #d2d9e1;
+.aut_zl_blist1 li input.disabled{
+	color: #666;
+	opacity: 1;
 }
 .aut_zl_blist1 li img{
 	width:torem(17);

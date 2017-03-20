@@ -48,7 +48,7 @@
                     <ul>
                         <li>
                             <label>品牌型号</label>
-                            <input v-model="data.car.brand" v-link="{path : '/carType',query:{'source':'car'}}" type="text">
+                            <input v-model="data.car.brand"  v-link="{path : '/carType',query:{'source':'car'}}" type="text">
                             <img src="../../img/icon_26.png"/>
                         </li>
                         <li>
@@ -112,10 +112,10 @@
 //                        data.car.regTime = eluUtil.dateFormat("yyyy/mm/dd",data.car.regime);z
 
                         if(_this.data.car.status == '3' || _this.data.car.status =='1'){
-                            $(".aut_zl_bd input").prop("disabled",true)
+                            $(".aut_zl_bd input").prop("disabled",true).addClass("disabled")
                         }
                         if(_this.data.userLicence.status == '3' || _this.data.userLicence.status =='1'){
-                            $(".aut_zl_bj_li input").prop("disabled",true)
+                            $(".aut_zl_bj_li input").prop("disabled",true).addClass("disabled")
                         }
                         _this.dateInit();
                         if(_this.data.userLicence.realName){

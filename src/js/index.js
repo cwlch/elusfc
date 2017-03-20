@@ -5,10 +5,10 @@ import "../sass/index.scss";
 import app_router from './router.js';
 
 
-
-document.querySelector('body').addEventListener('touchmove', function (ev) {
-    event.preventDefault();
-});
+//
+// document.querySelector('body').addEventListener('touchend', function (ev) {
+//     event.preventDefault();
+// });
 
 
 if(!(document.cookie || navigator.cookieEnabled)){
@@ -41,7 +41,6 @@ let router = new VueRouter(),
                     msgLayer.$con.find("#push").on("click",()=>{
                         msgLayer.close();
                     })
-
                 })
             }
         }
@@ -86,6 +85,7 @@ app_router(router);
 //     url : eluConfig.serverPath + 'user/queryUserInfo'
 // },res => {
 //     eluConfig.user = res.user;
+//     eluConfig.car = res.car;
 //     eluConfig.user.verifyDriver = res.status;
 //     router.start(App,'html');
 // });
@@ -96,7 +96,6 @@ eluUtil.jsonp({
         uid:'test01'
     }
 },res => {
-    eluConfig.user = res.user;
     eluConfig.user = res.user;
     eluConfig.car = res.car;
     eluConfig.user.verifyDriver = res.status;
