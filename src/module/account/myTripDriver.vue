@@ -8,7 +8,7 @@
                 </ul>
             </div>
             <div class="aut_xz">
-                <m-vue-slect :opt-list="statusList" placeholder="选择状态" :v-model.sync="sataus" name-key="name" val-key="id"></m-vue-slect>
+                <m-vue-slect :opt-list="statusList" @change="queryData()" placeholder="选择状态" :v-model.sync="status" name-key="name" val-key="id"></m-vue-slect>
             </div>
         </div>
         <div class="Results_main">
@@ -29,7 +29,7 @@
                     <div class="vehicles_right"><em>{{format("mm-dd",i.dDate)}}</em><b>{{format("hh:ii",i.dDate)}}</b></div>
                 </div>
             </a>
-            <div class="Results_more">没有更多数据</div>
+            <div class="Results_more" v-text="queryTxt"></div>
         </div>
     </div>
 </template>
@@ -38,8 +38,9 @@
     export default{
         data(){
             return {
+                queryTxt : "正在查询...",
                 listData : [],
-                sataus : 0,
+                status : 0,
                 statusList : [
                     {
                         name : '进行中',
@@ -68,13 +69,21 @@
                 let par = {
                     page : 0,
                     per : 50,
-                    uid : eluConfig.user.uid
+                    uid : eluConfig.user.uid,
+                    dStatus : this.status
+
                 };
+                this.$set("queryTxt","正在查询...");
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/queryCar',
                     data : par
                 },({retCode,result}) =>{
                     if(retCode == '200'){
+                        if(result.length <= 0){
+                            this.$set("queryTxt","没有更多数据");
+                        }else{
+                            this.$set("queryTxt","");
+                        }
                         this.$set("listData",result);
                         console.log(result)
                     }

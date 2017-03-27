@@ -33,6 +33,11 @@
                 }
                 return name;
             }
+        },
+        methods:{
+            selectedVal(){
+                this.$emit("change")
+            }
         }
     }
 </script>

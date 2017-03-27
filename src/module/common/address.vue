@@ -10,11 +10,20 @@
             <a @click="goBack()">取消</a>
         </div>
         <div class="Testing_main">
-            <dl>
-                <dt v-if="queryTipsTxt.length > 0">{{queryTipsTxt}}</dt>
-                <dd v-for="i in listData" data-id="{{i.id}}" @click="selectedAddres(i.id,i.areaName)">{{i.areaName}}</dd>
+            <p v-if="queryTipsTxt.length > 0">{{queryTipsTxt}}</p>
+            <!--<dl>-->
+                <!--<dt v-if="queryTipsTxt.length > 0">{{queryTipsTxt}}</dt>-->
+                <!--<dd v-for="i in listData" data-id="{{i.id}}" @click="selectedAddres(i.id,i.areaName)">{{i.areaName}}</dd>-->
+            <!--</dl>-->
+
+            <dl :id="i.key" v-for="i in listData">
+                <dt>{{i.key}}</dt>
+                <dd v-for="x in i.childrens" data-id="{{x.id}}" @click="selectedAddres(x.id,x.areaName)">{{x.areaName}}</dd>
             </dl>
         </div>
+        <ul class="Fixed">
+            <li v-for="i in listData" :class="{'hover' : currentLetter == i.key}" @click="setScrollTop(i.key)">{{i.key}}</li>
+        </ul>
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -68,7 +77,8 @@
              * @param type 当前显示类型
              */
             setListData (type){
-                let promesin;
+                let promesin,
+                        azData = [];
 
                 this.$set('queryTipsTxt',"数据加载中...");
                 this.$set('listData', []);
@@ -89,7 +99,23 @@
                     }else{
                         this.$set('queryTipsTxt',"暂无数据");
                     }
-                    this.$set('listData', data)
+                    for(let i = 0,key,myData ; i < 26;i++){
+                        key = String.fromCharCode(65+i);
+                        myData = [];
+                        for(let x of data){
+                            if(key == x.headerChart){
+                                myData.push(x)
+                            }
+                        }
+                        if(myData.length > 0){
+                            azData.push({
+                                key : key,
+                                childrens: myData
+                            })
+                        }
+
+                    }
+                    this.$set('listData', azData)
                 })
             },
             /**
@@ -266,6 +292,10 @@
                         path = '/driver'
                 }
                 this.$router.go(path)
+            },
+            setScrollTop(key){
+                this.$set("currentLetter",key);
+                $("body").scrollTop($("#" + key).offset().top - $(".Testing_title").height() - 10)
             }
         }
     }

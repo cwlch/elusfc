@@ -204,7 +204,7 @@ let ajaxStatus = [],
         verifyDriver (url){
             if(eluConfig.user.verifyDriver == 0){
                 let layer = eluUtil.layers(`<div class="account_layers">
-                        <p>需要认证成为司机才能使用司机端功能哦!</p>
+                        <p>需要认证成为车主才能使用司机端功能哦!</p>
                         <a>马上去认证</a></div>
                         `,{
                     close : false

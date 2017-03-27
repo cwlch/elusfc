@@ -17,7 +17,7 @@ if(!(document.cookie || navigator.cookieEnabled)){
 
 
 Vue.use( VueRouter );
-let router = new VueRouter(),
+const router = new VueRouter(),
     App = Vue.extend({
         data () {
             return {
@@ -25,30 +25,77 @@ let router = new VueRouter(),
             }
         },
         ready(){
-            if(!eluConfig.user.phone){
-                let layer = eluUtil.layers(`<div class="account_layers">
+        }
+    }),
+    sendMsg = ()=>{
+
+        let layer = eluUtil.layers(`<div class="account_layers">
                         <b>身份验证</b>
-                        <p><input type="tel" placeholder="请输入手机号"/></p>
+                        <p><input type="tel" id="tel" placeholder="请输入手机号"/><label id="tips"></label></p>
                         <a id="next">下一步</a>
                     </div>`,{close : false});
-                layer.$con.find("#next").on("click",()=>{
+        layer.$con.find("#next").on("click",()=> {
+            let tel = layer.$con.find("#tel").val(),
+                tip = layer.$con.find("#tips");
+            if (!tel) {
+                tip.text("手机号不能为空!");
+                return false;
+            }
+            if (!eluUtil.isMobile(tel)) {
+                tip.text("手机号格式错误!");
+                return false;
+            }
+            eluUtil.jsonp({
+                url : eluConfig.serverPath + 'user/sendSms',
+                data : {
+                    telNum : tel,
+                    uid : eluConfig.user.uid
+                }
+            },(data) =>{
+                if (data.retCode == '200') {
                     layer.close();
-                    let msgLayer = eluUtil.layers(`<div class="account_layers">
+                    pushMsg(tel);
+
+                } else {
+                    tip.text(data.retMsg);
+                }
+            });
+        });
+    },
+    pushMsg = (tel)=>{
+        let layer = eluUtil.layers(`<div class="account_layers">
                         <b>身份验证</b>
-                        <p><input type="tel" placeholder="请输入手机验证码"/></p>
+                        <p><input type="text" id="code" placeholder="请输入手机验证码"/><label id="tips"></label></p>
                         <a id="push">提交验证码</a>
                         </div>`,{close : false});
-                    msgLayer.$con.find("#push").on("click",()=>{
-                        msgLayer.close();
-                    })
-                })
+        layer.$con.find("#push").on("click",()=>{
+
+            let code = layer.$con.find("#code").val(),
+                tip = layer.$con.find("#tips");
+            if (!code || code.length != 4) {
+                tip.text("请输入4位数验证码!");
+                return false;
             }
-        }
-    });
+            eluUtil.jsonp({
+                url : eluConfig.serverPath + 'user/checkSms',
+                data : {
+                    verifyCode : code,
+                    telNum : tel
+                }
+            },(data) =>{
+                if (data.retCode == '200') {
+                    layer.close();
+                    router.start(App,'html');
+                } else {
+                    tip.text(data.retMsg);
+                }
+            });
+        })
+    };
 router.redirect({
     '*' : '/driver',
     '/driver':'/driver/driverRelease',
-    '/passenger':'/passenger/passengerRelease',
+    '/passenger':'/passenger/passengerSearch',
     '/account': '/account/main'
 });
 router.afterEach(function (transition) {
@@ -59,45 +106,34 @@ router.afterEach(function (transition) {
 app_router(router);
 
 
+
+eluUtil.jsonp({
+    url : eluConfig.serverPath + 'user/queryUserInfo'
+},res => {
+    eluConfig.user = res.user;
+    eluConfig.car = res.car;
+    eluConfig.user.verifyDriver = res.status;
+    if(!eluConfig.user.phone){
+        sendMsg();
+    }else{
+        router.start(App,'html');
+    }
+});
+
+
+
 // eluUtil.jsonp({
 //     url : eluConfig.serverPath + 'user/queryUser',
 //     data : {
 //         uid:'test01'
 //     }
-// },res =>{
-//     eluConfig.user = res.user;
-//     eluConfig.user.verifyDriver = res.status;
-//     let layer = eluUtil.layers(`<div class="account_layers">
-//                 <b>服务协议:</b>
-//                 <p>e鹿同行平台免费提供发布顺风车信息服务,不与用户有任何利益关系。搭车前请自行协商,e鹿同行平台不负担任何责任!</p>
-//                 <a id="ok">我同意</a> <span style="margin-left: 10px;" id="no">我不同意</span>
-//             </div>`);
-//     layer.$con.find("#ok").click(()=>{
-//         layer.close();
-//
-//     });
-//     layer.$con.find("#no").click(()=>{
-//         window.close()
-//     });
-// });
-
-// eluUtil.jsonp({
-//     url : eluConfig.serverPath + 'user/queryUserInfo'
 // },res => {
 //     eluConfig.user = res.user;
 //     eluConfig.car = res.car;
 //     eluConfig.user.verifyDriver = res.status;
-//     router.start(App,'html');
+//     if(!eluConfig.user.phone){
+//         sendMsg();
+//     }else{
+//         router.start(App,'html');
+//     }
 // });
-
-eluUtil.jsonp({
-    url : eluConfig.serverPath + 'user/queryUser',
-    data : {
-        uid:'test01'
-    }
-},res => {
-    eluConfig.user = res.user;
-    eluConfig.car = res.car;
-    eluConfig.user.verifyDriver = res.status;
-    router.start(App,'html');
-});

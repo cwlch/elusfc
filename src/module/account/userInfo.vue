@@ -4,20 +4,25 @@
            <div class="aut_zls">
                <ul>
                    <li class="curr">个人</li>
-                   <li v-link="{path:'./carInfo'}">车辆</li>
+                   <li v-link="{path:'./carInfo'}">车主</li>
                </ul>
            </div>
        </div>
        <div class="aut_zl_tu aut_zl_top">
            <div class="aut_zl_t">
-               <img src="../../img/icon_24.png"/>
-               <span><img src="../../img/icon_25.png"/></span>
+               <img :src="data.photoUrl"/>
+               <!--<span><img src="../../img/icon_25.png"/></span>-->
            </div>
        </div>
        <div class="aut_zl_bd">
             <div class="aut_zl_blist1">
                 <form>
                     <ul>
+                        <li>
+                            <label>家乡</label>
+                            <input v-link="{path:'/address',query:{source:'home',type:'start'}}" v-model="data.homeStr"  type="text">
+                            <img src="../../img/icon_26.png"/>
+                        </li>
                         <li>
                             <label>呢称</label>
                             <input v-model="data.userName" type="text">
@@ -30,11 +35,6 @@
                         <li>
                             <label>年龄</label>
                             <input v-model="data.birth" id="date"  type="text">
-                            <img src="../../img/icon_26.png"/>
-                        </li>
-                        <li>
-                            <label>家乡</label>
-                            <input v-link="{path:'/address',query:{source:'home',type:'start'}}" v-model="data.homeStr"  type="text">
                             <img src="../../img/icon_26.png"/>
                         </li>
                     </ul>

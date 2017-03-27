@@ -34,10 +34,10 @@
         data(){
             return{
                 queryTxt : "正在查询...",
-                queryStatus : false,
                 searchPar : Object.assign({
                     page : 0,
-                    per : 5
+                    per : 5,
+                    dStatus : 0,
                 },JSON.parse(sessionStorage.getItem("passengerSearchPar"))),
                 listData : [],
                 dateList : []
@@ -66,9 +66,6 @@
                 $(".Results_main").height(mH).css('margin-top',tH);
             },
             queryData(){
-                if(this.queryStatus){
-                    return false;
-                }
                 let par = Object.assign({},this.searchPar);
                 this.$set("queryTxt","正在查询...");
                 eluUtil.jsonp({
@@ -77,7 +74,6 @@
                 },res=>{
                     if(res.result.length <= 0){
                         this.$set("queryTxt","没有更多数据");
-                        this.$set("queryStatus",true);
                     }else{
                         this.$set("queryTxt","下拉查看更多");
                     }

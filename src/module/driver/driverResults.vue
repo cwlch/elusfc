@@ -22,7 +22,7 @@
                     <div class="vehicles_right">{{format("hh:ii",i.uDate)}}</div>
                 </div>
             </a>
-            <div class="Results_more">没有更多数据</div>
+            <div class="Results_more" v-text="queryTxt"></div>
         </div>
     </div>
 </template>
@@ -30,9 +30,11 @@
     export default{
         data(){
             return{
+                queryTxt : '正在查询...',
                 searchPar : Object.assign({
                     page : 0,
-                    per : 5
+                    per : 5,
+                    uStatus : 0
                 },JSON.parse(sessionStorage.getItem("driverSearchPar"))),
                 listData : [],
                 dateList : []
@@ -45,11 +47,18 @@
         },
         methods : {
             queryData(){
+                this.$set("queryTxt","正在查询...");
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'user/queryRequire',
                     data : this.searchPar
                 },res=>{
-                    this.$set("listData",res.result);
+                    if(res.result.length <= 0){
+                        this.$set("queryTxt","没有更多数据");
+                    }else{
+                        this.$set("queryTxt","下拉查看更多");
+                    }
+                    this.$set("listData",this.listData.concat(res.result));
+//                    this.$set("listData",res.result);
                 });
             },
             reloadData(){

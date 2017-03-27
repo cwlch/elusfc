@@ -1,7 +1,7 @@
 <template>
     <div class="Driver_details">
     <div class="details_port">
-        <span><img src="../../img/icon_15.png"/></span>
+        <span><img :src="userData.photoUrl"/></span>
         <dl>
             <dt>{{userData.userName}}</dt>
             <!--<dd><b class="pink">信誉度{{userValData.userVal}}%</b><b class="mar">乘坐次数:{{userValData.userCount}}次</b></dd>-->
@@ -24,7 +24,7 @@
                 <p>{{recordData.uEndStr}}</p>
             </li>
             <li class="moeny">
-                <b>乘坐人数：{{recordData.uCount}}位</b>
+                <b>乘车人数：{{recordData.uCount}}位</b>
             </li>
             <li class="Explain">乘客说：{{recordData.remark}}</li>
         </ul>

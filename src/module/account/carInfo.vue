@@ -4,40 +4,11 @@
             <div class="aut_zls">
                 <ul>
                     <li v-link="{path:'./userInfo'}">个人</li>
-                    <li class="curr1">车辆</li>
+                    <li class="curr1">车主</li>
                 </ul>
             </div>
         </div>
-        <h2 class="aut_zl_bd_titile aut_zl_top">驾驶证
-            <span v-if="data.userLicence.status == '1'" class="blue">认证中<small>(1-7个工作日)</small></span>
-            <span v-if="data.userLicence.status == '2'" class="red">认证失败<small>(失败原因)</small></span>
-            <span v-if="data.userLicence.status == '3'" class="green">认证成功</span>
-        </h2>
-        <div class="aut_zl_bj_li">
-            <div class="aut_zl_blist1">
-                <form>
-                    <ul>
-                        <li>
-                            <label>姓名</label>
-                            <input v-model="data.userLicence.realName" type="text">
-                        </li>
-                        <li>
-                            <label>驾驶证号</label>
-                            <input v-model="data.userLicence.licenceId" type="text">
-                        </li>
-                        <li v-if="!data.userLicence.status || data.userLicence.status=='2'">
-                            <label>驾驶证</label>
-                            <input type="file" accept="image/*" @change="selectFile1">
-                            <a href="javascript:;">
-                                <img v-if="!liceneceImg" src="../../img/icon_27.png"/>
-                                <img v-if="liceneceImg" :src="liceneceImg"/>
-                            </a>
-                        </li>
-                    </ul>
-                </form>
-            </div>
-        </div>
-        <h2 class="aut_zl_bd_titile">行驶证
+        <h2 class="aut_zl_bd_titile aut_zl_top">行驶证
             <span v-if="data.car.status == '1'" class="blue">认证中<small>(1-7个工作日)</small></span>
             <span v-if="data.car.status == '2'" class="red">认证失败<small>(失败原因)</small></span>
             <span v-if="data.car.status == '3'" class="green">认证成功</span>
@@ -70,6 +41,35 @@
                             <a href="javascript:;">
                                 <img v-if="!carImg" src="../../img/icon_27.png"/>
                                 <img v-if="carImg" :src="carImg"/>
+                            </a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <h2 class="aut_zl_bd_titile">驾驶证
+            <span v-if="data.userLicence.status == '1'" class="blue">认证中<small>(1-7个工作日)</small></span>
+            <span v-if="data.userLicence.status == '2'" class="red">认证失败<small>(失败原因)</small></span>
+            <span v-if="data.userLicence.status == '3'" class="green">认证成功</span>
+        </h2>
+        <div class="aut_zl_bj_li">
+            <div class="aut_zl_blist1">
+                <form>
+                    <ul>
+                        <li>
+                            <label>姓名</label>
+                            <input v-model="data.userLicence.realName" type="text">
+                        </li>
+                        <li>
+                            <label>驾驶证号</label>
+                            <input v-model="data.userLicence.licenceId" type="text">
+                        </li>
+                        <li v-if="!data.userLicence.status || data.userLicence.status=='2'">
+                            <label>驾驶证</label>
+                            <input type="file" accept="image/*" @change="selectFile1">
+                            <a href="javascript:;">
+                                <img v-if="!liceneceImg" src="../../img/icon_27.png"/>
+                                <img v-if="liceneceImg" :src="liceneceImg"/>
                             </a>
                         </li>
                     </ul>

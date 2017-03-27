@@ -3,7 +3,7 @@
        <div class="aut_top" v-link="{path : './home'}">
            <div class="aut_top_icon green">个人主页 </div>
            <div class="aut_tu">
-               <img src="../../img/icon_15.png"/>
+               <img :src="data.photoUrl"/>
                <p>{{data.userName}}</p>
                <span>{{msg.phone}}</span>
            </div>

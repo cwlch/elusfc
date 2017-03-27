@@ -5,7 +5,7 @@
                 <!--<img v-link="{path:'userInfo'}" src="../../img/icon_14.png"/>-->
             </div>
             <div class="aut_tu">
-                <img src="../../img/icon_15.png"/>
+                <img :src="user.photoUrl"/>
                 <p>{{user.userName}}</p>
                 <div class="aut_xin">
                     <!--<span class="aut_span_one">搭乘50次</span>-->

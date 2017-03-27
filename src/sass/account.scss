@@ -5,6 +5,9 @@
 	padding: torem(20);
 	font-size: torem(28);
 	text-align: center;
+	b{
+		font-size: torem(30);
+	}
 	a{
 		color: $green;
 		font-size: torem(32);
@@ -13,6 +16,14 @@
 	}
 	p{
 		line-height: torem(50);
+	}
+	input{
+		height: torem(70);
+		border:1px solid #ccc;
+		width: torem(400);
+		margin: torem(30) 0 torem(10) 0;
+		padding-left: torem(10);
+		font-size:torem(28);
 	}
 }
 .opacity_btn{

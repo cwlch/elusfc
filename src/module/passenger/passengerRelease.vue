@@ -85,7 +85,7 @@
                     data : par
                 }, function(res){
                     if(res.retCode == '200'){
-                        let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b><p>请前往<a href="./index.html#!/account/myTripPassenger" id="layers_url">我的行程</a>中查看</p></div>`);
+                        let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b><p>请前往<a href="./index.html#!/account/myTripPassenger" id="layers_url"> 我的行程 </a>中查看</p></div>`);
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
                         });

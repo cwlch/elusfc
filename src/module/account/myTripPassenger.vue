@@ -1,11 +1,14 @@
 <template>
     <div class="aut_main">
         <div class="aut_zl">
-            <div class="aut_zls">
+            <div class="aut_zls l">
                 <ul>
                     <li class="curr">找车</li>
                     <li v-link="{path:'./myTripDriver'}">找人</li>
                 </ul>
+            </div>
+            <div class="aut_xz">
+                <m-vue-slect :opt-list="statusList" @change="queryData()" placeholder="选择状态" :v-model.sync="status" name-key="name" val-key="id"></m-vue-slect>
             </div>
         </div>
         <div class="Results_main">
@@ -28,32 +31,59 @@
                     </div>
                 </div>
             </a>
-            <div class="Results_more">没有更多数据</div>
+            <div class="Results_more" v-text="queryTxt"></div>
         </div>
     </div>
 </template>
 <script type="text/ecmascript-6">
+    import mSelect from  '../common/m-vue-slect.vue';
     export default{
         data(){
             return {
-                listData : []
+                queryTxt : "正在查询...",
+                listData : [],
+                status : 0,
+                statusList : [
+                    {
+                        name : '进行中',
+                        id : 0
+                    },
+                    {
+                        name : '已关闭',
+                        id : 1
+                    },
+                    {
+                        name : '已过期',
+                        id : 2
+                    }
+                ]
             }
         },
         ready(){
             this.queryData();
             this.setMainHeight();
         },
+        components : {
+            'm-vue-slect' : mSelect
+        },
         methods:{
             queryData(){
                 let par = {
                     page : 0,
                     per : 50,
-                    uid : eluConfig.user.uid
+                    uid : eluConfig.user.uid,
+                    uStatus : this.status
                 };
+                this.$set("queryTxt","正在查询...");
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'user/queryRequire',
                     data : par
                 },({retCode,result}) =>{
+                    if(result.length <= 0){
+                        this.$set("queryTxt","没有更多数据");
+                    }else{
+                        this.$set("queryTxt","");
+                    }
                     if(retCode == '200'){
                         this.$set("listData",result);
                     }

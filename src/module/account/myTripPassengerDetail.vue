@@ -16,7 +16,7 @@
                     <p>{{recordData.uEndStr}}</p>
                 </li>
                 <li class="moeny">
-                    <b>可坐人数：{{recordData.uCount}}位</b>
+                    <b>乘车人数：{{recordData.uCount}}位</b>
                 </li>
                 <li class="Explain">乘客说：{{recordData.remark}}</li>
             </ul>

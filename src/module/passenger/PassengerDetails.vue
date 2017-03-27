@@ -1,7 +1,7 @@
 <template>
     <div class="Driver_details">
         <div class="details_port">
-            <span><img src="../../img/icon_15.png"/></span>
+            <span><img :src="userData.photoUrl"/></span>
             <dl>
                 <dt>{{carData.carLord}}</dt>
                 <dd><b>车型：{{carData.brand}}</b><b class="mar">车牌：{{carData.carNo}}</b></dd>
