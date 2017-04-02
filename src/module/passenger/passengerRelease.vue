@@ -48,12 +48,24 @@
             let start = JSON.parse(localStorage.getItem('passenger_release_start_address')),
                     end = JSON.parse(localStorage.getItem('passenger_release_end_address'));
             if(start){
-                this.$set("savePar.uStartStr",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
-                this.$set('savePar.uStart',start.street.id);
+                let name = `- ${start.street.name}`,
+                        id = start.street.id;
+                if(!start.street.name){
+                    id = start.county.id;
+                    name = '';
+                }
+                this.$set("savePar.uStartStr",`${start.city.name} - ${start.county.name} ${name}`);
+                this.$set('savePar.uStart',id);
             }
             if(end){
-                this.$set("savePar.uEndStr",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
-                this.$set('savePar.uEnd',end.street.id);
+                let name = `- ${end.street.name}`,
+                        id = end.street.id;
+                if(!end.street.name){
+                    id = end.county.id;
+                    name = '';
+                }
+                this.$set("savePar.uEndStr",`${end.city.name} - ${end.county.name} ${name}`);
+                this.$set('savePar.uEnd',id);
             }
             this.dateInit();
         },
@@ -85,7 +97,7 @@
                     data : par
                 }, function(res){
                     if(res.retCode == '200'){
-                        let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b><p>请前往<a href="./index.html#!/account/myTripPassenger" id="layers_url"> 发布记录 </a>中查看</p></div>`);
+                        let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b><p>请前往<a  v-link="{path : '/account',query:{type : 'passenger'}}" id="layers_url"> 发布记录 </a>中查看</p></div>`);
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
                         });

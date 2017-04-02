@@ -28,7 +28,7 @@
                 </ul>
             </div>
             <img class="line" src="../../img/icon_3.gif"/>
-            <textarea class="FindCar_te"v-model="savePar.dRemark" placeholder="有孕妈小宝贝、萌宠，记得提前告诉车主哦"></textarea>
+            <textarea class="FindCar_te"v-model="savePar.dRemark" placeholder="添加备注让乘客更愿意搭乘您的顺风车哦!"></textarea>
 
 
         </div>
@@ -60,12 +60,24 @@
             let start = JSON.parse(localStorage.getItem('driver_release_start_address')),
                 end = JSON.parse(localStorage.getItem('driver_release_end_address'));
             if(start){
-                this.$set("savePar.dStartStr",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
-                this.$set('savePar.dStart',start.street.id);
+                let name = `- ${start.street.name}`,
+                        id = start.street.id;
+                if(!start.street.name){
+                    id = start.county.id;
+                    name = '';
+                }
+                this.$set("savePar.dStartStr",`${start.city.name} - ${start.county.name} ${name}`);
+                this.$set('savePar.dStart',id);
             }
             if(end){
-                this.$set("savePar.dEndStr",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
-                this.$set('savePar.dEnd',end.street.id);
+                let name = `- ${end.street.name}`,
+                        id = end.street.id;
+                if(!end.street.name){
+                    id = end.county.id;
+                    name = '';
+                }
+                this.$set("savePar.dEndStr",`${end.city.name} - ${end.county.name} ${name}`);
+                this.$set('savePar.dEnd',id);
             }
             this.dateInit();
 
@@ -102,17 +114,17 @@
                     eluUtil.tipsMod("价格不能为空!");
                     return false;
                 }
-                if (!par.dRemark) {
-                    eluUtil.tipsMod("备注不能为空!");
-                    return false;
-                }
+//                if (!par.dRemark) {
+//                    eluUtil.tipsMod("备注不能为空!");
+//                    return false;
+//                }
                 eluUtil.jsonp({
                     url: eluConfig.serverPath + 'driver/publishCars',
                     data: par
                 }, (res) => {
                     if (res.retCode == '200') {
                         let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b>
-                            <p>请前往<a href="./index.html#!/account/myTripDriver" id="layers_url"> 发布记录 </a>中查看</p></div>`);
+                            <p>请前往<a v-link="{path : '/account',query:{type : 'driver'}}" id="layers_url"> 发布记录 </a>中查看</p></div>`);
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
                         });

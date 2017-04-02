@@ -35,14 +35,35 @@
             let start = JSON.parse(localStorage.getItem('passenger_search_start_address')),
                     end = JSON.parse(localStorage.getItem('passenger_search_end_address'));
             this.dateInit();
+
             if(start){
-                this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
-                this.$set("dStart",start.street.id);
+                let name = `- ${start.street.name}`,
+                        id = start.street.id;
+                if(!start.street.name){
+                    id = start.county.id;
+                    name = '';
+                }
+                this.$set("startAddressName",`${start.city.name} - ${start.county.name} ${name}`);
+                this.$set('dStart',id);
             }
             if(end){
-                this.$set("endAddressName",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
-                this.$set("dEnd",end.street.id);
+                let name = `- ${end.street.name}`,
+                        id = end.street.id;
+                if(!end.street.name){
+                    id = end.county.id;
+                    name = '';
+                }
+                this.$set("endAddressName",`${end.city.name} - ${end.county.name} ${name}`);
+                this.$set('dEnd',id);
             }
+//            if(start){
+//                this.$set("startAddressName",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
+//                this.$set("dStart",start.street.id);
+//            }
+//            if(end){
+//                this.$set("endAddressName",`${end.city.name} - ${end.county.name} - ${end.street.name}`);
+//                this.$set("dEnd",end.street.id);
+//            }
         },
         methods : {
             /**
