@@ -112,7 +112,7 @@
                 }, (res) => {
                     if (res.retCode == '200') {
                         let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b>
-                            <p>请前往<a href="./index.html#!/account/myTripDriver" id="layers_url"> 我的行程 </a>中查看</p></div>`);
+                            <p>请前往<a href="./index.html#!/account/myTripDriver" id="layers_url"> 发布记录 </a>中查看</p></div>`);
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
                         });
@@ -131,9 +131,9 @@
                     theme: 'mobiscroll',
                     lang: 'zh',
                     display: 'bottom',
-                    minDate: now,
-                    maxDate: maxDate,
-                    dateOrder: 'MM dd DD',
+                    min: now,
+                    max: maxDate,
+                    dateWheels: 'MM dd DD',
                     dateFormat: 'yyyy/mm/dd',
                     rows: 3
                 });

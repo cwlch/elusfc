@@ -5,7 +5,7 @@
 export default (route) => {
     route.map({
         '/driver' : {
-            title : '司机端',
+            title : 'e鹿同行-司机端',
             component (resolve) {
                 require.ensure(["../module/driver/index.vue"], (require) => {
                     require( ["../module/driver/index.vue"],resolve );
@@ -55,7 +55,7 @@ export default (route) => {
             }
         },
         '/passenger' : {
-            title : '乘客端',
+            title : 'e鹿同行-乘客端',
             component (resolve) {
                 require.ensure(["../module/passenger/index.vue"], (require) => {
                     require( ["../module/passenger/index.vue"],resolve );
@@ -106,7 +106,7 @@ export default (route) => {
 
         },
         '/account' : {
-            title : '个人中心',
+            title : 'e鹿同行-个人中心',
             component (resolve) {
                 require.ensure(["../module/account/index.vue"], (require) => {
                     require( ["../module/account/index.vue"],resolve );

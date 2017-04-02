@@ -75,9 +75,9 @@
                     theme: 'mobiscroll',
                     lang: 'zh',
                     display: 'bottom',
-                    minDate: now,
-                    maxDate: maxDate,
-                    dateOrder: 'MM dd',
+                    min: now,
+                    max: maxDate,
+                    dateWheels: 'MM dd',
                     dateFormat : 'yyyy/mm/dd',
                     rows : 3
                 });

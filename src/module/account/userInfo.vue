@@ -84,7 +84,7 @@
                     data:par,
                     success : function (data) {
                         if(data.retCode == '200'){
-                            data.user.birth = eluUtil.dateFormat("yyyy/mm/dd",data.user.birth);
+                            data.user.birth = eluUtil.dateFormat("yyyy/mm/dd",data.user.birth,'empty');
                             _this.$set('data',data.user);
                             let start = JSON.parse(localStorage.getItem('home_start_address'));
                             _this.$set("data.homeStr",`${start.city.name} - ${start.county.name} - ${start.street.name}`);
@@ -129,17 +129,14 @@
              * 时间控件初始化,注意这是到分钟
              */
             dateInit(){
-//                var now = new Date(this.data.birth);
-//                    maxDate = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate(), 23, 59);
+
                 $('#date').mobiscroll().date({
                     theme: 'mobiscroll',
                     lang: 'zh',
                     display: 'bottom',
-//                    minDate: now,
-//                    maxDate: maxDate,
-                    dateOrder: 'yyyy MM dd',
-                    dateFormat: 'yyyy/mm/dd',
-                    rows: 3
+                    max: new Date(),
+                    dateFormat : 'yyyy/mm/dd',
+                    rows : 3
                 });
             }
         }

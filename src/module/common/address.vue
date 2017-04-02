@@ -98,6 +98,7 @@
                         this.$set('queryTipsTxt',"");
                     }else{
                         this.$set('queryTipsTxt',"暂无数据");
+                        this.selectedAddres();
                     }
                     for(let i = 0,key,myData ; i < 26;i++){
                         key = String.fromCharCode(65+i);
@@ -153,8 +154,6 @@
                             mydata = this.addresData;
                     for(let i = mydata.length;i--;){
                         if(mydata[i].id === this.selectedData.city.id){
-                            console.log(mydata[i].childrens);
-                            console.log(mydata[i]);
                             if(mydata[i].childrens){
                                 data = mydata[i].childrens;
                                 res(data);
@@ -251,7 +250,6 @@
                             this.$set('selectedData.street',{});
                             break;
                         case 'street':
-
                             break;
                         default :
                             break;

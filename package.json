@@ -26,11 +26,10 @@
     "url-loader": "^0.5.7",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^7.1.4",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "webpack-zepto": "0.0.1"
   },
   "dependencies": {
     "minimist": "^1.2.0"
   }
 }
-
-

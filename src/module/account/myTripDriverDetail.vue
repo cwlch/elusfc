@@ -24,9 +24,9 @@
                 </li>
             </ul>
         </div>
-        <a class="button cancel" v-if="recordData.dStatus == 2">已经结束行程不能再操作</a>
-        <a class="button" v-if="recordData.dStatus == 0" @click="setStatus(1)">关闭信息<em>(乘客已满,防止骚扰)</em></a>
-        <a class="button" v-if="recordData.dStatus == 1" @click="setStatus(0)">打开信息</a>
+        <a class="button cancel" v-if="recordData.dStatus == 2">已结束或关闭行程不能再操作</a>
+        <a class="button" v-if="recordData.dStatus == 0" @click="setStatus(2)">关闭信息<em>(乘客已满,防止骚扰)</em></a>
+        <!--<a class="button" v-if="recordData.dStatus == 1" @click="setStatus(0)">打开信息</a>-->
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -58,7 +58,6 @@
                 })
             },
             setStatus(type){
-
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'driver/updateDriverRecordStatus',
                     data : {
@@ -68,9 +67,9 @@
                 },res => {
                     if(res.retCode == '200'){
                         this.recordData.dStatus = type;
-                        eluUtil.tipsMod("修改成功");
+                        eluUtil.tipsMod("关闭成功,您可以继续发布行程");
                     }else{
-                        eluUtil.tipsMod("修改失败" + res.retMsg);
+                        eluUtil.tipsMod("关闭失败" + res.retMsg);
                     }
                 })
             }

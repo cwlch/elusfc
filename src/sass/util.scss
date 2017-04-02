@@ -53,6 +53,18 @@ $baseFontSize : 23.4376 !default;
     -webkit-text-fill-color: transparent;
 }
 
+@mixin keyframes($a) {
+    @-webkit-keyframes #{$a} {
+        @content;
+    }
+    @-moz-keyframes #{$a} {
+        @content;
+    }
+    @keyframes #{$a} {
+        @content;
+    }
+}
+
 %justify { text-align: justify; text-justify: distribute-all-lines; -webkit-text-justify: distribute-all-lines; -moz-text-justify: distribute-all-lines;
     &:after { content: ''; width: 100%; display: inline-block; font-size: 0; line-height: 0;}
 }

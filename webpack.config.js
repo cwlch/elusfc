@@ -64,8 +64,8 @@ util = {
 	output: {//静态文件路径设置
 		path: build.dest,
 		publicPath: '/./' + build.dest + "/",
-		chunkFilename : 'js/[name].js',
-		filename: 'js/[name].js'
+		chunkFilename : 'js/[name].js?'+build.version,
+		filename: 'js/[name].js?'+build.version
 	},
 	module: {//模版解析
 		loaders: [
@@ -116,6 +116,7 @@ util = {
 };
 if(argv.dev){
 	util.devtool = '#source-map';
+	// util.plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
 }else{
 	//压缩js
 	util.plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));

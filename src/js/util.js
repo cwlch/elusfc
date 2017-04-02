@@ -67,7 +67,12 @@ let ajaxStatus = [],
          * @param fmt
          * @returns {*}
          */
-        dateFormat(fmt,date){
+        dateFormat(fmt,date,type){
+            if(type === 'empty'){
+                if(!date){
+                    return '';
+                }
+            }
             let myDate = date ? (/^\d+$/.test(date) ? new Date(parseInt(date)) : new Date(date) ) : new Date(),
                 o = {
                 "m+": myDate.getMonth() + 1, //月份

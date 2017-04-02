@@ -28,7 +28,6 @@ const router = new VueRouter(),
         }
     }),
     sendMsg = ()=>{
-
         let layer = eluUtil.layers(`<div class="account_layers">
                         <b>身份验证</b>
                         <p><input type="tel" id="tel" placeholder="请输入手机号"/><label id="tips"></label></p>
@@ -69,11 +68,10 @@ const router = new VueRouter(),
                         <a id="push">提交验证码</a>
                         </div>`,{close : false});
         layer.$con.find("#push").on("click",()=>{
-
             let code = layer.$con.find("#code").val(),
                 tip = layer.$con.find("#tips");
-            if (!code || code.length != 4) {
-                tip.text("请输入4位数验证码!");
+            if (!code || code.length != 6) {
+                tip.text("请输入6位数验证码!");
                 return false;
             }
             eluUtil.jsonp({
@@ -106,34 +104,37 @@ router.afterEach(function (transition) {
 app_router(router);
 
 
+if(window.location.search.indexOf("mytest") >=0 ){
+    eluUtil.jsonp({
+        url : eluConfig.serverPath + 'user/queryUser',
+        data : {
+            // uid:'o_UN0wrmN-ld7SiouCx0Knhqw9hE'
+            uid:'test01 '
+        }
+    },res => {
+        eluConfig.user = res.user;
+        eluConfig.car = res.car;
+        eluConfig.user.verifyDriver = res.status;
+        if(!eluConfig.user.phone){
+            sendMsg();
+        }else{
+            router.start(App,'html');
+        }
+    });
+}else{
+    eluUtil.jsonp({
+        url : eluConfig.serverPath + 'user/queryUserInfo'
+    },res => {
+        eluConfig.user = res.user;
+        eluConfig.car = res.car;
+        eluConfig.user.verifyDriver = res.status;
+        if(!eluConfig.user.phone){
+            sendMsg();
+        }else{
+            router.start(App,'html');
+        }
+    });
+}
 
-eluUtil.jsonp({
-    url : eluConfig.serverPath + 'user/queryUserInfo'
-},res => {
-    eluConfig.user = res.user;
-    eluConfig.car = res.car;
-    eluConfig.user.verifyDriver = res.status;
-    if(!eluConfig.user.phone){
-        sendMsg();
-    }else{
-        router.start(App,'html');
-    }
-});
 
 
-
-// eluUtil.jsonp({
-//     url : eluConfig.serverPath + 'user/queryUser',
-//     data : {
-//         uid:'test01'
-//     }
-// },res => {
-//     eluConfig.user = res.user;
-//     eluConfig.car = res.car;
-//     eluConfig.user.verifyDriver = res.status;
-//     if(!eluConfig.user.phone){
-//         sendMsg();
-//     }else{
-//         router.start(App,'html');
-//     }
-// });

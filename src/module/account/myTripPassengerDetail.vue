@@ -21,9 +21,9 @@
                 <li class="Explain">乘客说：{{recordData.remark}}</li>
             </ul>
         </div>
-        <a class="button cancel" v-if="recordData.uStatus == 2">已经结束行程不能再操作</a>
-        <a class="button" v-if="recordData.uStatus == 0" @click="setStatus(1)">关闭信息<em>(已找到顺风车,防止骚扰)</em></a>
-        <a class="button" v-if="recordData.uStatus == 1" @click="setStatus(0)">打开信息</a>
+        <a class="button cancel" v-if="recordData.uStatus == 2">已结束或关闭行程不能再操作</a>
+        <a class="button" v-if="recordData.uStatus == 0" @click="setStatus(2)">关闭信息<em>(已找到顺风车,防止骚扰)</em></a>
+        <!--<a class="button" v-if="recordData.uStatus == 1" @click="setStatus(0)">打开信息</a>-->
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -65,9 +65,9 @@
                 },res => {
                     if(res.retCode == '200'){
                         this.recordData.uStatus = type;
-                        eluUtil.tipsMod("修改成功");
+                        eluUtil.tipsMod("关闭成功,您可以继续发布行程");
                     }else{
-                        eluUtil.tipsMod("修改失败" + res.retMsg);
+                        eluUtil.tipsMod("关闭失败" + res.retMsg);
                     }
                 })
             }

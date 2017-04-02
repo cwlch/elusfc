@@ -33,7 +33,7 @@
                         <li class="relative">
                             <label>注册日期</label>
                             <input class="opacity_btn" v-model="data.car.regTime"  v-show="data.car.status !='1' && data.car.status !='3'" id="date" type="text">
-                            <input v-model="dateFormat('yyyy-mm-dd',data.car.regTime)" type="text">
+                            <input v-model="data.car.regTime" type="text">
                         </li>
                         <li v-if="!data.car.status || data.car.status == '2'">
                             <label>行驶证</label>
@@ -85,7 +85,10 @@
             return{
                 uid:'test01',
                 data : {
-                    car : {},
+                    car : {
+                        brand : '',
+                        carNo : ''
+                    },
                     userLicence : {}
                 },
                 carImg : '',
@@ -101,24 +104,24 @@
             Obtain(){
                 let par = {
                     uid : eluConfig.user.uid
-                },
-                    _this = this;
+                };
+//                    _this = this;
                 eluUtil.jsonp({
                     url : eluConfig.serverPath +'user/queryUserDetail',
                     data:par
                 },(data)=>{
                     if(data.retCode == '200'){
-                        _this.$set('data',Object.assign(_this.data,data));
-//                        data.car.regTime = eluUtil.dateFormat("yyyy/mm/dd",data.car.regime);z
-
-                        if(_this.data.car.status == '3' || _this.data.car.status =='1'){
+                        data.car = data.car || {};
+                        data.car.regTime = eluUtil.dateFormat('yyyy-mm-dd',data.car.regTime,'empty');
+                        this.$set('data',Object.assign(this.data,data));
+                        if(this.data.car.status == '3' || this.data.car.status =='1'){
                             $(".aut_zl_bd input").prop("disabled",true).addClass("disabled")
                         }
-                        if(_this.data.userLicence.status == '3' || _this.data.userLicence.status =='1'){
+                        if(this.data.userLicence.status == '3' || this.data.userLicence.status =='1'){
                             $(".aut_zl_bj_li input").prop("disabled",true).addClass("disabled")
                         }
-                        _this.dateInit();
-                        if(_this.data.userLicence.realName){
+                        this.dateInit();
+                        if(this.data.userLicence.realName){
                             this.type = 'edit';
                         }
                         let selectCarBrand = eluConfig.selectCarBrand;
@@ -147,14 +150,6 @@
                         liceneceImgCode : data.userLicence.liceneceImgCode
 
                     };
-                if(!parSer.carLord){
-                    eluUtil.tipsMod("姓名不能为空!");
-                    return false;
-                }
-                if(!parSer.licenceId || !eluUtil.isIdCard(parSer.licenceId )){
-                    eluUtil.tipsMod("请填写正确的驾驶证号码!");
-                    return false;
-                }
                 if(!parSer.brand){
                     eluUtil.tipsMod("品牌型号不能为空!");
                     return false;
@@ -169,6 +164,22 @@
                 }
                 if(!parSer.regTime){
                     eluUtil.tipsMod("注册日期不能为空!");
+                    return false;
+                }
+                if(!parSer.carImg){
+                    eluUtil.tipsMod("请上传行驶证照片!");
+                    return false;
+                }
+                if(!parSer.carLord){
+                    eluUtil.tipsMod("姓名不能为空!");
+                    return false;
+                }
+                if(!parSer.licenceId || !eluUtil.isIdCard(parSer.licenceId )){
+                    eluUtil.tipsMod("请填写正确的驾驶证号码!");
+                    return false;
+                }
+                if(!parSer.liceneceImg){
+                    eluUtil.tipsMod("请上传驾驶证照片!");
                     return false;
                 }
                 $.ajax({
@@ -227,8 +238,8 @@
                     lang: 'zh',
                     display: 'bottom',
 //                    minDate: now,
-                    maxDate: new Date(),
-                    defaultValue : now,
+                    max: new Date(),
+//                    defaultValue : now,
 //                    dateOrder: 'MM dd',
                     dateFormat : 'yyyy/mm/dd',
                     rows : 3

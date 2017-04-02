@@ -18,7 +18,7 @@
                 <dd><img src="../../img/icon_23.png"/></dd>
                 <dt>
                     <h4>{{car.brand}}</h4>
-                    <span>车牌号：{{car.carNo}}<br/>车辆注册日期：{{dateFormat('yyyy-mm-dd',car.regTime)}}<!--<br/>证件类型：C1--></span>
+                    <span>车牌号：{{car.carNo}}<br/>车辆注册日期：{{car.regTime ? dateFormat('yyyy-mm-dd',car.regTime) : ''}}<!--<br/>证件类型：C1--></span>
                 </dt>
             </dl>
             <ul>
