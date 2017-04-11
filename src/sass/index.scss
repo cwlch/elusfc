@@ -860,7 +860,7 @@ input::-webkit-input-placeholder {
 	input,select{
 		height:torem(85);
 		font-size: torem(32);
-		width: torem(676);
+		width: torem(660);
 		text-align: right;
 		float:left;
 		padding-right:torem(14);
@@ -868,9 +868,19 @@ input::-webkit-input-placeholder {
 		border:0;
 		background: none;
 	}
+	i{
+		font-size: torem(22);
+		font-style: normal;
+		float: right;
+		color: #4baa2c;
+	}
 }
 .aut_zl_blist1 li input[type=file]{
 	opacity: 0;
+	position: absolute;
+	z-index: 9;
+	left: 0;
+	top:0;
 }
 .aut_zl_blist1 li input.disabled{
 	color: #666;
@@ -884,10 +894,10 @@ input::-webkit-input-placeholder {
 .aut_zl_blist1 li a{
 	width: torem(36);
 	position: absolute;
-	right: 0;
+	right: torem(77);
 	top:0;
 	height:100%;
-
+	z-index:8
 }
 .aut_zl_blist1 li a img{
 	width:torem(36);

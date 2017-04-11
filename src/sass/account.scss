@@ -32,6 +32,29 @@
 	top:0;
 	opacity: 0;
 }
+.openDemo_layers{
+	text-align: center;
+	padding-bottom: torem(25);
+	div{
+		width: torem(650);
+		height: torem(450);
+		margin: torem(10) torem(25);
+		background: url("../img/car.jpg") no-repeat;
+		background-size: 100%;
+		border:1px solid #ccc;
+	}
+	div.img_user{
+		background-image:url("../img/user.jpg");
+	}
+	p{
+		font-size:torem(28);
+		line-height: torem(100);
+	}
+	span{
+		font-size:torem(32);
+		color: #4baa2c;
+	}
+}
 .agreement{
 	background: #fff;
 	padding: torem(50);

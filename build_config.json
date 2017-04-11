@@ -32,18 +32,25 @@
 	]
 	,"ui" : []
 	,"serverPath" : [{
-		"dev" : "http://192.168.0.108:8080/"
+		"dev" : "http://10.106.65.53:8080/"
 		,"test" : "http://www.elutx.cn/elu/"
 		,"repro" : "http://www.elutx.cn/elu/"
 		,"pro" : "http://www.elutx.cn/elu/"
 	}]
 	,"entry" : {
-		"index" : "js/index.js"
+		"index" : "js/index.js",
+		"admin" : "js/admin.js"
 	}
 	,"htmlwebpack" : [
 		{
 			"filename" : "index.html",
 			"chunks" : ["index"],
+			"hash" : true,
+			"common" : true
+		},
+		{
+			"filename" : "admin.html",
+			"chunks" : ["admin"],
 			"hash" : true,
 			"common" : true
 		}

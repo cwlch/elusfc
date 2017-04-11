@@ -10,7 +10,7 @@
         </div>
         <h2 class="aut_zl_bd_titile aut_zl_top">行驶证
             <span v-if="data.car.status == '1'" class="blue">认证中<small>(1-7个工作日)</small></span>
-            <span v-if="data.car.status == '2'" class="red">认证失败<small>(失败原因)</small></span>
+            <span v-if="data.car.status == '2'" class="red">认证失败<small>({{data.car.remark}})</small></span>
             <span v-if="data.car.status == '3'" class="green">认证成功</span>
         </h2>
         <div class="aut_zl_bd">
@@ -42,6 +42,7 @@
                                 <img v-if="!carImg" src="../../img/icon_27.png"/>
                                 <img v-if="carImg" :src="carImg"/>
                             </a>
+                            <i @click="openDemo('car')">示列</i>
                         </li>
                     </ul>
                 </form>
@@ -49,7 +50,7 @@
         </div>
         <h2 class="aut_zl_bd_titile">驾驶证
             <span v-if="data.userLicence.status == '1'" class="blue">认证中<small>(1-7个工作日)</small></span>
-            <span v-if="data.userLicence.status == '2'" class="red">认证失败<small>(失败原因)</small></span>
+            <span v-if="data.userLicence.status == '2'" class="red">认证失败<small>({{data.userLicence.remark}})</small></span>
             <span v-if="data.userLicence.status == '3'" class="green">认证成功</span>
         </h2>
         <div class="aut_zl_bj_li">
@@ -71,12 +72,13 @@
                                 <img v-if="!liceneceImg" src="../../img/icon_27.png"/>
                                 <img v-if="liceneceImg" :src="liceneceImg"/>
                             </a>
+                            <i @click="openDemo('user')">示列</i>
                         </li>
                     </ul>
                 </form>
             </div>
         </div>
-        <a class="button v-link-active" v-if="!data.car.status || !data.userLicence.status || data.car.status == 2 || data.userLicence.status == 2" @click="SubAdd()">申请认证</a>
+        <a class="button v-link-active" v-if="!data.car.status || !data.userLicence.status || data.car.status == 2 || data.userLicence.status == 2" @click="SubAdd()">{{btnTxt}}</a>
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -93,7 +95,9 @@
                 },
                 carImg : '',
                 liceneceImg : '',
-                type : 'add'
+                type : 'add',
+                btnTxt : '申请认证',
+                ajaxStatus : false
             }
         },
         ready(){
@@ -132,6 +136,9 @@
                 });
             },
             SubAdd(){
+                if(this.ajaxStatus){
+                    return false;
+                }
                 let data = this.data,
                     parSer = {
                         userId : eluConfig.user.id,
@@ -150,46 +157,62 @@
                         liceneceImgCode : data.userLicence.liceneceImgCode
 
                     };
-                if(!parSer.brand){
-                    eluUtil.tipsMod("品牌型号不能为空!");
-                    return false;
+                if(parSer.carStatus != 3){
+
+                    if(!parSer.brand){
+                        eluUtil.tipsMod("品牌型号不能为空!");
+                        return false;
+                    }
+                    if(!parSer.carNo || !eluUtil.isCarPlate(parSer.carNo)){
+                        eluUtil.tipsMod("请填写正确的车牌号码!");
+                        return false;
+                    }
+                    if(!parSer.carLord){
+                        eluUtil.tipsMod("车辆所属人不能为空!");
+                        return false;
+                    }
+                    if(!parSer.regTime){
+                        eluUtil.tipsMod("注册日期不能为空!");
+                        return false;
+                    }
+                    if(!parSer.carImgCode){
+                        eluUtil.tipsMod("请上传行驶证照片!");
+                        return false;
+                    }
                 }
-                if(!parSer.carNo || !eluUtil.isCarPlate(parSer.carNo)){
-                    eluUtil.tipsMod("请填写正确的车牌号码!");
-                    return false;
+                if(parSer.licenceStatus != 3){
+                    if(!parSer.carLord){
+                        eluUtil.tipsMod("姓名不能为空!");
+                        return false;
+                    }
+                    if(!parSer.licenceId || !eluUtil.isIdCard(parSer.licenceId )){
+                        eluUtil.tipsMod("请填写正确的驾驶证号码!");
+                        return false;
+                    }
+                    if(!parSer.liceneceImgCode){
+                        eluUtil.tipsMod("请上传驾驶证照片!");
+                        return false;
+                    }
                 }
-                if(!parSer.carLord){
-                    eluUtil.tipsMod("车辆所属人不能为空!");
-                    return false;
-                }
-                if(!parSer.regTime){
-                    eluUtil.tipsMod("注册日期不能为空!");
-                    return false;
-                }
-                if(!parSer.carImg){
-                    eluUtil.tipsMod("请上传行驶证照片!");
-                    return false;
-                }
-                if(!parSer.carLord){
-                    eluUtil.tipsMod("姓名不能为空!");
-                    return false;
-                }
-                if(!parSer.licenceId || !eluUtil.isIdCard(parSer.licenceId )){
-                    eluUtil.tipsMod("请填写正确的驾驶证号码!");
-                    return false;
-                }
-                if(!parSer.liceneceImg){
-                    eluUtil.tipsMod("请上传驾驶证照片!");
-                    return false;
-                }
+                this.$set("btnTxt","正在提交...");
+                this.ajaxStatus = true;
                 $.ajax({
                     url : eluConfig.serverPath + (this.type =='add' ? 'user/addCarAndLicence' : 'user/updateCarAndLicence'),
                     type : 'post',
                     data:parSer,
-                    success : function (data) {
+                    success : (data) => {
+                        this.ajaxStatus = false;
+                        this.$set("btnTxt","申请认证");
                         if(data.retCode == '200'){
                             eluUtil.tipsMod("提交成功！");
+                        }else{
+                            eluUtil.tipsMod(data.retMsg);
                         }
+                    },
+                    error : ()=>{
+                        this.ajaxStatus = false;
+                        eluUtil.tipsMod("服务器错误！");
+                        this.$set("btnTxt","申请认证");
                     }
                 });
 //                eluUtil.jsonp({
@@ -248,6 +271,12 @@
             getSetVal(val){
                 alert(1)
                 console.log(val)
+            },
+            openDemo(type){
+                let layers = eluUtil.layers(`<div class="openDemo_layers"> <div class="img_${type}"></div><p>上传证件只需要正本,不需要副本。</p><span>知道了</span></div>`);
+                layers.$con.find("span").on("click",()=>{
+                    layers.close();
+                })
             }
         }
     }

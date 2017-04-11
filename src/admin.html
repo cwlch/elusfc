@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>e鹿同行管理后台</title>
+</head>
+<body>
+<div id="app" class="main">
+    <div class="header">
+        <label>类型</label>
+        <select v-model="type" @change="queryData()">
+            <option v-for="i in typeList" value="{{i.val}}">{{i.name}}</option>
+        </select>
+        <label>状态</label>
+        <select v-model="status" @change="queryData()">
+            <option v-for="i in statusList" value="{{i.val}}">{{i.name}}</option>
+        </select>
+    </div>
+    <table v-if="type == 'car'" cellpadding="0" cellspacing="0">
+        <tr >
+            <th>姓名</th>
+            <th>车牌</th>
+            <th>品牌</th>
+            <th>申请时间</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="i in listData">
+            <td>{{i.carLord}}</td>
+            <td>{{i.carNo}}</td>
+            <td>{{i.brand}}</td>
+            <td>{{i.createTime}}</td>
+            <td @click="myCar = i">详细</td>
+        </tr>
+    </table>
+    <table v-if="type == 'user'" cellpadding="0" cellspacing="0">
+        <tr >
+            <th>姓名</th>
+            <th>驾驶证号</th>
+            <th>申请时间</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="i in listData">
+            <td>{{i.realName}}</td>
+            <td>{{i.licenceId}}</td>
+            <td>{{i.createTime}}</td>
+            <td @click="myUser = i">详细</td>
+        </tr>
+    </table>
+    <div class="pop" v-if="myUser">
+        <table>
+            <tr >
+                <th>姓名</th>
+                <th>驾驶证号</th>
+                <th>申请时间</th>
+            </tr>
+            <tr>
+                <td>{{myUser.realName}}</td>
+                <td>{{myUser.licenceId}}</td>
+                <td>{{myUser.createTime}}</td>
+            </tr>
+        </table>
+        <img :src="'http://elutx.cn/images/'+myUser.licenceImg"/>
+        <textarea v-model="remark" placeholder="不通过原因"></textarea>
+        <div>
+            <button @click="save(myUser,'myUser')">取消</button>
+            <button @click="save(myUser,'myUser',2)">不通过</button>
+            <button @click="save(myUser,'myUser',3)">通过</button>
+        </div>
+    </div>
+    <div class="pop" v-if="myCar">
+        <table>
+            <tr >
+                <th>姓名</th>
+                <th>车牌</th>
+                <th>品牌</th>
+                <th>申请时间</th>
+            </tr>
+            <tr>
+                <td>{{myCar.carLord}}</td>
+                <td>{{myCar.carNo}}</td>
+                <td>{{myCar.brand}}</td>
+                <td>{{myCar.createTime}}</td>
+            </tr>
+        </table>
+        <img :src="'http://elutx.cn/images/'+myCar.regImg"/>
+        <textarea v-model="remark" placeholder="不通过原因"></textarea>
+        <div>
+            <button @click="save(myCar,'myCar')">取消</button>
+            <button @click="save(myCar,'myCar',2)">不通过</button>
+            <button @click="save(myCar,'myCar',3)">通过</button>
+        </div>
+    </div>
+    <div class="bg"  v-if="myCar || myUser"></div>
+</div>
+</body>
+</html>
