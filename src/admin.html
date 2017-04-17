@@ -28,7 +28,7 @@
             <td>{{i.carLord}}</td>
             <td>{{i.carNo}}</td>
             <td>{{i.brand}}</td>
-            <td>{{i.createTime}}</td>
+            <td>{{dateFormat('yyyy-mm-dd',i.createTime)}}</td>
             <td @click="myCar = i">详细</td>
         </tr>
     </table>
@@ -42,7 +42,7 @@
         <tr v-for="i in listData">
             <td>{{i.realName}}</td>
             <td>{{i.licenceId}}</td>
-            <td>{{i.createTime}}</td>
+            <td>{{dateFormat('yyyy-mm-dd',i.createTime)}}</td>
             <td @click="myUser = i">详细</td>
         </tr>
     </table>
@@ -56,7 +56,7 @@
             <tr>
                 <td>{{myUser.realName}}</td>
                 <td>{{myUser.licenceId}}</td>
-                <td>{{myUser.createTime}}</td>
+                <td>{{dateFormat('yyyy-mm-dd',myUser.createTime)}}</td>
             </tr>
         </table>
         <img :src="'http://elutx.cn/images/'+myUser.licenceImg"/>
@@ -79,7 +79,7 @@
                 <td>{{myCar.carLord}}</td>
                 <td>{{myCar.carNo}}</td>
                 <td>{{myCar.brand}}</td>
-                <td>{{myCar.createTime}}</td>
+                <td>{{dateFormat('yyyy-mm-dd',myCar.createTime)}}</td>
             </tr>
         </table>
         <img :src="'http://elutx.cn/images/'+myCar.regImg"/>

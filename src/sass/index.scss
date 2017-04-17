@@ -290,6 +290,13 @@ input::-webkit-input-placeholder {
 	width:torem(706);height:torem(200);background:$white;border-radius:torem(20);border:torem(2) solid #d5d5d5;
 	margin-top:torem(20);position:relative;
 }
+.vehicles_list em{
+	position: absolute;
+	right: -1px;
+	top: -1px;
+	display: block;
+	width: torem(80);
+}
 .list_img_a{
 	width:torem(14);height:torem(197);position:absolute;left:0;right:0;
 }
@@ -377,6 +384,13 @@ input::-webkit-input-placeholder {
 }
 .details_port dl{
 	width:torem(395);height:torem(124);float:$silde_l;margin-left:torem(15);
+}
+.details_port em{
+	display: block;
+	margin-left: torem(30);
+	line-height: torem(124);
+	float: left;
+	font-style: normal;
 }
 .details_port dt{
 	width:$Percen;height:torem(60);line-height:torem(60);font-size:torem(32);color:#4baa2c;

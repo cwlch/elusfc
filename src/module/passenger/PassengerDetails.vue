@@ -2,10 +2,11 @@
     <div class="Driver_details">
         <div class="details_port">
             <span><img :src="userData.photoUrl"/></span>
-            <dl>
+            <dl v-if="carData.carLord">
                 <dt>{{carData.carLord}}</dt>
                 <dd><b>车型：{{carData.brand}}</b><b class="mar">车牌：{{carData.carNo}}</b></dd>
             </dl>
+            <em v-if="!carData || carData.status != 3">此用户暂未通过司机认证</em>
             <a class="ck" v-link="{path : 'home',query:{uid : userData.uid }}">详情</a>
         </div>
         <div class="details_infor">

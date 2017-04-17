@@ -206,24 +206,31 @@ let ajaxStatus = [],
                 canvas = null;
             });
         },
-        verifyDriver (url){
-            if(eluConfig.user.verifyDriver == 0){
-                let layer = eluUtil.layers(`<div class="account_layers">
-                        <p>需要认证成为车主才能使用司机端功能哦!</p>
-                        <a>马上去认证</a></div>
-                        `,{
-                    close : false
-                });
-                layer.$con.find("a").on("click",()=>{
-                    window.location.hash = '#!/account/carInfo?type=driver';//.$router.go("/account/carInfo");
-                    layer.close();
-                });
-            }else{
-                if(url){
-                    this.$router.go(url);
-                }
+        verifyDriver (){
+            return new Promise((rej,ret)=>{
+                // if(eluConfig.user.verifyDriver == 0){
+                    let layer = eluUtil.layers(`<div class="account_layers">
+                        <p>认证成为司机,发布的信息可信度更高!</p>
+                        <a>马上去认证</a><em>下次再说</em>
+                        </div>
+                        `);
+                    layer.$con.find("a").on("click",()=>{
+                        layer.close();
+                        rej();
+                        // window.location.hash = '#!/account/carInfo?type=driver';//.$router.go("/account/carInfo");
 
-            }
+                    });
+                    layer.$con.find("em").on("click",()=>{
+                        layer.close();
+                        ret();
+                    })
+                // }
+                // else{
+                    // if(url){
+                    //     this.$router.go(url);
+                    // }
+                // }
+            })
         }
 
 };

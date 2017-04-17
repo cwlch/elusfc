@@ -3,9 +3,9 @@
         <div class="Testing_title">
             <p>
                 <img src="../../img/icon_13.png"/>
-                <input class="dq" type="text" v-model="cityName" @focus="selectedFocus('city')" placeholder="当前城市"/>
-                <input class="xq" type="text" v-model="countyName" @focus="selectedFocus('county')"  placeholder="区县"/>
-                <input class="qn" type="text" v-model="streetName" @focus="selectedFocus('street')"  placeholder="你要去哪儿"/>
+                <input class="dq" type="text" v-model="cityName" readonly @focus="selectedFocus('city')" placeholder="当前城市"/>
+                <input class="xq" type="text" v-model="countyName" readonly @focus="selectedFocus('county')" placeholder="区县"/>
+                <input class="qn" type="text" v-model="streetName" readonly @focus="selectedFocus('street')"  placeholder="你要去哪儿"/>
             </p>
             <a @click="goBack()">取消</a>
         </div>
@@ -116,7 +116,7 @@
                         }
 
                     }
-                    this.$set('listData', azData)
+                    this.$set('listData', azData);
                 })
             },
             /**

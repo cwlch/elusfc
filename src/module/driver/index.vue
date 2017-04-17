@@ -13,9 +13,9 @@ export default{
         }
     },
     ready(){
-        if(eluConfig.user.phone){
-            eluUtil.verifyDriver();
-        }
+//        if(eluConfig.user.phone){
+//            eluUtil.verifyDriver();
+//        }
     },
     components : {
         "driver-menu" : driverMenu

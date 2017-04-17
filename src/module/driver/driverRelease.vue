@@ -83,14 +83,25 @@
 
         },
         methods : {
+            save(){
+                if(eluConfig.user.verifyDriver == 0){
+                    eluUtil.verifyDriver().then(()=>{
+                        this.$router.go({path : '/account/carInfo',query:{type : 'driver'}});//.$router.go("/account/carInfo");
+                    },()=>{
+                        this.push();
+                    });
+                }else{
+                    this.push();
+                }
+            },
             /**
              * 保存
              * @returns {boolean}
              */
-            save (){
+            push (){
                 let par = Object.assign({
                     userId: eluConfig.user.id,
-                    carId: eluConfig.car.id
+                    carId: eluConfig.car.id || 0
                 }, this.savePar, {
                     dDate: new Date(this.savePar.dDate).getTime()
                 });
@@ -124,9 +135,13 @@
                 }, (res) => {
                     if (res.retCode == '200') {
                         let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b>
-                            <p>请前往<a v-link="{path : '/account',query:{type : 'driver'}}" id="layers_url"> 发布记录 </a>中查看</p></div>`);
+                            <p>请前往<a id="layers_url"> 发布记录 </a>中查看</p></div>`);
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
+                            this.$router.go({
+                                path : '/account/myTripDriver',
+                                query : {type : 'driver'}
+                            });
                         });
                     }else{
                         eluUtil.tipsMod(res.retMsg);

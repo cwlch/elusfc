@@ -131,8 +131,8 @@ if(window.location.search.indexOf("mytest") >=0 ){
             }
         },res => {
             layer.close();
-            eluConfig.user = res.user;
-            eluConfig.car = res.car;
+            eluConfig.user = res.user || {};
+            eluConfig.car = res.car || {};
             eluConfig.user.verifyDriver = res.status;
             if(!eluConfig.user.phone){
                 sendMsg();
@@ -146,8 +146,8 @@ if(window.location.search.indexOf("mytest") >=0 ){
     eluUtil.jsonp({
         url : eluConfig.serverPath + 'user/queryUserInfo'
     },res => {
-        eluConfig.user = res.user;
-        eluConfig.car = res.car;
+        eluConfig.user = res.user || {};
+        eluConfig.car = res.car || {};
         eluConfig.user.verifyDriver = res.status;
         if(!eluConfig.user.phone){
             sendMsg();

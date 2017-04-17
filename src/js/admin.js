@@ -71,6 +71,7 @@ new Vue({
             }
             this[type] = '';
             this.remark = '';
-        }
+        },
+        dateFormat : eluUtil.dateFormat
     }
 });

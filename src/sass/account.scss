@@ -14,6 +14,11 @@
 		display: inline-block;
 		margin: torem(20) 0;
 	}
+	em{
+		font-size: torem(26);
+		margin-left: torem(40);
+		font-style: normal;
+	}
 	p{
 		line-height: torem(50);
 	}

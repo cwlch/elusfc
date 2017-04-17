@@ -23,7 +23,7 @@
             }
         },
         methods : {
-            verifyDriver : eluUtil.verifyDriver
+//            verifyDriver : eluUtil.verifyDriver
 //            goDriver(){
 ////                eluUtil.jsonp({
 ////                    url : eluConfig.serverPath + 'user/verifyStatus',

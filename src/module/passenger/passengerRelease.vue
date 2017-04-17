@@ -97,9 +97,13 @@
                     data : par
                 }, function(res){
                     if(res.retCode == '200'){
-                        let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b><p>请前往<a  v-link="{path : '/account',query:{type : 'passenger'}}" id="layers_url"> 发布记录 </a>中查看</p></div>`);
+                        let layer = eluUtil.layers(`<div class="passenger_layers"><b>发布成功</b><p>请前往<a id="layers_url"> 发布记录 </a>中查看</p></div>`);
                         layer.$con.find('#layers_url').click(res =>{
                             layer.close();
+                            this.$router.go({
+                                path : '/account/myTripPassenger',
+                                query : {type : 'passenger'}
+                            });
                         });
                     }else{
                         eluUtil.tipsMod(res.retMsg);

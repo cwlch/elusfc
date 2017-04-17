@@ -1,8 +1,8 @@
 <template>
     <div class="aut_main">
-        <div class="aut_top">
-            <div class="aut_top_icon">
-                <img v-link="{path:'userInfo'}" src="../../img/icon_14.png"/>
+        <div class="aut_top" v-link="{path:'userInfo'}" >
+            <div class="aut_top_icon" >
+                <img src="../../img/icon_14.png"/>
             </div>
             <div class="aut_tu">
                 <img :src="user.photoUrl"/>

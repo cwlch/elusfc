@@ -22,7 +22,11 @@
                         <p class="center"><img src="../../img/icon_9.png"/></p>
                         <p>{{i.dEndStr}}</p>
                     </div>
-                    <div class="vehicles_right">{{format("hh:ii",i.dDate)}}</div>
+                    <div class="vehicles_right">
+                        {{format("hh:ii",i.dDate)}}
+                    </div>
+                    <em v-if="!i.status"><img src="../../img/notCert.png"/></em>
+                    <em v-if="i.status"><img src="../../img/yesCert.png"/></em>
                 </div>
             </a>
             <div class="Results_more" v-text="queryTxt"></div>
