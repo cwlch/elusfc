@@ -53,7 +53,7 @@
                     url : eluConfig.serverPath + 'user/queryRequireDetail',
                     data : {
                         recordId : this.$route.query.id,
-                        userId : 1
+                        userId : this.$route.query.userId
                     }
                 },res => {
                         if(res.retCode == '200'){

@@ -6,7 +6,7 @@
             <img id="date" src="../../img/icon_5.png"/>
         </div>
         <div class="Results_main">
-            <a v-link="{path:'./driverDetails',query:{id:i.id}}" v-for="i in listData">
+            <a v-link="{path:'./driverDetails',query:{id:i.id,userId:i.userId}}" v-for="i in listData">
                 <div class="vehicles_list">
                     <img class="list_img_a" src="../../img/icon_6.png"/>
                     <div class="vehicles_left marginTop">

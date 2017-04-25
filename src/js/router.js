@@ -212,6 +212,13 @@ export default (route) => {
                     require( ["../module/common/carType.vue"],resolve );
                 },'module/common/carType');
             }
+        },
+        '/enter' : {
+            component (resolve) {
+                require.ensure(["../module/common/enter.vue"], (require) => {
+                    require( ["../module/common/enter.vue"],resolve );
+                },'module/common/enter');
+            }
         }
     })
 };

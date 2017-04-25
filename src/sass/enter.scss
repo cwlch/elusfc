@@ -1,0 +1,31 @@
+@import "base";
+
+body{
+	background: $green;
+	.logo{
+		width: torem(400);
+		height: torem(400);
+		background: url("../img/logo.jpg");
+		background-size: 100%;
+		margin: torem(150) auto 0;
+		text-indent: -9999rem;
+	}
+	h2{
+		margin: torem(0) auto torem(150);
+		text-align: center;
+		font-size: torem(28);
+		color: #c3ffcd;
+	}
+	.enter_btn{
+		display: block;
+		width: torem(250);
+		text-align: center;
+		margin: torem(100) auto;
+		font-size: torem(32);
+		height: torem(80);
+		line-height: torem(75);
+		color: #fff;
+		border-radius: torem(10);
+		border:1px solid #fff;
+	}
+}

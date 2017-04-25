@@ -79,7 +79,7 @@
                     if(res.result.length <= 0){
                         this.$set("queryTxt","没有更多数据");
                     }else{
-                        this.$set("queryTxt","下拉查看更多");
+                        this.$set("queryTxt","上滑查看更多");
                     }
                     this.$set("listData",this.listData.concat(res.result));
                 });

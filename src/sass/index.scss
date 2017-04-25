@@ -40,7 +40,16 @@
 .relative{
 	position: relative;
 }
-
+.activity_enter{
+	position: fixed;
+	width: torem(150);
+	height: torem(210);
+	background: url("../activity/20170501/img/enter.png") no-repeat;
+	background-size: 100%;
+	top:30%;
+	right: 0;
+	display: block;
+}
 
 
 
@@ -250,7 +259,13 @@ input::-webkit-input-placeholder {
 }
 
 
-
+.search_title{
+	width:torem(706);
+	margin: torem(40) auto torem(20) auto;
+	font-size: torem(28);
+	border-bottom:1px solid #ccc;
+	line-height: torem(60);
+}
 
 /*乘客搜索结果页面*/
 .Results{
@@ -347,8 +362,8 @@ input::-webkit-input-placeholder {
 	margin:torem(6) 0;
 }
 .vehicles_right{
-	width:torem(139);height:torem(146);float:$silde_l; text-align: center;line-height:torem(126);
-	color:#4baa2c;font-size:torem(36);margin-top:torem(40);
+	width:torem(139);height:torem(146);float:$silde_l; text-align: center;line-height:torem(60);
+	color:#4baa2c;font-size:torem(36);margin-top:torem(70);
 	em,b{
 		font-style: normal;
 		font-size: torem(28);
@@ -959,4 +974,18 @@ input::-webkit-input-placeholder {
 	padding-right: torem(20);
 	line-height: torem(40);
 	font-size: torem(32);
+}
+
+.login_layers{
+	width: torem(600);
+	text-align: center;
+	line-height: torem(45);
+	font-size: torem(32);
+	padding: torem(20);
+	p{
+		color: $green;
+		display: inline-block;
+		margin: torem(20) 0;
+		text-align: left;
+	}
 }

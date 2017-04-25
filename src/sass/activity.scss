@@ -1,0 +1,23 @@
+@import "base";
+.activity_list{
+	li{
+		width: torem(700);
+		margin: torem(20) auto;
+		img{
+			width: torem(700);
+		}
+	}
+}
+
+.button{
+	display: block;
+	width:torem(706);
+	height:torem(100);
+	line-height: torem(100);
+	margin:torem(20) auto;
+	background:$green;
+	border-radius:torem(20);
+	color:#fff;
+	font-size:torem(32);
+	text-align: center;
+}

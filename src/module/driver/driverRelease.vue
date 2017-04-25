@@ -80,19 +80,17 @@
                 this.$set('savePar.dEnd',id);
             }
             this.dateInit();
-
+//            eluUtil.verifyLogin().then(()=>{
+//                eluUtil.verifyPhone();
+//            });
         },
         methods : {
             save(){
-                if(eluConfig.user.verifyDriver == 0){
-                    eluUtil.verifyDriver().then(()=>{
-                        this.$router.go({path : '/account/carInfo',query:{type : 'driver'}});//.$router.go("/account/carInfo");
-                    },()=>{
-                        this.push();
-                    });
-                }else{
+                eluUtil.verifyDriver().then(()=>{
+                    this.$router.go({path : '/account/carInfo',query:{type : 'driver'}});
+                },()=>{
                     this.push();
-                }
+                });
             },
             /**
              * 保存

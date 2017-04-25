@@ -68,6 +68,9 @@
                 this.$set('savePar.uEnd',id);
             }
             this.dateInit();
+//            eluUtil.verifyLogin().then(()=>{
+//                eluUtil.verifyPhone();
+//            });
         },
         methods : {
             save (){

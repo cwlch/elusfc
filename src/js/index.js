@@ -2,6 +2,9 @@
  * Created by Ch on 16/12/18.
  */
 import "../sass/index.scss";
+import Vue from "Vue";
+import VueRouter from "VueRouter";
+import  "mobiscroll";
 import app_router from './router.js';
 
 
@@ -29,7 +32,8 @@ const router = new VueRouter(),
     }),
     sendMsg = ()=>{
         let layer = eluUtil.layers(`<div class="account_layers">
-                        <b>身份验证</b>
+                        <b>联系方式</b>
+                        <span>留下联系方式，方便司机或乘客联系您哦！</span>
                         <p><input type="tel" id="tel" placeholder="请输入手机号"/><label id="tips"></label></p>
                         <a id="next">下一步</a>
                     </div>`,{close : false});
@@ -91,8 +95,8 @@ const router = new VueRouter(),
         })
     };
 router.redirect({
-    '*' : '/driver',
-    '/driver':'/driver/driverRelease',
+    '*' : '/passenger',
+    '/driver':'/driver/driverSearch',
     '/passenger':'/passenger/passengerSearch',
     '/account': '/account/main'
 });
@@ -146,14 +150,21 @@ if(window.location.search.indexOf("mytest") >=0 ){
     eluUtil.jsonp({
         url : eluConfig.serverPath + 'user/queryUserInfo'
     },res => {
+        // if(res.retCode == '200'){
         eluConfig.user = res.user || {};
         eluConfig.car = res.car || {};
         eluConfig.user.verifyDriver = res.status;
-        if(!eluConfig.user.phone){
-            sendMsg();
-        }else{
-            router.start(App,'html');
-        }
+        eluConfig.loginStatus = res.retCode;
+        router.start(App,'html');
+        // }else{
+            // eluConfig.loginStatus = 1;
+            // eluUtil.tipsMod(res.retMsg,60000);
+        // }
+        // if(!eluConfig.user.phone){
+        //     sendMsg();
+        // }else{
+        //     router.start(App,'html');
+        // }
     });
 }
 

@@ -7,8 +7,10 @@
                     <img src="../../img/icon_1.png"/>
                 </dt>
                 <dd>
-                    <input placeholder="您从哪儿出发?" readonly v-link="{path:'/address',query:{source:'driver_search',type:'start'}}" v-model="startAddressName"/>
-                    <input placeholder="您要去哪儿?" readonly v-link="{path:'/address',query:{source:'driver_search',type:'end'}}" v-model="endAddressName"/>
+                    <!--<input placeholder="您从哪儿出发?" readonly v-link="{path:'/address',query:{source:'driver_search',type:'start'}}" v-model="startAddressName"/>-->
+                    <!--<input placeholder="您要去哪儿?" readonly v-link="{path:'/address',query:{source:'driver_search',type:'end'}}" v-model="endAddressName"/>-->
+                    <input placeholder="您从哪儿出发?" v-model="uStart"/>
+                    <input placeholder="您要去哪儿?" v-model="uEnd"/>
                 </dd>
             </dl>
             <img class="line" src="../../img/icon_3.gif"/>
@@ -22,6 +24,26 @@
         <!--</div>-->
         <a class="button" @click="search()">寻找乘客</a>
     </div>
+    <h2 class="search_title" v-if="listData.length != 0">最新乘客信息</h2>
+    <div class="Results_main" v-if="listData.length != 0">
+        <a v-link="{path:'./driverDetails',query:{id:i.id,userId:i.userId}}" v-for="i in listData">
+            <div class="vehicles_list">
+                <img class="list_img_a" src="../../img/icon_6.png"/>
+                <div class="vehicles_left marginTop">
+                    <p class="seat"><img class="list_img_b" src="../../img/icon_7.png"/><span>{{i.uCount}}位</span></p>
+                    <p class="date"><b>更新时间:{{dateFormat("mm-dd",i.createTime)}}</b></p>
+                </div>
+                <img class="ve_line" src="../../img/icon_8.gif"/>
+                <div class="vehicles_center v_top">
+                    <p>{{i.uStartStr}}</p>
+                    <p class="center"><img src="../../img/icon_9.png"/></p>
+                    <p>{{i.uEndStr}}</p>
+                </div>
+                <div class="vehicles_right">{{dateFormat("mm-dd hh:ii",i.uDate)}}</div>
+            </div>
+        </a>
+        <div class="Results_more" v-text="queryTxt"></div>
+    </div>
 
 
 </template>
@@ -29,37 +51,39 @@
     export default{
         data(){
             return{
-                startAddressName : '',
+//                startAddressName : '',
                 uStart : '',
-                endAddressName : '',
+//                endAddressName : '',
                 uEnd : '',
-                uDate : eluUtil.dateFormat("yyyy/mm/dd")
+                uDate : eluUtil.dateFormat("yyyy/mm/dd"),
+                listData : []
             }
         },
         ready(){
+            this.queryData();
             let start = JSON.parse(localStorage.getItem('driver_search_start_address')),
                 end = JSON.parse(localStorage.getItem('driver_search_end_address'));
             this.dateInit();
-            if(start){
-                let name = `- ${start.street.name}`,
-                        id = start.street.id;
-                if(!start.street.name){
-                    id = start.county.id;
-                    name = '';
-                }
-                this.$set("startAddressName",`${start.city.name} - ${start.county.name} ${name}`);
-                this.$set("uStart",id);
-            }
-            if(end){
-                let name = `- ${end.street.name}`,
-                        id = end.street.id;
-                if(!end.street.name){
-                    id = end.county.id;
-                    name = '';
-                }
-                this.$set("endAddressName",`${end.city.name} - ${end.county.name} ${name}`);
-                this.$set("uEnd",id);
-            }
+//            if(start){
+//                let name = `- ${start.street.name}`,
+//                        id = start.street.id;
+//                if(!start.street.name){
+//                    id = start.county.id;
+//                    name = '';
+//                }
+//                this.$set("startAddressName",`${start.city.name} - ${start.county.name} ${name}`);
+//                this.$set("uStart",id);
+//            }
+//            if(end){
+//                let name = `- ${end.street.name}`,
+//                        id = end.street.id;
+//                if(!end.street.name){
+//                    id = end.county.id;
+//                    name = '';
+//                }
+//                this.$set("endAddressName",`${end.city.name} - ${end.county.name} ${name}`);
+//                this.$set("uEnd",id);
+//            }
         },
         methods : {
             search(){
@@ -92,7 +116,19 @@
                     dateFormat : 'yyyy/mm/dd',
                     rows : 3
                 });
-            }
+            },queryData(){
+                eluUtil.jsonp({
+                    url : eluConfig.serverPath + 'user/queryRequire',
+                    data : {
+                        page : 0,
+                        per : 5,
+                        dStatus : 0
+                    }
+                },res=>{
+                    this.$set("listData",this.listData.concat(res.result));
+                });
+            },
+            dateFormat : eluUtil.dateFormat
         }
     }
 </script>

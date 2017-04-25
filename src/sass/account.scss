@@ -8,6 +8,13 @@
 	b{
 		font-size: torem(30);
 	}
+	span{
+		display: block;
+		font-size: torem(28);
+		line-height: torem(40);
+		margin-top: torem(15);
+		text-align: left;
+	}
 	a{
 		color: $green;
 		font-size: torem(32);
@@ -58,6 +65,16 @@
 	span{
 		font-size:torem(32);
 		color: #4baa2c;
+	}
+}
+.login_layers{
+	width: torem(650);
+	p{
+		color: $green;
+		font-size: torem(32);
+		display: inline-block;
+		margin: torem(20) 0;
+		line-height: torem(40);
 	}
 }
 .agreement{

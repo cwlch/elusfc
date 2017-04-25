@@ -1,0 +1,175 @@
+@import "../../../sass/base";
+
+body{
+	background: #ffe436;
+	.red{
+		color: #f33535;
+	}
+	.green{
+		color: $green;
+	}
+	.banner,.banner2{
+		height: torem(450);
+		background: #f33535 url("../img/1_banner2.png") no-repeat;
+		background-size: 100%;
+		padding: 0.1px;
+		.logo{
+			height: torem(57);
+			width: torem(197);
+			margin: torem(30) 0 0 torem(20);
+			background: url("../img/logo.png");
+			background-size: 100%;
+			text-indent: -9999px;
+		}
+		h1{
+			width: torem(700);
+			height: torem(345);
+			background: url("../img/1_banner1.png") no-repeat;
+			background-size: 100%;
+			text-indent: -9999px;
+			margin: 0 auto;
+		}
+	}
+
+	.banner2{
+		background-color:$green;
+		h1{
+			width: torem(630);
+			height: torem(290);
+			background: url("../img/1_banner3.png") no-repeat;
+			background-size: 100%;
+		}
+	}
+	.main{
+		width: torem(685);
+		background: #fff;
+		border-radius: torem(30);
+		margin:torem(90) auto;
+		border-right:torem(2) solid #ebcb24;
+		border-bottom:torem(2) solid #ebcb24;
+		position: relative;
+		padding:torem(50) torem(25) torem(30);
+		font-size: torem(20);
+		h2{
+			position: absolute;
+			top:torem(-43);
+			left: 50%;
+			@include transform(translateX(-50%));
+			width: torem(566);
+			height: torem(77);
+			background: url("../img/title.png") no-repeat;
+			background-size: 100%;
+			text-align: center;
+			font-size: torem(36);
+			color: #fff;
+			line-height: torem(65);
+
+		}
+		h3{
+			margin: torem(20) 0 torem(10);
+			color: $green;
+			font-size: torem(32);
+		}
+		span{
+			color: #333;
+			line-height: torem(50);
+			font-size: torem(28);
+		}
+		a{
+			color: #f33535;
+			text-decoration: underline;
+		}
+		em{
+			font-style: normal;
+		}
+		.input_text{
+			width: 100%;
+			height:torem(63);
+			padding-left:torem(10);
+			border:1px solid #ccc;
+			font-size: torem(28);
+		}
+		i{
+			font-style: normal;
+			font-size: torem(26);
+			display: inline-block;
+			margin: torem(10) 0;
+			color:#999;
+		}
+		.operation{
+			margin-top: torem(30);
+			display: none;
+		}
+		label{
+			font-size: torem(28);
+			line-height: torem(50);
+		}
+		.button{
+			width: torem(570);
+			height: torem(65);
+			line-height: torem(60);
+			background: #f33535;
+			border:1px solid #ce0d0d;
+			margin: 0 auto;
+			border-radius: torem(30);
+			text-align: center;
+			color: #ffe436;
+			font-size:torem(32);
+			font-weight: bold;
+			margin-top: torem(30);
+		}
+		.login{
+			text-align: center;
+			img{
+				width: torem(400);
+				display: block;
+				margin: 0 auto;
+			}
+			h3{
+				text-align: left;
+			}
+		}
+		.success{
+			text-align: center;
+			display: none;
+			strong{
+				display: block;
+				line-height: torem(80);
+				color:#f33535;
+				i{
+					font-size: torem(28);
+					color: #999;
+				}
+				small{
+					font-size: torem(60);
+				}
+				a{
+					font-size: torem(32);
+				}
+			}
+			b{
+				font-size: torem(36);
+				color:$green;
+				display: block;
+				line-height: torem(80);
+			}
+		}
+		.loading{
+			display: none;
+			text-align: center;
+		}
+	}
+	.button2{
+		display: block;
+		width:torem(706);
+		height:torem(100);
+		line-height: torem(100);
+		margin:torem(20) auto;
+		background:$green;
+		border-radius:torem(20);
+		color:#fff;
+		font-size:torem(32);
+		text-align: center;
+	}
+
+}

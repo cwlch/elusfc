@@ -11,14 +11,13 @@ let ajaxStatus = [],
          * @param str
          * @param time
          */
-        tipsMod(str, time) {
+        tipsMod(str, time = 3000) {
             // 提示模块
             return new Promise((resolve, rejec)=>{
                 var $doc = $(document),
                     $body = $('body'),
                     tips = '<div class="tips"></div>',
-                    $tips = '',
-                    time = time || 3000;
+                    $tips = '';
 
                 if ($doc.find('.tips').length == 0) {
                     $body.append(tips);
@@ -207,8 +206,8 @@ let ajaxStatus = [],
             });
         },
         verifyDriver (){
-            return new Promise((rej,ret)=>{
-                // if(eluConfig.user.verifyDriver == 0){
+            return new Promise((resolve, reject)=>{
+                if(!eluConfig.user.verifyDriver){
                     let layer = eluUtil.layers(`<div class="account_layers">
                         <p>认证成为司机,发布的信息可信度更高!</p>
                         <a>马上去认证</a><em>下次再说</em>
@@ -216,21 +215,109 @@ let ajaxStatus = [],
                         `);
                     layer.$con.find("a").on("click",()=>{
                         layer.close();
-                        rej();
-                        // window.location.hash = '#!/account/carInfo?type=driver';//.$router.go("/account/carInfo");
+                        resolve();
 
                     });
                     layer.$con.find("em").on("click",()=>{
                         layer.close();
-                        ret();
+                        reject();
                     })
-                // }
-                // else{
-                    // if(url){
-                    //     this.$router.go(url);
-                    // }
-                // }
+                }else{
+                    reject();
+                }
             })
+        },
+        verifyLogin(){
+            let url = $("#myCode").attr("src");
+            return new Promise((resolve, reject)=>{
+
+                if(eluConfig.loginStatus == 400){
+                    let layer = eluUtil.layers(`<div class="login_layers">
+                        <span>发布和个人中心仅限公众号内使用</span>
+                        <img src="${url}">
+                        <p>1、扫码关注公众号登录<br>2、搜索"e鹿同行"公众号关注登录</p>
+                    </div>
+                    `);
+                }else{
+                    resolve();
+                }
+            });
+        },
+        verifyPhone (){
+            return new Promise((resolve, reject)=>{
+                if(eluConfig.user.phone){
+                    resolve();
+                }else{
+                    let layer = eluUtil.layers(`<div class="account_layers">
+                            <b>联系方式</b>
+                            <span>留下联系方式，方便司机或乘客联系您哦！</span>
+                            <p><input type="tel" id="tel" placeholder="请输入手机号"/><label id="tips"></label></p>
+                            <a id="next">下一步</a>
+                        </div>`,{close : false});
+                    layer.$con.find("#next").on("click",()=> {
+                        let tel = layer.$con.find("#tel").val(),
+                            tip = layer.$con.find("#tips");
+                        if (!tel) {
+                            tip.text("手机号不能为空!");
+                            return false;
+                        }
+                        if (!eluUtil.isMobile(tel)) {
+                            tip.text("手机号格式错误!");
+                            return false;
+                        }
+                        eluUtil.jsonp({
+                            url : eluConfig.serverPath + 'user/sendSms',
+                            data : {
+                                telNum : tel,
+                                uid : eluConfig.user.uid
+                            }
+                        },(data) =>{
+                            if (data.retCode == '200') {
+                                Util.pushMsg(tel).then(resolve);
+                                layer.close();
+
+                            } else {
+                                tip.text(data.retMsg);
+                            }
+                        });
+                    });
+                }
+
+
+            })
+        },
+        pushMsg (tel){
+            return new Promise((resolve, reject)=>{
+                let layer = eluUtil.layers(`<div class="account_layers">
+                            <b>身份验证</b>
+                            <p><input type="text" id="code" placeholder="请输入手机验证码"/><label id="tips"></label></p>
+                            <a id="push">提交验证码</a>
+                            </div>`,{close : false});
+                layer.$con.find("#push").on("click",()=>{
+                    let code = layer.$con.find("#code").val(),
+                        tip = layer.$con.find("#tips");
+                    if (!code || code.length != 6) {
+                        tip.text("请输入6位数验证码!");
+                        return false;
+                    }
+                    eluUtil.jsonp({
+                        url : eluConfig.serverPath + 'user/checkSms',
+                        data : {
+                            verifyCode : code,
+                            telNum : tel
+                        }
+                    },(data) =>{
+                        if (data.retCode == '200') {
+                            layer.close();
+                            eluConfig.user.phone = tel;
+                            resolve();
+                        } else {
+                            tip.text(data.retMsg);
+                        }
+                    });
+                })
+
+            });
         }
 
 };
