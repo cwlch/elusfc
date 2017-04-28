@@ -210,7 +210,7 @@ let ajaxStatus = [],
                 if(!eluConfig.user.verifyDriver){
                     let layer = eluUtil.layers(`<div class="account_layers">
                         <p>认证成为司机,发布的信息可信度更高!</p>
-                        <a>马上去认证</a><em>下次再说</em>
+                        <a>马上去认证</a><em>不认证,继续发布</em>
                         </div>
                         `);
                     layer.$con.find("a").on("click",()=>{

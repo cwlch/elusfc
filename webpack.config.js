@@ -89,7 +89,7 @@ util = {
 			},
 			{
 				test: /\.(png|jpg|gif)$/,
-				loader: 'url-loader?limit=12819&name=img/[name].[ext]'
+				loader: 'url-loader?limit=1024&name=img/[name].[ext]'
 			},
 			{
 				test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

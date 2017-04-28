@@ -5,6 +5,7 @@
 	padding: torem(20);
 	font-size: torem(28);
 	text-align: center;
+	min-width:torem(500);
 	b{
 		font-size: torem(30);
 	}
@@ -22,9 +23,10 @@
 		margin: torem(20) 0;
 	}
 	em{
-		font-size: torem(26);
+		font-size: torem(30);
 		margin-left: torem(40);
 		font-style: normal;
+		display: inline-block;
 	}
 	p{
 		line-height: torem(50);

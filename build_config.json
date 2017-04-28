@@ -1,7 +1,7 @@
 {
 	"dest" : "elutx"
 	,"src" : "./src"
-	,"version" : "1.0.2"
+	,"version" : "1.0.3"
 	,"libs" : {
 		"jquery" : "./js/libs/jquery-1.12.4.min.js",
 		"Vue" : "./js/libs/vue.js",
@@ -25,21 +25,25 @@
 		"srcpath": "/server"
 	}
 	,"common" : [
-		"jquery","Vue","VueRouter","swipe","mobiscroll",
+		"jquery","swipe",
 		"./js/config.js",
 		"./js/util.js",
 		"./js/base.js"
 	]
 	,"ui" : []
 	,"serverPath" : [{
-		"dev" : "http://10.106.65.53:8080/"
+		"dev" : "http://10.10.212.63:8080/"
 		,"test" : "http://www.elutx.cn/elu/"
 		,"repro" : "http://www.elutx.cn/elu/"
 		,"pro" : "http://www.elutx.cn/elu/"
 	}]
 	,"entry" : {
 		"index" : "js/index.js",
-		"admin" : "js/admin.js"
+		"admin" : "js/admin.js",
+		"enter" : "js/enter.js",
+		"activity" : "js/activity.js",
+		"activity2017050101" : "activity/20170501/js/1.js",
+		"activity2017050102" : "activity/20170501/js/2.js"
 	}
 	,"htmlwebpack" : [
 		{
@@ -51,6 +55,30 @@
 		{
 			"filename" : "admin.html",
 			"chunks" : ["admin"],
+			"hash" : true,
+			"common" : true
+		},
+		{
+			"filename" : "enter.html",
+			"chunks" : ["enter"],
+			"hash" : true,
+			"common" : true
+		},
+		{
+			"filename" : "activity/20170501/1.html",
+			"chunks" : ["activity2017050101"],
+			"hash" : true,
+			"common" : true
+		},
+		{
+			"filename" : "activity/20170501/2.html",
+			"chunks" : ["activity2017050102"],
+			"hash" : true,
+			"common" : true
+		},
+		{
+			"filename" : "activity.html",
+			"chunks" : ["activity"],
 			"hash" : true,
 			"common" : true
 		}

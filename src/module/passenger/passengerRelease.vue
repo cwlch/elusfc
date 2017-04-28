@@ -95,6 +95,10 @@
                     eluUtil.tipsMod("时间不能为空");
                     return false;
                 }
+                if (par.dDate < (new Date().getTime() + 10 * 60 * 1000)) {
+                    eluUtil.tipsMod("时间必须为10分钟后!");
+                    return false;
+                }
                 eluUtil.jsonp({
                     url : eluConfig.serverPath + 'user/publishRequire',
                     data : par
