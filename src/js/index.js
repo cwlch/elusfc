@@ -4,7 +4,7 @@
 import "../sass/index.scss";
 import Vue from "Vue";
 import VueRouter from "VueRouter";
-import mobiscroll from ""
+import mobiscroll from "mobiscroll";
 import app_router from './router.js';
 
 

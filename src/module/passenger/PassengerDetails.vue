@@ -2,7 +2,7 @@
     <div class="Driver_details">
         <div class="details_port">
             <span><img :src="userData.photoUrl"/></span>
-            <dl v-if="carData.carLord">
+            <dl v-if="carData.status == 3">
                 <dt>{{carData.carLord}}</dt>
                 <dd><b>车型：{{carData.brand}}</b><b class="mar">车牌：{{carData.carNo}}</b></dd>
             </dl>

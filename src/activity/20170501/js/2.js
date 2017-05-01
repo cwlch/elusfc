@@ -64,7 +64,7 @@ $btn.click(()=>{
         eluUtil.tipsMod("请填写有效身份证号!");
         return false;
     }
-    if(!/^430529[Xx0-9]{12}/.test(val)){
+    if(!/^(430529|432627)[Xx0-9]{12}/.test(val)){
         eluUtil.tipsMod("非城步地区人不能参与此活动!");
         return false;
     }
