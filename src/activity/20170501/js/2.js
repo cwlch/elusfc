@@ -19,21 +19,27 @@ const $operation = $(".operation"),
     $success = $(".success"),
     $btn = $(".button"),
     $input = $(".input_text"),
-    $loading = $(".loading"),
+    $start = $("#start"),
+    $end = $("#end"),
     $num = $("#num"),
     $old = $("#old"),
     init = ()=>{
         if(eluConfig.loginStatus != 400){
             $login.hide();
             if(new Date().getTime() >= new Date("2017/04/26 00:00:00").getTime()){
-                if(eluConfig.user.idCard){
-                    $success.show();
-                    query();
-                }else{
-                    $operation.show();
+                if(new Date().getTime() >= new Date("2017/05/02 00:00:00").getTime()){
+                    $end.show();
+                }else {
+                    if (eluConfig.user.idCard) {
+                        $success.show();
+                        query();
+                    } else {
+                        $operation.show();
+                    }
                 }
             }else{
-                $loading.show();
+                $start.show();
+
             }
         }
     },

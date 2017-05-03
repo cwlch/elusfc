@@ -1,7 +1,7 @@
 <template>
     <div class="menu">
         <!--<a v-link="{path : './driverRelease'}" :class="{'hover' : $route.name =='driverRelease'}">发布信息</a>-->
-        <a @click="goRelease()" :class="{'hover' : $route.name =='driverRelease'}">发布信息</a>
+        <a @click="goRelease()" :class="{'hover' : $route.name =='driverRelease'}">发布找人</a>
         <a v-link="{path : './driverSearch'}" :class="{'hover' : $route.name =='driverSearch'}">找人</a>
         <!--<a v-link="{path : '/account',query:{type : 'driver'}}">个人中心</a>-->
         <a @click="goAccount()">个人中心</a>

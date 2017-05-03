@@ -1,1 +1,1 @@
-window.serverPath0 = "http://192.168.2.242:8080/";
+window.serverPath0 = "http://www.elutx.cn/elu/";

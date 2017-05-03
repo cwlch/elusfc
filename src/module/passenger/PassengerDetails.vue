@@ -34,7 +34,7 @@
             </ul>
         </div>
         <a class="button" :href="tel">联系他</a>
-        <div class="details_introduce">请说明您是在E鹿顺风车平台看到的哦！</div>
+        <div class="details_introduce">请说明您是在 e鹿同行看到的信息。</div>
     </div>
 
 
