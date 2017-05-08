@@ -29,7 +29,7 @@
             <li class="Explain">乘客说：{{recordData.remark}}</li>
         </ul>
     </div>
-    <a class="button" :href="tel">联系他</a>
+    <a class="button" :href="tel">联系他<em>({{telJM}})</em></a>
     <div class="details_introduce">请说明您是在 e鹿同行看到的信息。</div>
 </div>
 </template>
@@ -41,7 +41,8 @@
                 recordData : {},
                 userValData : {},
                 format : eluUtil.dateFormat,
-                tel : 'javascript:;'
+                tel : 'javascript:;',
+                telJM : ''
             }
         },
         ready(){
@@ -61,6 +62,7 @@
                         this.$set('userValData',res.userVal);
                         this.$set('recordData',res.record);
                         this.$set('tel','tel:' +res.user.phone);
+                        this.$set('telJM',res.user.phone.replace(/^(\d{3})\d{4}(\d{4})$/,'$1****$2'));
                     }
                 })
             }

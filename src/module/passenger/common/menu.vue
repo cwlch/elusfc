@@ -15,9 +15,10 @@
         methods : {
             goRelease(){
                 eluUtil.verifyLogin().then(()=>{
-                    eluUtil.verifyPhone().then(()=>{
-                        this.$router.go('./passengerRelease');
-                    });
+                    this.$router.go('./passengerRelease');
+//                    eluUtil.verifyPhone().then(()=>{
+//                        this.$router.go('./passengerRelease');
+//                    });
                 });
             },
             goAccount(){

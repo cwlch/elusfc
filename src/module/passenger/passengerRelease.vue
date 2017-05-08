@@ -26,7 +26,7 @@
             <img class="line" src="../../img/icon_3.gif"/>
             <textarea class="FindCar_te" v-model="savePar.remark" placeholder="有孕妈小宝贝、萌宠，记得提前告诉车主哦"></textarea>
         </div>
-        <a class="button" @click="save()">发布找车信息</a>
+        <a class="button" @click="push()">发布找车信息</a>
     </div>
 </template>
 <script type="text/ecmascript-6">
@@ -73,6 +73,11 @@
 //            });
         },
         methods : {
+            push(){
+                eluUtil.verifyPhone().then(()=>{
+                    this.save();
+                });
+            },
             save (){
                 let par = Object.assign({
                     userId : eluConfig.user.id

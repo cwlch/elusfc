@@ -8,6 +8,7 @@ var webpack = require("webpack")
 	,PATH_SRC = path.resolve(__dirname ,build.src)
 	,util
 	,argv = minimist(process.argv);
+//公共文件打包 提取
 //第三方库
 if(build.libs){
 	for(var i in build.libs){
@@ -15,7 +16,6 @@ if(build.libs){
 	}
 }
 
-//公共文件打包 提取
 if(build.common){
 	build.common.forEach(function(i){
 		if(i.indexOf(".js") >= 0 ){

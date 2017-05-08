@@ -86,10 +86,12 @@
         },
         methods : {
             save(){
-                eluUtil.verifyDriver().then(()=>{
-                    this.$router.go({path : '/account/carInfo',query:{type : 'driver'}});
-                },()=>{
-                    this.push();
+                eluUtil.verifyPhone().then(()=>{
+                    eluUtil.verifyDriver().then(()=>{
+                        this.$router.go({path : '/account/carInfo',query:{type : 'driver'}});
+                    },()=>{
+                        this.push();
+                    });
                 });
             },
             /**
